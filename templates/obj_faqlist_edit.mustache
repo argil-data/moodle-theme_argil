@@ -1,0 +1,138 @@
+{{#isquestion}}
+	
+{{/isquestion}}
+{{^isquestion}}
+	<div class="faq_rubric_list">
+	<div class="faqheader fontoswald l3">{{#str}}rubric, theme_argil{{/str}}</div>
+	<div id="cl_faq_list" class="d-flex flex-column faq_cat_list">
+		<div class="d-flex {{{faq_name}}}_content editing faq_table_header fontoswald">
+			<div class="faq_name">{{#str}}name, moodle{{/str}}</div>
+			<div class="faq_actions ">{{#str}}edit, moodle{{/str}}</div>
+		</div>
+{{/isquestion}}
+
+	
+	
+	<div class="d-flex {{{faq_name}}}_content editing ">
+	{{#nbr}}
+		{{#list}}
+		<div class="d-flex fitem {{#select}}show{{/select}}" style="order:{{{order}}}">
+			<div class="faq_name {{{faq_name}}}item" {{{data}}} >
+		
+				<div class="iconsvg">
+				{{#icon}}
+					{{{icon}}}
+				{{/icon}}
+				</div>
+				<div class="txt">{{{txt}}}</div>
+			</div>
+			<div class="faq_actions">
+			
+			{{#visible}}
+				<a class="faq_action faqvisible faqcat_flex_1" href="{{{url}}}&amp;action=hide{{{faq_type}}}">
+					<i class="icon fa fa-eye fa-fw " title="{{#str}}hide, moodle{{/str}}" role="img" aria-label="{{#str}}hide, moodle{{/str}}"></i>
+			{{/visible}}
+			{{^visible}}
+				<a class="faq_action faqvisible faqcat_flex_1" href="{{{url}}}&amp;action=show{{{faq_type}}}">
+					<i class="icon fa fa-eye-slash fa-fw" title="{{#str}}show, moodle{{/str}}" role="img" aria-label="{{#str}}show, moodle{{/str}}"></i>
+			{{/visible}}
+			</a>
+			
+			<div class="faq_action faqposition faqcat_flex_2">
+				{{#up}}
+					<a class="" href="{{{url}}}&amp;action=up{{{faq_type}}}">
+						<i class="icon fa fa-arrow-up fa-fw " title="{{#str}}moveup, moodle{{/str}}" role="img" aria-label="{{#str}}moveup, moodle{{/str}}"></i>
+					</a>
+				{{/up}}
+				{{^up}}
+					<div class="faqposition empty"></div>
+				{{/up}}
+				
+				{{#down}}
+					<a class="" href="{{{url}}}&amp;action=down{{{faq_type}}}">
+						<i class="icon fa fa-arrow-down fa-fw " title="{{#str}}movedown, moodle{{/str}}" role="img" aria-label="{{#str}}movedown, moodle{{/str}}"></i>
+					</a>
+				{{/down}}
+				{{^down}}
+					<div class="faqposition empty"></div>
+				{{/down}}
+			</div>
+			
+			<a class="faq_action faqedit faqcat_flex_1" href="{{{url}}}&amp;action=edit{{{faq_type}}}">
+				<i class="icon fa fa-edit fa-fw " title="{{#str}}edit, moodle{{/str}}" role="img" aria-label="{{#str}}edit, moodle{{/str}}"></i>
+			</a>
+			
+			<a class="faq_action faqdelete faqcat_flex_1" href="{{{url}}}&amp;action=del{{{faq_type}}}">
+				<i class="icon fa fa-trash fa-fw " title="{{#str}}delete, moodle{{/str}}" role="img" aria-label="{{#str}}delete, moodle{{/str}}"></i>
+			</a>
+			</div>
+
+
+		</div>
+		{{/list}}
+	{{/nbr}}
+	{{^nbr}}
+		<div class="d-flex {{{faq_name}}}_message ">
+			{{{emptymsg}}}
+		</div>
+		
+	{{/nbr}}
+	</div>
+	
+	<div class="d-flex {{{faq_name}}}_content editing faq_table_footer">
+	<a class="faq_action faqadd{{{faq_type}}}" href="{{{faq_url}}}&action=add{{{faq_type}}}">
+	{{#isquestion}}
+
+			+ {{#str}}addfaqtopic, theme_argil{{/str}}
+		
+	{{/isquestion}}
+	{{^isquestion}}
+		
+			+ {{#str}}addfaqrubric, theme_argil{{/str}}
+		
+	{{/isquestion}}
+	</a>
+	</div>
+
+
+
+{{#isquestion}}
+	<div id="cl_faq_question" class="d-flex flex-column ">
+		{{#list}}
+			<div id="fquestion{{{id}}}" data-question="{{{id}}}" class="fquestion {{#select}}show{{/select}}">
+				<div class="question">{{{question}}}</div>
+				<div class="answer">{{{answer}}}</div>
+			</div>
+		{{/list}}
+	</div>
+	
+	
+{{/isquestion}}
+{{^isquestion}}
+	</div></div>
+	
+	<div id="faq_list_wrap" class="faq_topic_list">
+		<div class="faqheader fontoswald l3">{{#str}}faqtopic, theme_argil{{/str}}</div>
+		<div id="cl_faq_list" class="d-flex flex-column faq_question_list">
+			<div class="d-flex {{{faq_name}}}_content editing faq_table_header fontoswald">
+				<div class="faq_name">{{#str}}name, moodle{{/str}}</div>
+				<div class="faq_actions ">{{#str}}edit, moodle{{/str}}</div>
+			</div>
+			
+			<div id="faqloading" disabled class=" ">
+				<span class="title fontoswald" >
+					{{#str}}loading, theme_argil{{/str}}
+				</span>
+				<div class="lds-ellipsis ">
+					<div></div><div></div><div></div>
+					<div></div><div></div>
+				</div>
+				
+			</div>
+	
+			<div id="faq_list" class="faq_topic_list">
+				{{{subject}}}
+			</div>
+		</div>
+	</div>
+{{/isquestion}}

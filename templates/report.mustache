@@ -1,0 +1,48 @@
+{{>theme_argil/head}}
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+	
+	
+    {{>theme_argil/header}}
+    {{>theme_argil/banner}}
+
+    <div id="page" class="container-fluid">
+		<div id="page-wrap">
+			<div id="page-layer">
+				{{{ output.full_header }}}
+
+				<div id="page-content" class="row cl_row">
+					
+					<div id="region-main-box" class="col-12">
+						{{#hasregionmainsettingsmenu}}
+						<div id="region-main-settings-menu" class="hidden-print {{#hasblocks}}has-blocks{{/hasblocks}}">
+							<div> {{{ output.region_main_settings_menu }}} </div>
+						</div>
+						{{/hasregionmainsettingsmenu}}
+						<section id="region-main" {{#hasblocks}}class="has-blocks"{{/hasblocks}}>
+							
+							{{#hasregionmainsettingsmenu}}
+								<div class="region_main_settings_menu_proxy"></div>
+							{{/hasregionmainsettingsmenu}}
+							{{{ output.course_content_header }}}
+							{{{ output.main_content }}}
+							{{{ output.course_content_footer }}}
+							
+						</section>
+						{{#hasblocks}}
+						<section data-region="blocks-column" class="hidden-print">
+							{{{ sidepreblocks }}}
+						</section>
+						{{/hasblocks}}
+					</div>
+				</div>
+			</div>
+        </div>
+    </div>
+	{{{ output.standard_after_main_region_html }}}
+	{{>theme_argil/footer_page}}
+	{{> theme_argil/nav-drawer }}
+</div>
+{{>theme_argil/footer}}
+

@@ -1,0 +1,153 @@
+<div class="blocLogin">
+
+{{#error}}
+    <div class="loginerrors">
+        <a href="#" id="loginerrormessage" class="accesshide">{{error}}</a>
+        <div class="alert alert-danger" role="alert">{{error}}</div>
+    </div>
+{{/error}}
+
+<div class="loginpanel">
+
+        {{#cansignup}}
+            <div class="sr-only">
+                <a href="{{signupurl}}">{{#str}} tocreatenewaccount {{/str}}</a>
+            </div>
+        {{/cansignup}}
+
+		
+
+        <div class="accountbloc">
+            
+			{{#hasloginaai}}
+			
+			<div class="colbloc account_AAI">
+				<div class="rowbloc">
+					<h3>{{#str}}accountaai, theme_argil{{/str}}</h3>
+					{{{loginaai}}}
+			
+					<div class="blocinfo">
+						<div id="infoaaiTitle">Vous avez oublié votre nom d'utilisateur ou votre mot de passe?</div>
+						Merci de prendre contact avec  
+						<a href="https://aai-admin.hes-so.ch/doc/ListeResp.html" target="_blanc">le support informatique de votre école</a>.
+					</div>
+					
+					<div class="create-acount-eduid">
+						{{#str}} eduidcreatenew, theme_argil {{/str}}
+					</div>
+					
+				</div>
+
+			</div>
+			{{/hasloginaai}}
+			
+			
+
+
+            <div class="colbloc account_local">
+				
+				<div class="rowbloc">
+					<h3>{{#str}}accountexternal, theme_argil{{/str}}</h3>
+					
+					<form action="{{loginurl}}" method="post" id="login">
+						<input id="anchor" type="hidden" name="anchor" value="">
+						<script>document.getElementById('anchor').value = location.hash;</script>
+						<input type="hidden" name="logintoken" value="{{logintoken}}">
+
+						<label for="username" class="sr-only">
+							{{^canloginbyemail}}
+								{{#str}} username {{/str}}
+							{{/canloginbyemail}}
+							{{#canloginbyemail}}
+								{{#str}} usernameemail {{/str}}
+							{{/canloginbyemail}}
+						</label>
+						<div class="input-group first input-group-username">
+							<span class="input-group-addon"><i class="fa fa-user"></i></span>
+							<input type="text" name="username" id="username"
+								class="form-control"
+								value="{{username}}"
+								placeholder={{#quote}}{{^canloginbyemail}}{{#str}}username{{/str}}{{/canloginbyemail}}{{#canloginbyemail}}{{#str}}usernameemail{{/str}}{{/canloginbyemail}}{{/quote}}>
+						</div>
+
+						<label for="password" class="sr-only">{{#str}} password {{/str}}</label>
+						<div class="input-group last input-group-password">
+							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+							<input type="password" name="password" id="password" value=""
+								class="form-control"
+								placeholder={{#quote}}{{#str}}password{{/str}}{{/quote}}>
+						</div>
+
+						{{#rememberusername}}
+							<div class="rememberpass fontOswald">
+								<input type="checkbox" name="rememberusername" id="rememberusername" value="1" {{#username}}checked="checked"{{/username}} />
+								<label for="rememberusername">{{#str}} rememberusername, admin {{/str}}</label>
+							</div>
+						{{/rememberusername}}
+
+						<button type="submit"  id="loginsubmitbtn" class="btn btn-primary btn-block" id="loginbtn">{{#str}}login{{/str}}</button>
+					</form>
+					
+					<div class="noteLogin">
+						<i class="fa fa-check-circle-o firsticon"></i>
+						{{#str}} cookiesenabled {{/str}}
+						{{{cookieshelpiconformatted}}}
+					</div>
+					
+					<div class="forgetpass">
+						<a href="{{forgotpasswordurl}}">{{#str}}loginPanelForgotten, theme_argil{{/str}}</a>
+					</div>
+				
+				
+				</div>
+				{{#canloginasguest}}
+				<div class="rowbloc guest">
+					<h3>{{#str}}guest{{/str}}</h3>
+                        <div class="mt-2">
+                            <div class="blocinfo">
+								{{#str}}someallowguest{{/str}}
+							</div>
+                            <form action="{{loginurl}}" method="post" id="guestlogin">
+                            	<input type="hidden" name="logintoken" value="{{logintoken}}">
+                                <input type="hidden" name="username" value="guest" />
+                                <input type="hidden" name="password" value="guest" />
+                                <button id="guestsubmitbtn" class="btn btn-secondary btn-block" type="submit">{{#str}}loginguest{{/str}}</button>
+                            </form>
+                        </div>
+                    
+				</div>
+				{{/canloginasguest}}
+
+                
+
+                
+            </div>
+			
+			
+
+        </div>
+
+</div>
+</div>
+
+
+
+{{#js}}
+    {{#error}}
+        require(['jquery'], function($) {
+            $('#loginerrormessage').focus();
+        });
+    {{/error}}
+    {{^error}}
+        {{#autofocusform}}
+            require(['jquery'], function($) {
+                if ($('#username').val()) {
+                    $('#password').focus();
+                } else {
+                    $('#username').focus();
+                }
+            });
+        {{/autofocusform}}
+    {{/error}}
+{{/js}}
+

@@ -1,0 +1,50 @@
+{{>theme_argil/head}}
+<body {{{ bodyattributes }}}>
+{{> core/local/toast/wrapper}}
+<div id="page-wrapper">
+
+    {{{ output.standard_top_of_body_html }}}
+
+	<div id="page" class="container-fluid ">
+        <div id="page-content" class="row cl_row">
+            <div id="region-main-box" class="col-12">
+                <section id="region-main" class="sectionlogin" class="col-12 h-100" aria-label="{{#str}}content{{/str}}">
+                <div class="login-wrapper">
+                    <div class="login-container">
+							{{#logo}}
+							<a href="{{{ config.wwwroot }}}/?redirect=0" id="logo">
+								<img src="{{{logo}}}" alt="{{sitename}}">
+							</a>
+							{{/logo}}
+							<h1>{{#str}}login{{/str}}</h1>
+							{{{ output.custom_menu_language }}}
+				
+
+						
+							{{{ output.main_content }}}
+					
+
+					</div>
+                </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+	{{>theme_argil/sec_footer}}
+</div>
+</body>
+</html>
+
+{{#js}}
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader'], function() {
+  M.util.js_complete('theme_boost/loader');
+});
+{{/js}}
+
+{{#js}}
+require(['theme_boost/footer-popover'], function(FooterPopover) {
+    FooterPopover.init();
+});
+{{/js}}

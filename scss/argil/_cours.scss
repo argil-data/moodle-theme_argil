@@ -1,0 +1,290 @@
+body.darkmode
+{
+	.course-section .section-item
+	{
+		border: 1px solid #333333;
+	}
+	.course-section.hidden .section-item {
+		background-color: #333;
+	}
+	.activity-item
+	{
+		background-color: transparent;
+	}
+	.divider
+	{
+		hr
+		{
+			border-top: 2px dashed #444;
+		}
+		.divider-content
+		{
+			background: linear-gradient(transparent 40%, $bgDarkColor 40%, $bgDarkColor 60%, transparent 60%);
+		}
+	}
+	.section.hidden .divider .divider-content{
+		background: linear-gradient(transparent 40%, #333 40%, #333 60%, transparent 60%);
+	}
+	.btn.add-content
+	{
+		background-color: $bleuDCL;
+		color: $secondWhite;
+		i:before
+		{
+			color: $secondWhite;
+		}
+	}
+	
+	&.format-tiles {
+		:link:focus {
+			box-shadow: none;
+		}
+		
+		.sectiontitle:focus {
+			outline-color: $bleuCL;
+		}
+		.course-content ul.tiles {
+
+			.tile
+			{
+				border-color: $primaryWhite02 !important;
+				background-color: $bgDarkColor;
+				
+
+				h3 {
+					color: $secondWhite;
+				}
+				&.phototile .photo-tile-text h3{
+					background-color: #00609c;
+				}
+
+			}
+
+
+		}
+		
+		#section-zero-container{
+			.above-tiles-buttons .sectionbutton{
+				background-color: rgba(100, 100, 100, .05);
+				border: none;
+			}
+		}
+		
+		&.editing #page .course-content ul.tiles{
+			.course-section-header .dropdown-menu .dropdown-item{
+				//color: $secondWhite;
+			}
+		}
+		
+		.subtiles li.activity.subtile {
+			background-color: $bgDarkColorL;
+			border-color: #444;
+			border-top-color: $grisDCL !important;
+			
+			.activityname{
+				border-radius: 0;
+				background-color: $primaryBlack02;
+			}
+		}
+		button.completioncheckbox:not(.complete), 
+		.completioncheckbox:not(.complete){
+			background-color: $primaryBlack05;
+		}
+	}
+
+}
+.format-tiles 
+{
+	.tile-bg {
+		background-color: transparent !important;
+	}
+	
+	
+	.tileiconcontainer, .tileiconcontainer img
+	{
+		width: 40px;
+		height: 40px;
+	}
+	
+	.tileiconcontainer .icon {
+		width: 40px;
+		height: 40px;
+		&.fa {
+			font-size: 40px;
+		}
+	}
+	.progress-indic svg circle.whole {
+		stroke: rgba(202, 197, 193, 0.5);
+		stroke-width: 3;
+	}
+	.sectiontitle 
+	{
+		font-size: 1em;
+		&::after
+		{
+			height: 3px;
+			background-color: $bleuDCL;
+		}
+		h2
+		{
+			font-weight: 100;
+			color: $bleuCL;
+			margin-bottom: 0;
+		}
+	}
+
+	.course-content ul.tiles 
+	{
+		.tile-top {
+			height: 40px;
+		}
+		.tile
+		{
+			box-shadow: none;
+			border: 1px solid #d6e1e4;
+			border-top-color: #d6e1e4 !important;
+			
+			&.phototile .photo-tile-text
+			{
+				top: 5px;
+			}
+			h3 {
+				font-size: 18px;
+				line-height: 24px;
+			}
+			.tile-textinner.longtitle h3 {
+				font-size: 16px;
+				line-height: 22px;
+			}
+		}
+		.tile-clickable 
+		{
+			&:after
+			{
+				content: '';
+				display: block;
+				position: absolute;
+				bottom: 0px;
+				height: 0px;
+				left: -1px;
+				right: -1px;
+				background: #00609c;
+				transition: all .5s;
+			}
+		}
+		.tile-clickable:hover 
+		{
+			transform:  none;
+			&:after
+			{
+				bottom: -6px;
+				height: 6px;
+				transition: all .5s;
+			}
+		}
+	}
+	li.tile .completioncheckbox
+	{
+		width: 24px;
+		min-width: 24px;
+		height: 24px;
+	}
+	.completioncheckbox
+	{
+		height: 24px;
+		width: 24px;
+		border: 2px solid $grisCL;
+		.icon {
+			font-size: 16px;
+			top:2px;
+			left: 1px;
+			&:before
+			{
+				color: $primaryWhite;
+			}
+		}
+		&.complete
+		{
+			background-color: $bleuCL;
+			border-color: $bleuCL;
+		}
+		&:not(.complete)
+		{
+			.icon {
+				left: 2px;
+				&:before
+				{
+					color: $grisCL;
+				}
+			}
+		}
+	}
+	
+	
+	.subtiles li.activity{
+		&.subtile 
+		{
+			box-shadow: none;
+			border-radius: 0;
+			background-color: #f9f9f9;
+			border: 1px solid #eceeef;
+			border-top-width: 5px;
+			border-top-color: $grisLCL  !important;
+			
+			.tileiconcontainer{
+				width: 85px;
+				height: 85px;
+				.tile-icon .icon {
+					max-width: 65px;
+					max-height: 65px;
+					width: 65px;
+					height: 65px;
+				}
+			}
+			
+			.activityname{
+				border-radius: 0;
+			}
+		}
+		
+	} 
+}
+
+
+.btn.add-content
+{
+	font-weight: normal;
+	letter-spacing: 2px;
+}
+
+
+@media (max-width: 600px)
+{
+	.course-section-header .sectionbadges, 
+	.activity-item .activity-badges{
+		button.badge,
+		span.badge,{
+			overflow: hidden;
+			background-color: transparent !important;
+			width: 30px;
+			height: 24px;
+			max-width: 30px;
+			display: flex;
+			position: relative;
+			text-indent: 30px;
+			i.icon{
+				position: absolute;
+				left: 3px;
+				top: 6px;
+				text-indent: 0;
+			}
+			&.dropdown-toggle::after {
+				position: absolute;
+				right: 0px;
+				top: 9px;
+				text-indent: 0;
+			}
+		}
+	}
+	
+}

@@ -1,0 +1,155 @@
+{{>theme_argil/head}}
+<body {{{ bodyattributes }}}>
+<div id="page-wrapper" class="d-print-block">
+
+    {{{ output.standard_top_of_body_html }}}
+
+    
+    {{> theme_argil/sec_banner }}
+    
+	{{#hasblocks}}
+        {{< theme_argil/drawer }}
+            {{$id}}theme_argil-drawers-blocks{{/id}}
+            {{$drawerclasses}}drawer drawer-right{{#blockdraweropen}} show{{/blockdraweropen}}{{/drawerclasses}}
+            {{$drawercontent}}
+                <section id="loginblock" class="d-print-none" aria-label="{{#str}}blocks{{/str}}">
+					{{{ addblockbutton }}}
+                    <div class="loginheader">{{{ welcomlogin }}}</div>
+                    
+					{{#hasloginaai}}
+				<div class="colbloc account_AAI">
+					<div class="rowbloc">
+						<h3>{{#str}}accountaai, theme_argil{{/str}}</h3>
+						{{{loginaai}}}
+				
+						<div class="blocinfo">
+							<div id="infoaaiTitle">Vous avez oublié votre nom d'utilisateur ou votre mot de passe?</div>
+							Merci de prendre contact avec  
+							<a href="https://aai-admin.hes-so.ch/doc/ListeResp.html" target="_blanc">le support informatique de votre école</a>.
+						</div>
+					
+					</div>
+				</div>
+				{{/hasloginaai}}
+					{{{ sidepreblocks }}}
+					<a class="d-flex align-items-center logo" href="https://www.hes-so.ch/" target="_blank">
+						
+						{{#pix}}logoHes, theme_argil{{/pix}}
+					</a>
+                </section>
+            {{/drawercontent}}
+            {{$drawerpreferencename}}drawer-open-block{{/drawerpreferencename}}
+            {{$forceopen}}{{#forceblockdraweropen}}1{{/forceblockdraweropen}}{{/forceopen}}
+            {{$drawerstate}}show-drawer-right{{/drawerstate}}
+            {{$tooltipplacement}}left{{/tooltipplacement}}
+            {{$drawercloseonresize}}1{{/drawercloseonresize}}
+            {{$closebuttontext}}{{#str}}closeblockdrawer, core{{/str}}{{/closebuttontext}}
+        {{/ theme_argil/drawer}}
+    {{/hasblocks}}
+    <div id="page" data-region="mainpage" data-usertour="scroller" class="drawers   {{#blockdraweropen}}show-drawer-right{{/blockdraweropen}} drag-container  show">
+        <div id="topofscroll" class="main-inner">
+			
+			
+			{{#errormsg}}
+				{{{ errormsg }}}
+			{{/errormsg}}
+			
+			{{#supportpage}}
+				{{>theme_argil/sec_support}}
+			{{/supportpage}}
+				
+			{{#argillearnpage}}
+				{{>theme_argil/sec_argillearnpage}}
+			{{/argillearnpage}}
+				
+			{{#homepage}}
+				{{#fp_slider}}
+					{{{ fp_slider }}}
+				{{/fp_slider}}	
+
+				<div class="drawer-toggles d-flex">
+					{{#hasblocks}}
+						<div class="drawer-toggler drawer-right-toggle ml-auto d-print-none">
+							<button
+								class="btn icon-no-margin"
+								data-toggler="drawers"
+								data-action="toggle"
+								data-target="theme_argil-drawers-blocks"
+								data-toggle="tooltip"
+								data-placement="right"
+								title="{{#str}}opendrawerblocks, core{{/str}}"
+							>
+								<span class="sr-only">{{#str}}opendrawerblocks, core{{/str}}</span>
+								<span class="dir-rtl-hide">{{#pix}}t/blocks_drawer, core{{/pix}}</span>
+								<span class="dir-ltr-hide">{{#pix}}t/blocks_drawer_rtl, core{{/pix}}</span>
+							</button>
+						</div>
+					{{/hasblocks}}
+				</div>
+				
+				{{#secondarymoremenu}}
+					<div class="secondary-navigation d-print-none">
+						{{> core/moremenu}}
+					</div>
+				{{/secondarymoremenu}}
+			
+				<div id="page-content" class="pb-3 d-print-block">
+					<div id="region-main-box" >
+
+						{{#hasregionmainsettingsmenu}}
+						<div id="region-main-settings-menu" class="d-print-none">
+							<div> {{{ regionmainsettingsmenu }}} </div>
+						</div>
+						{{/hasregionmainsettingsmenu}}
+					
+						<section id="region-main" aria-label="{{#str}}content{{/str}}">
+
+							{{#hasregionmainsettingsmenu}}
+								<div class="region_main_settings_menu_proxy"></div>
+							{{/hasregionmainsettingsmenu}}
+							{{{ output.course_content_header }}}
+
+							{{#headercontent}}
+								{{> core/activity_header }}
+							{{/headercontent}}
+							{{#overflow}}
+								<div class="container-fluid tertiary-navigation">
+									<div class="navitem">
+										{{> core/url_select}}
+									</div>
+								</div>
+							{{/overflow}}
+							{{{ output.main_content }}}
+							{{{ output.activity_navigation }}}
+							{{{ output.course_content_footer }}}
+				
+						</section>
+						
+					</div>
+				</div>
+				
+			{{/homepage}}
+			
+		</div>
+		{{>theme_argil/sec_footer}}
+    </div>
+	
+	
+	{{{ output.standard_after_main_region_html }}}
+
+</div>
+</body>
+</html>
+
+{{#js}}
+M.util.js_pending('theme_boost/loader');
+require(['theme_boost/loader', 'theme_boost/drawer'], function(Loader, Drawer) {
+    Drawer.init();
+    M.util.js_complete('theme_boost/loader');
+});
+{{/js}}
+{{#js}}
+require(['theme_boost/footer-popover'], function(FooterPopover) {
+    FooterPopover.init();
+});
+{{/js}}

@@ -1,0 +1,354 @@
+.hesnews
+{
+	display: flex;
+	flex-wrap: wrap;
+	margin: 1%;
+	.hesnewsitem
+	{
+		
+		padding: 0 3px;
+		//margin: 5px 10px;
+		
+		.newsheader
+		{
+			background: $primaryBlack02;
+			line-height: 30px;
+			padding: 3px 10px;
+			margin: 0 0 10px 0;
+			flex: 1 1 100%;
+		}
+		
+		.row
+		{
+			margin: 0;
+		
+		}
+		
+	}
+	
+	
+
+}
+
+.hesnewssave
+{
+	.row
+	{
+		margin: 0 !important
+	}
+	.col-form-label
+	{
+		display: none !important;
+	}
+	.felement
+	{
+		flex: 0 0 100%;
+		max-width: 100%;
+		padding: 0;
+		justify-content: center;
+		background-color: $bleuCL;
+	}
+	
+	.btn-primary
+	{
+		width: 100%;
+		min-width: 250px;
+		border: none;
+		margin: 0;
+		font-size: 1.1rem;
+	}
+}
+
+.block_hesnews_admin
+{
+	border-radius: 0;
+	background: $primaryBlack005;
+	margin: 5px 0;
+	
+	.card
+	{
+		border-radius: 0;
+		background: transparent;
+		.card-body
+		{
+			padding: 0px;
+			display: flex;
+		}
+	}
+	
+	.itemheading
+	{
+		display: flex;
+		font-family: "oswald","Helvetica Neue",Arial,sans-serif;
+		text-align: left;
+		letter-spacing: 1px;
+		font-weight: 100;
+		text-transform: uppercase;
+		font-size: 14px;
+		color: #fff;
+		background-color: $bleuCL;
+		border: 1px solid rgba(0,75,111,.5);
+		text-decoration: none!important;
+		margin: 0;
+		padding: 0.25rem 0.5rem;
+		border-radius: 0;
+		align-items: center;
+		
+		svg.icon
+		{
+			fill: $primaryWhite;
+			width: 30px;
+			height: 20px;
+		}
+	}
+	form
+	{
+		padding: 0;
+		display: flex;
+		flex-direction: column;
+	}
+	
+	.hesnewsitem
+	{
+		.newsbody
+		{
+			border: 1px solid $primaryBlack02;
+			background: $primaryBlack005;
+			display: flex;
+			flex-wrap: wrap;
+			padding-bottom: 10px;
+
+			.row
+			{
+				width: 100%;
+				.col-form-label, .form-inline, .col-md-9
+				{
+					flex: 0 0 100%;
+					max-width: 100%;
+					padding: 0 10px;
+					
+					input, 
+					div.editor_atto_toolbar, 
+					.form-control					
+					{
+						border-radius: 0;
+					}
+				}
+				input[type="text"] 
+				{
+					height: 30px;
+					padding: 3px 5px;
+					line-height: 22px;
+					font-size: 16px;
+				}
+				
+				.col-form-label
+				{
+					padding: 5px 5px 5px 10px !important;
+					height: 30px;
+					margin: 0;
+					label
+					{
+						font-size: 16px;
+						line-height: 20px;
+						margin: 0;
+						white-space: nowrap;
+					}
+				}
+				
+				
+			
+			}
+			
+			#fitem_id_news_all_name, #fitem_id_news_teacher_name, #fitem_id_news_student_name
+			{
+				width: calc(100% - 30px);
+			}
+			.fitem_checkbox
+			{
+				width: 30px;
+				.row
+				{
+					margin: 0;
+					.col-form-label
+					{
+						display: flex;
+						justify-content: flex-end;
+					}
+					label
+					{
+						font-size: 14px;
+					}
+					
+					.checkbox
+					{
+						padding: 0;
+						input[type="checkbox"] 
+						{
+							width: 20px;
+							height: 20px;
+						}
+						
+					}
+				}
+			}
+		}
+	}
+}
+	
+.block_hesnews  
+{
+	border-radius: 0;
+	border: none;
+	
+	
+	.hesnews
+	{
+		justify-content: space-evenly;
+		.hesnewsitem
+		{
+			min-width: 350px;
+			border: 1px solid $primaryBlack01;	
+			margin: 0 10px;
+			padding: 0;
+			
+			.card-title 
+			{
+				//flex: 8 0;
+				font-size: 20px;
+				line-height: 30px;
+				color: $primaryWhite;
+				padding: 0 8px 0 8px;
+				margin: 0;
+				display: flex!important;
+				align-items: flex-start;
+				background: $bleuCL;
+				svg.icon
+				{
+					width: 24px;
+					min-width: 24px;
+					margin-top: 7px;
+					margin-right: 7px;
+				}
+			}
+			.card-text
+			{
+				padding: 7px;
+			}
+		}
+		.hesnewsitemempty
+		{
+			padding: 0;
+			margin: 0 10px;;
+			min-width: 350px;
+		}
+	}
+	
+	
+	.news_row_1 .hesnewsitem
+	{
+		width: calc( 100% - 22px );
+	}
+	
+	.news_row_2 .hesnewsitem
+	{
+		width: calc(( 100% - 44px ) / 2);
+	}
+	
+	.news_row_3 .hesnewsitem
+	{
+		width: calc(( 100% - 66px ) / 3);
+	}
+}
+
+body.darkmode
+{
+	.block_hesnews_admin
+	{
+		background: $primaryWhite005;
+		.itemheading
+		{
+			background: $bleuDCL;
+			color: $primaryWhite;
+			&:hover, &:focus
+			{
+				background: $bleuCL;
+			}
+		}
+	}
+	.hesnews
+	{
+		.hesnewsitem
+		{
+			.newsbody
+			{
+				border: 1px solid $primaryWhite02;
+				background: $bgDarkColor;
+				.newsheader
+				{
+					background: $primaryWhite02;
+					color: $bleuLCL;
+				}
+				
+				.row
+				{
+
+					
+					.col-form-label, .form-inline
+					{
+
+						
+						input, 
+						div.editor_atto_toolbar, 
+						.form-control					
+						{
+
+						}
+					}
+					
+				
+				}
+			}
+		}
+
+	}
+	.block_hesnews 
+	{
+		&.block.card>.card-body 
+		{
+			border: none !important;
+		}
+		.hesnewsitem
+		{
+			border-color: rgba(255,255,255,0.2);
+			background: rgba(0,0,0,0.2);
+		}
+	}
+
+}
+@media (max-width: 1160px)
+{
+	.block_hesnews  
+	{
+		.news_row_2, .news_row_3 
+		{
+		
+			.hesnewsitem,
+			.hesnewsitemempty
+			{
+				width: calc(( 100% - 44px ) / 2);
+			}
+		}
+	}
+}
+@media (max-width: 800px)
+{
+	.block_hesnews  
+	{
+		.news_row_2 .hesnewsitem,
+		.news_row_3 .hesnewsitem
+		{
+			width: calc( 100% - 22px );
+		}
+	}
+}

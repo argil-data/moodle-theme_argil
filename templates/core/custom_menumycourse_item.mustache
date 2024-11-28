@@ -1,0 +1,38 @@
+{{^divider}}
+{{#haschildren}}
+<li class="dropdown nav-item mycourse">
+    <a class="dropdown-toggle nav-link" id="drop-down-{{uniqid}}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#" title="{{{text}}}">
+        <span class="txt">{{{text}}}</span>
+    </a>
+    <div class="dropdown-menu dropdown-menu-arrow" aria-labelledby="drop-down-{{uniqid}}">
+        <a class="dropdown-item dashboard " href="{{{dashboardurl}}}" >{{{dashboardtxt}}}</a>
+		<hr></hr>
+		{{#children}}
+            {{^divider}}
+				{{#hasfavourites}}
+					
+					{{#text}}
+						<a class="dropdown-item" href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}}>{{{text}}}</a>
+					{{/text}}
+					{{^text}}
+						<hr></hr>
+					{{/text}}
+					
+				{{/hasfavourites}}
+				{{^hasfavourites}}
+					<a class="dropdown-item" href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}}>{{{text}}}</a>
+				{{/hasfavourites}}
+            {{/divider}}
+            {{#divider}}
+                <div class="dropdown-divider"></div>
+            {{/divider}}
+        {{/children}}
+    </div>
+</li>
+{{/haschildren}}
+{{^haschildren}}
+<li class="nav-item mycourse">
+    <a class="nav-item nav-link" href="{{{url}}}" {{#title}}title="{{{title}}}"{{/title}}>{{{text}}}</a>
+</li>
+{{/haschildren}}
+{{/divider}}

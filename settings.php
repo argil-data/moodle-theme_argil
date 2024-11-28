@@ -24,3 +24,49 @@
  */
 
 defined('MOODLE_INTERNAL') || die();
+
+if ($ADMIN->fulltree) {                                                                                                   
+    // Boost provides a nice setting page which splits settings onto separate tabs. We want to use it here.
+    $settings = new theme_boost_admin_settingspage_tabs('themesettingargil', get_string('pluginname', 'theme_argil').' '.get_string('configsetting', 'theme_argil'));
+ 
+    // Each page is a tab - the first is the "General" tab.
+    $page = new admin_settingpage('theme_argil_general', get_string('settingsgeneral', 'theme_argil'));
+	
+	// Raw SCSS to include after the content.
+    // $setting = new admin_setting_scsscode('theme_argil/scss', get_string('rawscss', 'theme_boost'),
+    //     get_string('rawscss_desc', 'theme_boost'), '', PARAM_RAW);
+    // $setting->set_updatedcallback('theme_reset_all_caches');
+    // $page->add($setting);
+	
+	//link AI
+	// $name = 'theme_argil/linkaienabled';
+    // $title = get_string('aienabled', 'theme_argil');
+    // $setting = new admin_setting_configcheckbox($name, $title, '', 0);
+    // $page->add($setting);
+	
+	//menu archive
+	// $name = 'theme_argil/archivesurl';
+    // $title = get_string('archivesurl', 'theme_argil');
+    // $description = get_string('archivesurldesc', 'theme_argil');
+    // $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    // $page->add($setting);
+	
+	//Create and restore an course
+	// $name = 'theme_argil/createcourseurl';
+    // $title = get_string('url', 'theme_argil').': '.get_string('coursecreate', 'theme_argil');
+    // $description = get_string('urldesc', 'theme_argil');
+    // $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    // $page->add($setting);
+	
+	// $name = 'theme_argil/restorecourseurl';
+    // $title = get_string('url', 'theme_argil').': '.get_string('courserestore', 'theme_argil');
+    // $description = get_string('urldesc', 'theme_argil');
+    // $setting = new admin_setting_configtext($name, $title, $description, '', PARAM_URL);
+    // $page->add($setting);
+	
+	$settings->add($page); 
+	
+	// require('settings/slides_settings.php');
+	// require('settings/prestations_settings.php');
+	// require('settings/support_settings.php');
+}

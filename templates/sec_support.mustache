@@ -1,0 +1,72 @@
+<div class="intro">{{{supportintro}}}</div>
+<div id="cl_faq" class="{{#is_faq_admin}}edit{{/is_faq_admin}} {{#is_faq_form}}editform{{/is_faq_form}}">
+	<div class="faqheader fontoswald">{{#str}}support, theme_argil{{/str}}</div>
+	
+	
+	{{#catcontent}}
+		
+		{{{ catcontent }}}
+	{{/catcontent}}
+
+	{{#faq_form}}
+		{{{ faq_form }}}
+	{{/faq_form}}
+	
+	
+</div>
+
+
+{{#hascontact}}
+<div id="cl_faq">
+	<div class="faqheader l2  fontoswald">
+		{{#str}}contactus,theme_argil{{/str}}
+	</div>
+	<div class="intro">
+		{{#str}}noanswermsg,theme_argil{{/str}}
+	</div>
+	
+	<div id="contactlist" class="">
+	
+		{{#supportform}}
+		<a class="item"  href="{{{supportform}}}" target="_blank">
+			<div class="title fontoswald">{{#str}}supportform, theme_argil{{/str}}</div>
+				{{#pix}}icon_contact, theme_argil{{/pix}}
+			<div class="desc ">{{#str}}online, theme_argil{{/str}}</div>
+		</a>
+		{{/supportform}}
+		
+		{{#supportemail}}
+		<a class="item" href="mailto:{{{supportemail}}}">
+			<div class="title fontoswald">{{#str}}supportmail, theme_argil{{/str}}</div>
+				{{#pix}}icon_mail, theme_argil{{/pix}}
+			<div class="desc ">{{{supportemail}}}</div>
+		</a>
+		{{/supportemail}}
+		
+		{{#supporttel}}
+		<a class="item" href="tel:{{{supporttel}}}">
+			<div class="title fontoswald">{{#str}}supporttel, theme_argil{{/str}}</div>
+			{{#pix}}icon_phone, theme_argil{{/pix}}
+			<div class="desc ">{{{supporttel}}}</div>
+		</a>
+		{{/supporttel}}
+		
+		
+		
+	</div>
+	<div class="note">
+		{{{supportopening}}}
+	</div>
+	
+</div>
+{{/hascontact}}
+
+{{#supportmore}}
+	<div class="">
+		{{{supportmore}}} 
+	</div>
+{{/supportmore}}
+
+<div id="page-contentwarp">
+{{{ output.main_content }}}
+</div>

@@ -1,0 +1,44 @@
+{{#showgeationcoursebtn}}
+<div id="coursdashbtn">
+	<a id="coursecontrols" class="thiscoursebutton fontOswald collapsed" role="button" data-toggle="collapse" href="#gestioncoursezone" aria-expanded="false" aria-controls="gestioncoursezone">{{{togglebutton}}}</a>
+</div>
+
+<div class="collapse" id="gestioncoursezone">
+<div class="studentdashboard">
+<div class="container-fluid">
+
+<div class="row">
+	{{#createurl}}
+	<div class="col-md-6 gestioncoursebtn ">
+		<a class="gcbtnitem"  href="{{{createurl}}}" target="_blank">
+		<svg class="icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 800 800">
+			<path d="M534.4,39.4H171.5c-34.3,0-62.2,27.8-62.2,62.2v595.7c0,34.3,27.8,62.2,62.2,62.2h195.2c0,0,15.3,0,15.3-14.3 	s-15.3-14.3-15.3-14.3H172.2c-18.4,0-33.3-14.9-33.3-33.3v-596c0-18.4,14.9-33.3,33.3-33.3h345.3l142.9,142.9v228.3 	c0,0-0.3,15.2,14.6,15.2s14.9-15.2,14.9-15.2V194.9L534.4,39.4z"/>
+			<path d="M316,402.9H206c-5.5,0-10-5.8-10-12.8c0-7.1,4.5-12.8,10-12.8h110c5.5,0,10,5.8,10,12.8
+				C326,397.1,321.5,402.9,316,402.9z"/>
+			<path d="M586,277.8H206c-5.5,0-10-5.8-10-12.8c0-7.1,4.5-12.8,10-12.8h380c5.5,0,10,5.8,10,12.8
+				C596,272,591.5,277.8,586,277.8z"/>
+			<path d="M356,152.7H206c-5.5,0-10-5.8-10-12.8s4.5-12.8,10-12.8h150c5.5,0,10,5.8,10,12.8S361.5,152.7,356,152.7z"/>
+			<path d="M668.4,547.1H525.5V404.2c0-8.7-11.1-22.8-25.1-22.8c-14,0-25.1,14.2-25.1,22.8v142.9H332.4 	c-8.7,0-22.8,11.1-22.8,25.1s14.2,25.1,22.8,25.1h142.9v142.9c0,8.7,11.1,22.8,25.1,22.8c14,0,25.1-14.2,25.1-22.8V597.1h142.9 	c8.7,0,22.8-11.1,22.8-25.1S677.1,547.1,668.4,547.1z"/>
+		</svg>
+		{{#str}}coursecreate, theme_argil{{/str}}
+		</a>
+	</div>
+	{{/createurl}}
+	{{#restoreurl}}
+	<div class="col-md-6 gestioncoursebtn">
+		<a class="gcbtnitem"  href="{{{restoreurl}}}" target="_blank">
+		<svg class="icon" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 800 800">
+			<path d="M522.3,663L522.3,663c0,36.1-28.3,65.2-63.2,65.2H196.9c-34.9,0-63.2-29.2-63.2-65.2V312.5c0-36,28.3-65.2,63.2-65.2h2.1 	v-30.6h-6.5c-49.8,0-90.4,40.5-90.4,90.4v361.4c0,49.8,40.5,90.4,90.4,90.4h271.1c49.8,0,90.4-40.5,90.4-90.4V663H522.3z"/>
+			<path  d="M634.4,529.8H381.9c-25,0-45.5-20.5-45.5-45.5V133.7c0-25,20.5-45.5,45.5-45.5h185.2 	c5.6,0,10.9,2.2,14.8,6.1l91.8,91.8c3.9,3.9,6.1,9.3,6.1,14.8v283.3C679.9,509.3,659.4,529.8,634.4,529.8z M372.6,580.1h271.1 	c49.8,0,90.4-40.5,90.4-90.4V201.6c0-17.9-7.2-35.2-19.9-47.9l-95.7-95.9C605.7,45.2,588.5,38,570.5,38H372.6 	c-49.8,0-90.4,40.5-90.4,90.4v361.4C282.2,539.6,322.8,580.1,372.6,580.1z"/>
+		</svg>
+		{{#str}}courserestore, theme_argil{{/str}}
+		</a>
+	</div>
+	{{/restoreurl}}
+</div>
+
+
+</div>
+</div>
+</div>
+{{/showgeationcoursebtn}}

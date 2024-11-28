@@ -1,0 +1,1149 @@
+.activity.satissurvey .dropdown-menu a.editing_duplicate 
+{
+	display: none;
+}
+.path-mod-satissurvey form .endbtns a
+{
+	margin: 0;
+    font-size: 16px;
+    line-height: 21.6px;
+    display: inline-block;
+}
+
+
+.path-local-downloadcenter #region-main .card.block.grouped_settings
+{
+	background: transparent;
+    border: none;
+	padding-left: 0;
+	margin-bottom: 25px;
+    border-radius: 0;
+    border-bottom: 2px solid rgba(255,255,255,0.5);
+	.form-group
+	{
+		.col-md-9
+		{
+			padding-left: 15px;
+			
+		}
+		label
+		{
+			font-weight: 100;
+			min-width: 150px;
+		}
+	}
+}
+
+#compilatio-container
+{
+	margin-top:90px;
+}
+
+#page-mod-mediagallery-view{
+	.mgfa-search:before,
+	.mgfa-mail-forward:before, 
+	.mgfa-share:before	{
+		font-size: 0.9em;
+		font-weight: 600;
+	}
+}
+
+//editor TinyMCE
+.tox {
+	&.tox-tinymce
+	{
+		
+		border-radius: 5px;
+	}
+	.tox-editor-header
+	{
+		border: 1px solid rgba(0,0,0,.125);
+	}
+}
+	
+
+body.darkmode
+{
+	&#page-admin-plugins #plugins-control-panel .pluginicon{
+		filter: invert(0.5);
+	}
+	&.path-local-downloadcenter 
+	{
+		#region-main 
+		{
+			.card.block
+			{
+				.col-md-9 img.activityicon
+				{
+					filter: brightness(0) invert(1);
+				}
+				&:nth-child(2n)
+				{
+					background-color: $primaryWhite005;
+				}
+			}
+		}
+		form .activityicon
+		{
+			filter: brightness(0) invert(1);
+		}
+	}
+	
+	&.path-backup .backup-section
+	{
+		background-color: $bgDarkColor;
+	}
+	
+	&.path-grade
+	{
+		.search-widget.dropdown
+		{
+			.dropdown-toggle 
+			{
+				.user-info
+				{
+					text-wrap: wrap;
+				}
+			}
+			.userinitials
+			{
+				background-color: $bleuLCL;
+			}
+			.dropdown-menu .userpicture
+			{
+				width: 35px !important;
+			}
+		}
+	}
+	&.path-grade-report-grader .gradeparent
+	{
+		table,
+		.cell
+		{
+			border-color: #333333;
+		}
+		
+		tr .cell,
+		.floater .cell
+		{
+			background-color: transparent;
+			border-color: $primaryWhite02;
+		}
+		
+		.heading .cell, 
+		.cell.category,
+		.avg .cell	
+		{
+			background: $primaryBlack02;
+		}
+		
+		tr.lastrow td,
+		tr.lastrow th
+		{
+			border-top: 1px solid $primaryWhite02;
+		}
+	}
+	&.path-grade-report-user,
+	&.grade-report-user
+	{
+		.user-report-container
+		{
+			background-color: transparent;
+		}
+		
+		.user-grade 
+		{
+			thead th
+			{
+				background: $primaryBlack02;
+			}
+			tr,
+			tr.spacer
+			{
+				background-color: transparent;
+			}
+			td
+			{
+				background: $primaryBlack02;
+			}
+			td.category,
+			th.category
+			{
+				background-color: transparent;
+				border-color: $primaryWhite02;
+			}
+			td.item
+			{
+				border-top: 1px solid $primaryWhite02;
+				border-bottom: 1px solid $primaryWhite02;
+				background: $primaryBlack02;
+			}
+			
+			.baggt, 
+			.baggb
+			{
+				background: $primaryBlack02;
+			}
+			
+			.column-itemname .itemicon
+			{
+				filter: brightness(0) invert(1);
+			}
+		}
+	}
+	&.path-grade-report-singleview 
+	{
+		div.reporttable
+		{
+			background-color: $bgDarkColor;
+		}
+		
+		.reporttable
+		{
+			tbody 
+			{
+				tr, tr:nth-of-type(odd), tr:hover
+				{
+					background-color: transparent;
+				}
+				.gradeitem .itemicon
+				{
+					filter: brightness(0) invert(1);
+				}
+			}
+		}
+	}
+	.gradereport_history_usp 
+	{
+		.usp-ajax-content
+		{
+			border-top: 1px solid $primaryWhite02;
+			border-bottom: 1px solid $primaryWhite02;
+		}
+		.usp-user
+		{
+			border-top: 1px solid $primaryWhite02;
+			&:nth-child(odd)
+			{
+				background-color: $primaryWhite005;
+			}
+		}
+	}
+	&.path-grade-edit-tree .gradetree-wrapper
+	{
+		background-color: $bgDarkColor;
+		
+		.setup-grades.generaltable
+		{
+			tr
+			{
+				th, td
+				{
+					background-color: $bgDarkColor;
+				}
+				
+				&.item
+				{
+					td
+					{
+						background-color: $bgDarkColor;
+						border-top-color: $primaryWhite02;
+					}
+					
+					&.categoryitem td,
+					&.courseitem td
+					{
+						background-color: $primaryBlack;
+					}
+				}
+				
+				&.category td
+				{
+					
+					border-top-color: $primaryWhite02;
+					border-bottom-color: $primaryWhite02;
+					background-color: $bgDarkColorL;
+					&:first-child
+					{
+						border-color: $primaryWhite02;
+					}
+					&:last-child
+					{
+						border-right-color: $primaryWhite02;
+					}
+					
+				}
+				
+				td.column-name 
+				{
+					.itemicon
+					{
+						filter: brightness(0) invert(1);
+					}
+				}
+			}
+		}
+	}
+	
+	
+	
+	#categoryquestions .qtype img.icon
+	{
+		filter: brightness(0) invert(1);
+	}
+	
+	.choosercontainer #chooseform .option img.icon {
+  	 	margin: 0 1rem;
+  		padding: 0;
+	 	background-color: $secondWhite;
+	}
+	
+	//satissuirvey
+	.mod_satissurvey_viewpage .yourresponse  
+	{
+		background: #333;
+	}
+	.qn-container
+	{
+		color: $fontDarkColor;
+	
+		.qn-question
+		{
+			background-color: $bgDarkColorW02;
+		}
+	}
+	
+	.qn-info 
+	{
+		background-color: $bgDarkColorW02;
+	}
+	
+	.surveyPage
+	{
+		background-color: $bgDarkColorBW05; 
+	}
+	
+	
+	
+	&.path-mod-satissurvey 
+	{
+		.satissurvey_rateradio
+		{
+			.rankcomment .qcomment_ta
+			{
+				background-color:  $primaryWhite01;
+				border: 1px solid $primaryBlack02;
+			}
+			.radiobtns
+			{
+				background-color: $bgDarkColorW02;
+				.rateitem.itemratenya 
+				{
+					background-color:  $bgDarkColorW02;
+				}
+			}
+		
+		}
+		
+		.surveyTitle
+		{
+			border-bottom: 1px solid $primaryBlack;
+		}
+		#ss-response-rate
+		{
+			border-top: 5px solid $bleuDCL ;
+			.bar
+			{
+				background: $bleuDCL ;
+			}
+		}
+		
+		.ssqn-report-graph
+		{
+			border: 1px solid $primaryWhite01;
+			background-color: $bgDarkColorL;
+			.lengends
+			{
+				border-bottom: 1px dotted $primaryWhite02;
+			}
+			.totalres
+			{
+				border-top: 1px dashed  $primaryWhite02;
+				.bar
+				{
+					background: $primaryWhite01;
+					border: 2px solid $primaryBlack05;
+					.bar-gris
+					{
+						background: $primaryBlack05;
+						border: 2px solid $primaryBlack02;
+					}
+				}
+			}
+		}
+		
+		.ss-g-content .answer_txt
+		{
+			border-top: 1px dotted $primaryWhite05;
+			background-color: $primaryWhite01;
+			&:nth-of-type(odd)
+			{
+				background-color: $primaryWhite005;
+			}
+		}
+		
+		.addsurvey .graprate .radiobtns .rateitem.itemratenya
+		{
+			background-color: $bgDarkColorW02;
+		}
+		
+		.mod_satissurvey_questionspage 
+		{
+			.ssqn-container
+			{
+				background-color: $bgDarkColorL;
+				border: 1px dotted #444;
+				.ssqn-type
+				{
+					background-color: $bgDarkColorW02;
+				}
+				
+				
+				&.not_ssqn_question 
+				{
+					.ssqn-type 
+					{
+						background: $bgDarkColorBW05;
+						border: 1px dotted $bgDarkColorW02;
+					}
+					.ssqn-content
+					{
+						background: $bgDarkColorL;
+						border: none;
+					}
+				}
+			}
+		}
+		
+		.ssqn-container 
+		{
+		
+			.ssqn-content {
+				background-color: $bgDarkColorL;
+				border: 1px dotted #444;
+				color: $secondWhite;
+				.ssqn-question
+				{
+					border-right: 1px dashed #666;
+				}
+				
+				textarea
+				{
+					//background-color: $bgDarkColorL;
+				}
+				
+				textarea, 
+				input[type="text"] 
+				{
+					background-color: $bgDarkColorL;
+					border: 1px solid #444;
+				}
+			}
+			
+			&.ssqn-global
+			{
+				border-top: 2px dotted #444;
+				.ssqn-content 
+				{
+					background-color: $bleuDCL;
+					.ssqn-answer 
+					{
+					
+						background-color: $bgDarkColorBW05;
+						.radiobtns
+						{
+							background-color: transparent;
+							.rateitem.itemratenya 
+							{
+								background-color:  $bgDarkColorBW02;
+								.rateheader
+								{
+									color: #666; 
+								}
+							}
+						}
+					}
+				}
+			}
+			
+		}
+		
+		fieldset textarea, 
+		fieldset input[type="text"]
+		{
+			border: 1px solid #444;
+		}
+		
+		form .endbtns
+		{
+			border-top: 1px solid $primaryWhite02;
+		}
+
+	}
+	
+	.mod_satissurvey_previewpage, 
+	.mod_satissurvey_completepage, 
+	.mod_satissurvey_myreport 
+	{
+		border-bottom: 1px solid $primaryWhite02;
+	}
+	
+	.fitem.disabled .filepicker-filelist, 
+	.fitem.disabled .filemanager-container 
+	{
+		background-color: $bgDarkColorBW05;
+	}
+	
+	//question quiz
+	&#page-question-type-calculated, 
+	&#page-question-type-calculatedmulti, 
+	&#page-question-type-calculatedsimple, 
+	&#page-question-type-ddimageortext, 
+	&#page-question-type-ddmarker, 
+	&#page-question-type-multichoice, 
+	&#page-question-type-numerical 	
+	{
+		div[id^=fgroup_id_][id*=answeroptions_], 
+		div[id^=fgroup_id_][id*=answertolerance_],
+		div[id^=fgroup_id_][id*=answerdisplay_],
+		div[id^=fgroup_id_][id*=drags_],
+		div[id^=fitem_id_][id*=dragitem_], 
+		div[id^=fitem_id_][id*=draglabel_], 
+		div[id^=fitem_id_][id*=hint_], 	
+		div[id^=fitem_id_][id*=hintoptions_],
+		div[id^=fitem_id_][id*=hintshownumcorrect_], 
+		div[id^=fitem_id_][id*=hintclearwrong_], 
+		div[id^=fitem_id_][id*=answer_], 
+		div[id^=fitem_id_][id*=fraction_],  
+		div[id^=fitem_id_][id*=feedback_]
+		{
+			background: $bgDarkColorW02;
+		}
+	}
+	&#page-question-type-coderunner 
+	{
+		div[id^=fitem_id_],  
+		div[id^=fgroup_id_] 
+		{
+			background: transparent;
+			border-color: $bgDarkColor;
+		}
+		div.ui_wrapper, 
+		{
+			background: $bgDarkColorL;
+			border-color: #333 !important;
+		}
+	}
+	
+	&#page-mod-quiz-edit
+	{
+		ul.slots li.section .content 
+		{
+			//background-color:  $bgDarkColorBW02;
+			background-color:  $bgDarkColorL;
+			li.activity
+			{
+				background: $bgDarkColorBW05;
+				&.page 
+				{
+					background: transparent;
+				}
+				
+				img.activityicon 
+				{
+					margin-right: 6px;
+					padding: 2px;
+					background-color: $secondWhite;
+				}
+				
+				.actions 
+				{
+					background: $bgDarkColorW02;
+					padding: 2px 0px 2px 5px;
+				}
+				.instancemaxmarkcontainer
+				{
+					background: $bgDarkColorBW05;
+					.editicon
+					{
+						display: inline-block;
+						margin-left: 5px;
+					}
+				}
+			}
+		}
+		
+		.statusdisplay
+		{
+			background-color: #635e49;
+		}
+		
+		.slotnumber
+		{
+			background-color:  transparent;
+		}
+		
+		
+		
+		.choosercontainer #chooseform .option img.icon
+		{
+			margin: 0 1rem;
+			padding: 0;
+			background-color: $secondWhite;
+		}
+	}
+	
+	&#path-question-type
+	{
+		#id_answerhdr
+		{
+			.form-group.row
+			{
+				background: $bgDarkColorW02;
+			}
+			
+		}
+	}
+	
+	&.path-mod-quiz 
+	{
+		#mod_quiz_navblock .qnbutton
+		{
+			background: $bgDarkColor;
+			margin-top: 3px;
+			
+			.thispageholder
+			{
+				border-color:  $bgDarkColorBW05;
+			}
+			
+			&.thispage .thispageholder 
+			{
+					border-color: $bgDarkColorW02;
+			}
+			
+			&.notyetanswered .trafficlight,  
+			#mod_quiz_navblock .qnbutton.invalidanswer .trafficlight
+			{
+				background: $bgDarkColor;
+			}
+		}
+		.gradedattempt, 
+		table tbody tr.gradedattempt>td
+		{
+			border-color: #333;
+			background-color:  $bgDarkColorBW;
+		}
+	}
+	
+	table.quizreviewsummary 
+	{
+		th.cell, td.cell 
+		{
+			background: $bgDarkColorL;
+			border-color: #444;
+		}
+	}
+	
+	.que.multichoice .answer .specificfeedback {
+		background: #635e49;
+	}
+	.que .info, .que .formulation
+	{
+		color: $secondWhite;
+		background: $bgDarkColorBW05;
+		border: 1px solid $bgDarkColor;
+	}
+	
+	.que.essay .qtype_essay_response.readonly {
+		background-color: $bgDarkColorBW05;
+	}
+	.que .outcome, .que .comment {
+		color: $secondWhite;
+		background-color: #666;
+	}
+	.que.multichoice .answer .specificfeedback
+	{
+		background: #635e49;
+	}
+	.que.coderunner div.ui_wrapper
+	{
+		background: $bgDarkColorL;
+		border-color: #333 !important;
+	}
+	
+	#quiz-timer-wrapper #quiz-timer
+	{
+		background-color: transparent;
+	}
+	
+	&#page-mod-quiz-report .highlight
+	{
+		border: 1px solid #333333;
+		background-color: $bgDarkColorBW;
+	}
+	
+	//offlinequiz
+	.offlinequiz-view-header {
+		background-color: $primaryWhite005;
+	}
+	
+	//e-voting
+	
+	&.path-mod-evoting 
+	{
+		.container_question 
+		{
+
+			background-color: $bgDarkColorBW05;
+		}
+		
+		.pagination>li>a
+		{
+			background-color: $bleuDCL;
+			border: 1px solid $bleuCL05;
+			&:hover
+			{
+				background-color: $bleuCL;
+				border: 1px solid $bleuCL;
+				color: $secondWhite;
+			}
+		}
+		.pagination>li.active>a,
+		.pagination>li.active>span
+		{
+			font-size: 18px;
+			line-height: 21px;
+			font-weight: 700;
+			border: 1px solid #18b5ff;
+
+		}
+		.pagination>li.disabled
+		{
+			&>span, 
+			&>a
+			{
+				background-color: transparent;
+				border-color: #333;
+				color: #444;
+				&:hover, 
+				&:focus
+				{
+					background-color: transparent;
+					border-color: #333;
+				}
+			}
+		}
+	}
+	
+	
+	//questionnaire
+	
+	
+	&.path-mod-questionnaire
+	{
+	
+		.qn-container
+		{
+			color: $fontDarkColor;
+		
+			.qn-question
+			{
+				background-color: $primaryWhite005;
+			}
+		}
+		
+		.qn-info 
+		{
+			background-color: transparent;
+		}
+		
+		.qn-answer
+		{
+			.questionnaire_response
+			{
+				
+				input[type="radio"][disabled], 
+				input[type="checkbox"][disabled]
+				{
+					appearance: none;
+					background: $bgDarkColorL;
+					border: 1px solid $primaryWhite005;
+					border-radius: 50%;
+					width: 14px;
+					height: 14px;
+					
+				}
+				input[type="radio"], input[type="checkbox"]
+				{
+					margin-left: .5em;
+				}
+				input[type="radio"][disabled]
+				{
+					&[checked]
+					{
+						background: $bgDarkColor;
+						border: 1px solid $bleuDCL;
+						&:before
+						{
+							content: "";
+							display: block;
+							width: 10px;
+							height: 10px;
+							margin: 1px;
+							border-radius: 50%;
+							background: $bleuCL;
+							border: 1px solid $primaryBlack;
+						}
+					}
+				}
+				
+				input[type="checkbox"][disabled]
+				{
+					border-radius: 2px;
+					
+					&[checked]
+					{
+						background: $bleuCL;
+						border: 1px solid $bleuDCL;
+						overflow: hidden;
+						&:before
+						{
+							content: "\f00c";
+							@extend .fav-icon-style;
+							font-size: 10px;
+							display: block;
+							width: 100%;
+							//margin: 1px; 
+							text-align: center;
+							padding: 0;
+							color: $primaryWhite;
+							font-weight: 900;
+						}
+					}
+				}
+				
+				
+				
+			}
+		}		
+	}
+	
+	&#page-mod-questionnaire-complete, 
+	&#page-mod-questionnaire-preview 
+	{
+		.message,
+		.notifyproblem, 
+		.thankbody, 
+		.thankhead 
+		{
+			background-color: $bleuDCL;
+			border-color: $bgDarkColorW02;
+			a
+			{
+				color: $secondWhite; 
+			}
+		}
+	}
+	.respondentsnavbar {
+		background-color: $bgDarkColor;
+	}
+	
+	.que.ddwtos .group1
+	{
+		background-color: $bgDarkColorW02;
+	}
+	
+	//attendance
+	&.path-mod-attendance
+	{
+		&#page-mod-attendance-report .attendancereporttable .headcol
+		{
+			background-color: $bgDarkColor;
+		}
+		
+		.attreport .contrast 
+		{
+			background-color: $bgDarkColorBW02;
+		}
+	}
+	
+	&#page-mod-attendance-report .attendancereporttable ,
+	&#page-mod-attendance-manage .attsessions_manage_table , 
+	&#page-mod-attendance-preferences #preferencesform , 
+	&#page-mod-attendance-index 
+	{
+		tr:first-of-type th
+		{
+			background: $primaryBlack;
+		}
+		
+		tbody tr
+		{
+			background-color: rgba(0,0,0,.4);
+			&:nth-of-type(odd)
+			{
+				background-color: $primaryBlack02;
+			}
+		}
+	}
+	&#page-mod-attendance-report .attendancereporttable tr:nth-of-type(2) th 
+	{
+		background: $primaryBlack;
+	}
+	
+	//assign 
+	&.path-mod-assign 
+	{
+		td.submissionnotgraded, 
+		div.submissionnotgraded 
+		{
+			color: $fontDarkColor;
+			background-color: $bgDarkColorBW05;
+		}
+	}
+	
+	
+	
+	
+	[data-fieldtype="modgrade"] 
+	{
+		background-color: $bgDarkColorW02;
+	}
+
+	//survey
+	&.path-mod-survey 
+	{
+		.surveytable
+		{
+			>tbody>tr:nth-of-type(even)
+			{
+				background-color: rgba(255,255,255,0.03);
+			}
+			
+			.whitecell
+			{
+				background-color: $bgDarkColor;
+			}
+		}
+	}
+	//mod-assign
+	&.path-mod-assign {
+		.gradingtable tr.unselectedrow td {
+			background-color: $bgDarkColorL;
+		}
+		td.submissiongraded,  
+		div.submissiongraded, 
+		td.submissionstatussubmitted, 
+		div.submissionstatussubmitted,  
+		a:link.submissionstatussubmitted {
+			color: #fff;
+			background-color: #635e49;
+		}
+		td.submissionstatus, 
+		div.submissionstatus, 
+		a:link.submissionstatus {
+			color: #fff;
+			background-color: #3b3b3b;
+		}
+	}
+	
+	//compilatio
+	#compilatio-container{
+		background-color: $bgDarkColorL;
+		border-color: #333;
+		color: #ccc;
+	}
+	.compilatio-alert{
+		background-color: #635e49;
+		border-color: $primaryBlack;
+		color: #e5706e;
+	}
+	.compilatio-alert-danger {
+		background-color: $bgDarkColor;
+		border-color: $primaryBlack;
+		color: #e5706e;
+	}
+	.compilatio-plagiarismreport {
+		background-color: #1e1e1e;
+		border-color: $primaryBlack;
+	}
+	.comp-button{
+		background: $bgDarkColorL;
+		color: #ccc;
+		border-color: #111;
+		box-shadow: none;
+	}
+	
+	//code runner
+	.ace-tm {
+		background-color: $primaryBlack;
+		color: $primaryWhite;
+	   .ace_gutter {
+		background: $bgDarkColor;
+		color: #aaa;
+	   }
+
+	   .ace_gutter-active-line {
+		background-color: $bgDarkColorL;
+	   }
+
+	   .ace_print-margin {
+		background: #444;
+	   }
+
+	}
+	
+	//mediagallery
+	&.path-mod-mediagallery
+	{
+		.mgfa, 
+		a.maction {
+			color: #80afcd;
+		}
+	}	
+	&.path-mod-mediagallery{
+		.jcarousel-wrapper	{
+			border-color: $bgDarkColor;
+			box-shadow: 0 0 2px $primaryWhite05;
+		}
+		.jcarousel-pagination a
+		{
+			background: #444;     
+			&.active{
+				background: $secondWhite;    
+			}
+		}
+
+	}
+	&#page-mod-mediagallery-view #searchform{
+		background: #444;     
+		border-color: $bgDarkColor;
+	}
+	
+	//editor TinyMCE
+	.tox {
+		border-width: 1px;
+		
+		&.tox-tinymce
+		{
+			border: 1px solid #444;
+			.tox-editor-header
+			{
+				border-top: none;
+				border-left: none;
+				border-right: none;
+				
+				.tox-tbtn svg{
+					fill: $secondWhite;
+					image{
+						filter: invert(0.8);
+					}
+				}
+				
+				.tox-mbtn, .tox-tbtn
+				{
+					background-color: transparent; 
+					border: 1px solid transparent;
+					&:hover {
+						background: #cce2fa;
+						color: #222f3e;
+						svg{
+							fill: $primaryBlack;
+							image{
+								filter: invert(0);
+							}
+						}
+					}
+				}
+				
+				.tox-tbtn--disabled, 
+				.tox-tbtn--disabled:hover, 
+				.tox-tbtn:disabled, 
+				.tox-tbtn:disabled:hover
+				{
+					background: 0 0;
+					color: rgba(110, 110, 110, .5);
+					svg{
+						fill: rgba(110, 110, 110, .5);
+					}
+				}
+				
+			}
+			
+		}
+		
+		
+		.tox-menu{
+			background-color: $grisLCL;
+		}
+		.tox-collection__item{
+			//color:  $secondWhite;
+		}
+		
+		.tox-collection--list .tox-collection__item--enabled{
+			background-color: $primaryBlack01;
+		}
+		
+		.tox-statusbar a:focus:not(:disabled):not([aria-disabled=true]), 
+		.tox-statusbar a:hover:not(:disabled):not([aria-disabled=true]), 
+		.tox-statusbar__path-item:focus:not(:disabled):not([aria-disabled=true]), 
+		.tox-statusbar__path-item:hover:not(:disabled):not([aria-disabled=true]), 
+		.tox-statusbar__wordcount:focus:not(:disabled):not([aria-disabled=true]), 
+		.tox-statusbar__wordcount:hover:not(:disabled):not([aria-disabled=true]){
+			color: $secondWhite;
+		}
+		
+		.tox-menubar, 
+		.tox-toolbar-overlord, 
+		.tox-toolbar, 
+		.tox-toolbar__overflow, 
+		.tox-toolbar__primary{
+			background-color: $bgDarkColorL;
+		}
+		
+		.tox-editor-header
+		{
+			background-color: $bgDarkColorL;
+			border-color: #333;
+		}
+		
+		.tox-statusbar
+		{
+			background-color: $bgDarkColorL;
+		}
+		
+		.tox-statusbar a, 
+		.tox-statusbar__path-item, 
+		.tox-statusbar__wordcount
+		{
+			color: $bleuLCL05;
+		}
+		.tox-statusbar__right-container{
+			button{
+				background-color: transparent;
+				border: none;
+			}
+		}
+		.tox-statusbar__wordcount{
+			color: $bleuLCL08;
+		}
+		
+		.tox-statusbar__branding{
+			svg path{
+				fill: #999;
+			}
+		}
+	
+	}
+}

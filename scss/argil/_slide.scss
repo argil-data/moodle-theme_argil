@@ -1,0 +1,459 @@
+.slidewrap {
+	width: 100%;
+	max-width: 100%;
+	margin: 0;
+	padding: 0;
+	transition: width 0.5s ease-in-out;
+}
+
+
+.flexslider {
+    margin: 0;
+    padding: 0;
+	//background: #fff;
+    margin: 0;
+    position: relative;
+    zoom: 1;
+	
+	a:active,
+	a:focus 
+	{
+		outline: none;
+	}
+	
+	.slides,
+	.flex-control-nav,
+	.flex-direction-nav 
+	{
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+	
+	.slides
+	{
+		display: block;
+		height: 1%;
+		zoom: 1;
+		background-color: $primaryWhite;
+		> li 
+		{
+			display: none;
+			-webkit-backface-visibility: hidden;
+		}
+		
+		img {
+			display: block;
+			width: 100%;
+			&.dark
+			{
+				display: none;
+			}
+		}
+		
+		&:after 
+		{
+			clear: both;
+			content: ".";
+			display: block;
+			height: 0;
+			line-height: 0;
+			visibility: hidden;
+		}
+
+	}
+}
+
+.flex-pauseplay span {
+    text-transform: capitalize;
+}
+.no-js .slides > li:first-child {
+    display: block;
+}
+
+
+.flex-viewport {
+    max-height: 2000px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.dir-rtl .flex-viewport {
+    direction: ltr;
+    max-height: 2000px;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    transition: all 1s ease;
+}
+.loading .flex-viewport {
+    max-height: 300px;
+}
+
+
+// Direction Nav.
+.flex-direction-nav a 
+{
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    
+    margin: 0;
+    opacity: 0;
+    position: absolute;
+	text-indent: 0px;
+	overflow: hidden;
+    top: calc( 50% - 40px);
+    width: 40px;
+	height: 40px;
+	//background-color: $primaryWhite08;
+    padding: 5px;
+    //border-radius: 4px;
+    -webkit-transition: all .3s ease;
+	
+	&:hover
+	{
+		text-decoration: none;
+	}
+	
+	/*
+	&.flex-prev:before, 
+	&.flex-next:after
+	{
+
+		content: "";
+		@extend .fav-icon-style;
+		color: $bleuCL;
+		display: block;
+		width: 22px;
+		min-width: 22px;
+		height: 30px;
+		padding: 0;
+		line-height: 30px;
+		font-size: 30px;
+		text-align: center;
+
+    }
+	*/
+	
+	&.flex-prev
+	{
+		left: 0;
+		border-top-right-radius: 6px;
+		border-bottom-right-radius: 6px;
+		//padding-left: 10px;
+		background: linear-gradient(90deg, $primaryWhite 0%, $primaryWhite05 100%);
+
+	}
+	
+	&.flex-next
+	{
+		right: 0;
+		border-top-left-radius: 6px;
+		border-bottom-left-radius: 6px;
+		//padding-right: 10px;
+		justify-content: flex-end;
+		background: linear-gradient(90deg, $primaryWhite05 0%, $primaryWhite 100%);
+	}
+	
+	&.flex-prev, 
+	&.flex-next
+	{
+		opacity: .2;
+		
+		svg
+		{
+			width: 30px;
+			height: 30px;
+			path
+			{
+				fill: $bleuCL;
+			}
+		}
+		
+
+    }
+	
+	&.flex-disabled 
+	{
+		cursor: default;
+		filter: alpha(opacity=30);
+		opacity: 0 !important;
+	}
+	
+}
+
+
+.flexslider:hover .flex-next,
+.flexslider:hover .flex-prev {
+    opacity: 1;
+}
+
+
+
+// Direction Nav (Blog Slider).
+.image-slider .flex-direction-nav a {
+    opacity: 0;
+}
+
+.image-slider .flex-direction-nav .flex-next {
+    background: #333 url([[pix:theme|next]]) no-repeat 50% 50%;
+    right: 0;
+}
+
+.image-slider .flex-direction-nav .flex-prev {
+    background: #333 url([[pix:theme|previous]]) no-repeat 50% 50%;
+    left: 0;
+}
+
+.image-slider:hover .flex-next,
+.image-slider:hover .flex-prev {
+    opacity: 0.3;
+}
+
+// Control Nav.
+.flexslider  .flex-control-nav {
+    //bottom: 10px;
+    //position: absolute;
+	margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.flex-control-nav li {
+    display: inline-block;
+    margin: 0 4px;
+    zoom: 1;
+	*display: inline;
+}
+
+.flex-control-paging li a {
+    background: $primaryBlack01;
+    border-radius: 20px;
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    display: block;
+    height: 8px;
+    text-indent: -9999px;
+    width: 8px;
+}
+
+.flex-control-paging li a:hover {
+    background: $bleuDCL08;
+}
+
+.flex-control-paging li a.flex-active {
+    background-color: $bleuCL;
+    cursor: default;
+}
+
+.flex-control-thumbs {
+    margin: 5px 0 0;
+    position: static;
+    overflow: hidden;
+}
+
+.flex-control-thumbs li {
+    float: left;
+    margin: 0;
+    width: 25%;
+}
+
+.flex-control-thumbs img {
+    cursor: pointer;
+    display: block;
+    opacity: 0.7;
+    width: 100%;
+}
+
+.flex-control-thumbs img:hover {
+    opacity: 1;
+}
+
+.flex-control-thumbs .active {
+    opacity: 1;
+    cursor: default;
+}
+
+// Caption style.
+// IE rgba() hack.
+.flex-caption {
+    background: none;
+    -ms-filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
+    filter: progid: DXImageTransform.Microsoft.gradient(startColorstr=#4C000000, endColorstr=#4C000000);
+    zoom: 1;
+}
+
+.flex-caption {
+    background-color: $bleuDCL08;
+    bottom: 0;
+    color: #fff;
+    margin: 0;
+    padding: 1%;;
+    position: absolute;
+    right: 0;
+    width: 50%;
+	max-height: 85%;
+	display: block;
+	border-top: 5px solid $bleuDCL08;
+	text-align: justify;
+
+
+	h1, h2, h3, h4, h5, h6 
+	{
+		color: $primaryWhite;
+		margin-bottom: 1rem;
+	}
+
+	p {
+		margin: 0 0 10px;
+	}
+
+	.submit {
+		background: $bleuDCL08;
+		color: $primaryWhite !important;
+		float: right;
+		margin-right: 10px;
+	}
+	
+	.caption-content
+	{
+		overflow: hidden;
+		display: -webkit-box;
+		-webkit-line-clamp: 7;
+		-webkit-box-orient: vertical;
+	}
+	
+	.caption-content-mob 
+	{
+		display: none;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		
+	}
+	
+}
+#main-slider {
+    margin: 0 auto 10px;
+    //max-width: 1920px;
+}
+
+.slides li {
+    position: relative;
+}
+
+@media (max-width: 1400px)
+{
+	.show-drawer-right .flex-caption 
+	{
+		.caption-content
+		{
+			-webkit-line-clamp: 6;
+		}
+	}
+}
+
+@media (max-width: 1280px)
+{
+	.show-drawer-right .flex-caption 
+	{
+		.caption-content
+		{
+			-webkit-line-clamp: 4;
+		}
+	}
+}
+
+@media (max-width: 1024px)
+{
+	.flex-caption 
+	{
+		.caption-content
+		{
+			-webkit-line-clamp: 6;
+		}
+	}
+	.show-drawer-right .flex-caption 
+	{
+		.caption-content
+		{
+			-webkit-line-clamp: 3;
+		}
+	}
+}
+
+@media (max-width: 991px)
+{
+	.flex-caption 
+	{
+		.caption-content
+		{
+			-webkit-line-clamp: 5!important;
+		}
+	}
+}
+
+@media (max-width: 767.98px)
+{
+	.flex-caption 
+	{
+		.caption-content
+		{
+			display: none;
+		}
+		.caption-content-mob 
+		{
+			display: block;
+		}
+	}
+}
+
+
+
+.darkmode  
+{
+	.flexslider
+	{
+		.slides
+		{
+			img {
+				display: none;
+				&.dark
+				{
+					display: block;
+				}
+			}
+		}
+	}
+	
+	.flex-control-paging li a
+	{
+		background: $primaryWhite01;
+		&:hover {
+			background: $bleuDCL08;
+		}
+		&.flex-active {
+			background-color: $bleuLCL;
+		}
+	}
+	
+	.flex-caption
+	{
+		border-top-color: $primaryWhite01;
+	}
+	
+	.flex-direction-nav a 
+	{
+		&.flex-prev
+		{
+			background: linear-gradient(90deg, $bgDarkColor 0%, $primaryBlack 100%);
+		}
+		
+		&.flex-next
+		{
+			background: linear-gradient(90deg, $primaryBlack 0%, $bgDarkColor 100%);
+		}
+	}
+	
+
+}

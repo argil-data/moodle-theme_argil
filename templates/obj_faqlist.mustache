@@ -1,0 +1,70 @@
+{{#isquestion}}
+	<div class="faqheader fontoswald l3">{{#str}}titlesujet, theme_argil{{/str}}</div>
+	<div id="cl_faq_list" class="d-flex flex-column faq_question_list">
+{{/isquestion}}
+{{^isquestion}}
+	<div class="faqheader fontoswald l3">{{#str}}titlerubric, theme_argil{{/str}}</div>
+	<div id="cl_faq_list" class="d-flex flex-column faq_cat_list">
+{{/isquestion}}
+
+	<div class="d-flex {{{faq_name}}}_content ">
+	{{#nbr}}
+	
+		{{#list}}
+		<div class="d-flex fitem {{#select}}show{{/select}}" style="order:{{{order}}}">
+			<div class="faq_name {{{faq_name}}}item" {{{data}}} >
+				<div class="iconsvg">
+				{{#icon}}
+					{{{icon}}}
+				{{/icon}}
+
+				</div>
+				<div class="txt">{{{txt}}}</div>
+			</div>
+		</div>
+		{{/list}}
+		<div class="d-flex fitem_{{{nbr}}} fitem_empty" style="order:9999;"></div>
+		<div class="d-flex fitem_empty" style="order:9999;"></div>
+		<div class="d-flex fitem_empty" style="order:9999;"></div>
+		<div class="d-flex fitem_empty" style="order:9999;"></div>
+		<div class="d-flex fitem_empty" style="order:9999;"></div>
+		<div class="d-flex fitem_empty" style="order:9999;"></div>
+
+	{{/nbr}}
+	{{^nbr}}
+		
+		{{#isquestion}}
+		<div class="d-flex {{{faq_name}}}_message ">
+			{{{emptymsg}}}
+		</div>
+		{{/isquestion}}
+	{{/nbr}}
+	</div>
+</div>
+{{#isquestion}}
+<div id="cl_faq_question" class="d-flex flex-column ">
+	{{#list}}
+		<div id="fquestion{{{id}}}" data-question="{{{id}}}" class="fquestion {{#select}}show{{/select}}">
+			<div class="question">{{{question}}}</div>
+			<div class="answer">{{{answer}}}</div>
+		</div>
+	{{/list}}
+</div>
+{{/isquestion}}
+{{^isquestion}}
+	<div id="faqloading" disabled class=" ">
+		<span class="title fontoswald" >
+			{{#str}}loading, theme_argil{{/str}}
+		</span>
+		<div class="lds-ellipsis ">
+			<div></div><div></div><div></div>
+			<div></div><div></div>
+		</div>
+		
+	</div>
+
+	<div id="faq_list">
+		{{{subject}}}
+	</div>
+	
+{{/isquestion}}

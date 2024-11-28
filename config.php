@@ -170,7 +170,6 @@ $THEME->layouts = [
     )
 ];
 
-$THEME->parents = [];
 $THEME->enable_dock = false;
 $THEME->extrascsscallback = 'theme_boost_get_extra_scss';
 $THEME->prescsscallback = 'theme_boost_get_pre_scss';

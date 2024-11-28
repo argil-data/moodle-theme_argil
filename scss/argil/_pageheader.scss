@@ -1,0 +1,758 @@
+.darkmode 
+{
+	#page.drawers
+	{
+		#page.drawers #page-header .activityiconcontainer {
+
+		}
+		
+		#teacherdashslider, #studentdashslider, #gestioncoursezone
+		{
+			background-color: #19435e;
+			
+			.teacherdashboard, .studentdashboard 
+			{
+				font-size: 0.8rem;
+				.dashtitle
+				{
+					background-color: #333;
+					color: #999999;
+					border-bottom: 1px solid $bleuDCL;
+					h3
+					{
+						color: $bleuCL;
+						i:before
+						{
+							color: $bleuCL;
+						}
+					}
+				}
+				
+				.progresschartWrap
+				{
+					h4, h5, .fontOswald
+					{
+						color: $secondWhite;
+					}
+				}
+		
+				
+				.list-group .list-group-item
+				{
+					border: 1px solid #222;
+					border-top: none;
+					background-color: #2e2e2e;
+					color: $primaryWhite;
+					a
+					{
+						color: $primaryWhite;
+					}
+				}
+				
+				a.more-item, a.unenrol
+				{
+					color: $primaryWhite !important;
+					i:before
+					{
+						color: $primaryWhite;
+						font-weight: 600;
+					}
+				}
+				
+				.row .progres
+				{
+					background-color: $bleuCL;
+					.progress-bar
+					{
+						color: $primaryWhite;
+					}
+				}
+			}
+		}
+		
+		#coursdashbtn 
+		{
+			#coursecontrols
+			{
+				background: #19435e;
+				&.collapsed
+				{
+					background: $primaryBlack05;
+					&:hover
+					{
+						background: #19435e;
+					}
+				}
+				
+				
+			}
+		}
+		
+		.secondary-navigation .navigation
+		{
+			border-color: $bgDarkColorBW;
+			background: $bgDarkColor;
+		}	
+	}
+	
+	&.pagelayout-frontpage #page
+	{
+		.secondary-navigation .navigation
+		{
+			border-color: $bgDarkColorBW;
+			background: $bgDarkColor;
+		}	
+	}
+	
+	.gestioncoursebtn .gcbtnitem 
+	{
+		&:hover
+		{
+			background: $primaryBlack02;
+		}
+		.icon
+		{
+			fill: $bleuLCL;
+		}
+	}
+}
+
+#page.drawers
+{
+	
+	#page-header 
+	{
+		display:flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 5px 1rem; 
+		padding: 0; 
+		background: $bleuCL;
+		
+		.btn, [type="button"], [type="reset"], [type="submit"], button
+		{
+			color: $primaryWhite;
+			background: $grisDCL05;
+			border-color: $grisLCL;
+			padding: 0.2rem 0.5rem;
+			margin: 5px;
+			&:hover
+			{
+				border-color: $primaryWhite;
+				color: $primaryWhite;
+			}
+			i:before
+			{
+				color: $primaryWhite;
+			}
+		}
+		
+		.text-primary
+		{
+			color: $primaryWhite !important;
+		}
+		
+		.btn.btn-link
+		{
+			background: transparent;
+			i::before
+			{
+				color: $secondWhite;
+			}
+			&:hover
+			{
+				background: $bleuDCL;
+			}
+		}
+		
+		.simplesearchform 
+		{
+			.btn, [type="button"], [type="reset"], [type="submit"], button
+			{
+				padding: 0 5px;
+				margin: 0;
+			}
+		}
+		
+		h1,h2,h3
+		{
+			color: $primaryWhite;
+			padding: 0 10px;
+		}
+		
+		
+		#page-navbar
+		{
+			color: $secondWhite;
+			width: 100%;
+			//border-bottom: 1px dashed $primaryWhite02;
+			a
+			{
+				color: rgba(149, 213, 254, 1);
+				&:focus
+				{
+					background: $bleuDCL ;
+				}
+			}
+			.breadcrumb-item+.breadcrumb-item::before
+			{
+				color: $grisLCL;
+			}
+			
+			a.dimmed, a.dimmed:link, a.dimmed:visited, a.dimmed_text, a.dimmed_text:link, a.dimmed_text:visited, .dimmed_text, .dimmed_text a, .dimmed_text a:link, .dimmed_text a:visited, .usersuspended, .usersuspended a, .usersuspended a:link, .usersuspended a:visited, .dimmed_category, .dimmed_category a
+			{
+				color: #bbb;
+			}
+			.breadcrumb
+			{
+				background: $primaryBlack01;
+				border-radius: 0;
+				padding: 5px 10px;
+				&:empty {
+					padding: 0;
+				}
+			}
+		}
+		
+		.page-context-header
+		{
+			//margin-top: 10px;
+			padding: 10px 10px 5px;
+			.page-header-headings
+			{
+				h1, h1.h2, h2
+				{
+					font-size: 1.2rem;
+					line-height: 1.8rem;
+					font-weight: 100;
+				}
+				.text-muted
+				{
+					color: $grisLCL !important;
+				}
+			}
+		}
+		.header-actions-container
+		{
+			padding-right: 10px;
+		}
+		
+		.activityiconcontainer
+		{
+			background: $grisLCL;
+			//border: 3px solid #eaeaea;
+			border-radius: 0;
+		}
+		
+	}
+	
+	#coursdashbtn
+	{
+		display: flex;
+		background-color:$bleuCL ;
+		border: 1px solid $bleuCL;
+		justify-content: flex-end;
+		margin-bottom: 0px;
+
+		
+		#coursecontrols
+		{
+			height: 29px;
+			width: fit-content;
+			white-space: nowrap;
+			display: flex;
+			align-items: center;
+    
+			font-size: 14px;
+			line-height: 18px;
+			padding: 0px 10px 0px;
+			background-color: #e4e2e0;
+			text-decoration: none;
+			text-align: right;
+			margin-right: 15px;
+			border-top-left-radius: 5px;
+			border-top-right-radius: 5px;
+			
+			&.collapsed
+			{
+				background-color:$grisLCL08 ;
+				&:hover
+				{
+					background-color: #e4e2e0;
+				}
+			}
+			>i:before
+			{
+				margin-right: 3px;
+				font-weight: 600;
+			}
+			
+
+		}
+	}
+	
+	
+	#coursecontrols
+	{
+	
+		&.thiscoursebutton, &.teacherdashbutton, &.enrollcodebutton 
+		{
+			
+			&:after
+			{
+				display: inline-block;
+				width: 0;
+				height: 0;
+				margin-left: .255em;
+				vertical-align: .255em;
+				content: "";
+				border-top: .3em solid;
+				border-right: .3em solid transparent;
+				border-bottom: 0;
+				border-left: .3em solid transparent;
+			}
+			
+			i
+			{
+				&:before
+				{
+					content: $administration;
+					color: $bleuCL;
+				}
+			}
+
+		}
+		
+	}
+	
+	#teacherdashslider, #studentdashslider, #gestioncoursezone
+	{
+		//background-color: $grisLCL03;
+		background-color: #e4e2e0;
+		padding: 10px;
+		color: $primaryWhite;
+		margin-top: -2px;
+		border: 1px solid $bleuCL;
+		border-top: none;
+		
+		.dashcol 
+		{
+			flex: 1;
+			margin: 0 1%;
+		}
+		
+		.teacherdashboard .dashtitle, .studentdashboard .dashtitle
+		{
+			h3
+			{
+				margin: 5px 0;
+				color: $primaryWhite;
+				padding-left: 28px;
+				padding-bottom: 5px;
+				position: relative;
+				font-size: 18px;
+				line-height: 22px;
+				
+				i
+				{
+					position: absolute;
+					left: 2px;
+					top: 1px;
+					width: 22px;
+					height: 22px;
+									
+					&:before
+					{
+						color: $primaryWhite;
+						font-size: 18px;
+						line-height: 20px;
+						padding: 0px;
+					}
+				
+				}
+				
+			}
+			
+			p
+			{
+				padding-left: 28px;
+				margin-bottom: 0;
+			}
+		
+		}
+		
+		.list-group
+		{
+			margin-bottom: 10px;
+			.list-group-item
+			{
+				padding: 6px 8px;
+				background-color: $primaryWhite08;
+				border: 1px solid $grisLCL ;
+				color: $primaryBlack;
+				border-radius: 0;
+				a
+				{
+					color: $bleuDCL;
+					&.actionL1
+					{
+						font-size: 16px;
+						line-height: 25px;
+					}
+				}
+				
+				.dashicon
+				{
+					//font-size: 20px;
+					&:before
+					{
+						//color: $primaryWhite;
+						font-size: 18px;
+						line-height: 16px;
+						
+					}
+					
+					&.fa-grades 
+					{
+						
+						&:before
+						{
+							content: $grades;
+						}
+	
+					}	
+				}
+
+								
+				
+			}
+		}
+		
+		.studentdashboard
+		{
+			.row
+			{
+				padding: 10px;
+				
+				&.btn
+				{
+					border-bottom: 4px dotted rgba(255,255,255,.3);
+					display: flex;
+					justify-content: space-around;
+				}
+				
+				.progresschartWrap
+				{
+					width: 96%; 
+					margin: 0 auto 20px;
+				}
+				
+				.progress
+				{
+					height: 10px;
+					background-color: $primaryWhite;
+					overflow: visible;
+					border-radius: 0;
+					.progress-bar
+					{
+						background-color: $bleuCL;
+						overflow: visible;
+						.small
+						{
+							white-space: nowrap;
+							padding: 30px 5px 0;
+							font-size: 9px;
+							line-height: 9px;
+							font-family: oswald;
+							text-transform: uppercase;
+							letter-spacing: 2px;
+							font-weight: 100;
+							color: #999999;
+						}
+					}
+				}
+				
+				.txtcenter
+				{
+					text-align: center;
+					position: relative;
+					padding: 40px 5px 5px 5px;
+					
+					p
+					{
+						position: absolute;
+						top: 0;
+						width: calc(100% - 10px);
+					}
+					.progress-chart-container
+					{
+						margin: 0 auto;
+					}
+					
+					i:before
+					{
+						color: $secondWhite;
+						padding-right: 0;
+					}
+					
+				}
+				.staffmember
+				{
+					display: flex;
+					flex: 1;
+					
+					.staffItem.img
+					{
+						flex: 1 0px;
+						.userinitials
+						{
+							height: 40px;
+							width: 40px;
+							color: $primaryWhite;
+							background: $bleuCL;
+							
+						}
+					}
+					
+					.staffItem.name
+					{
+						flex: 12 0px;
+						
+					}
+					.staffItem.action
+					{
+						flex: 1 0px;
+						
+						i:before
+						{
+							padding: 0;
+						}
+					}
+				}
+				
+				.no-progress
+				{
+					background-color: transparent;
+				}
+				
+				.coursesummary
+				{
+					.card-block
+					{
+						text-align: justify;
+					}
+				}
+			}
+		}
+		
+		.teacherdashboard, .studentdashboard 
+		{
+			.dashtitle
+			{
+				padding: 5px;
+				background-color: $bleuCL;
+				color: $secondWhite;
+				
+			}
+			
+
+			
+			h3, h4, h5, .fontOswald
+			{
+				color: $secondWhite;
+			}
+			
+			.progresschartWrap
+			{
+				h4, h5, .fontOswald
+				{
+					color: $bleuCL;
+				}
+			}
+			
+			a.more-item,
+			a.unenrol 
+			{
+					background: unset;
+					border: unset;
+					color: $bleuCL;
+					font-size: 16px;
+					padding: 7px 10px;
+					margin-top: 40px;
+					text-align: right;
+				&:hover
+				{
+					color: $bleuDCL;
+				}				
+					
+				
+				i:before
+				{
+					color: $bleuDCL;
+					margin-right: 5px;
+					font-weight: 600;
+				}
+			}
+			
+			a.more-item
+			{
+				i:before
+				{
+					content: $iconConfigSlider;
+				}
+			}
+			
+		}
+		
+		.progress-chart-container .progress-doughnut .progress-text.has-percent 
+		{
+			color: $primaryWhite !important
+		}
+		
+		.progress-chart-container .progress-doughnut .progress-indicator svg .circle
+		{
+			stroke: $primaryWhite !important;
+		}
+	}
+	
+	.header-maxwidth, 
+	.secondary-navigation
+	{
+		max-width: 100%;
+		margin: 0;
+		padding: 0px;
+	}
+	
+	.secondary-navigation
+	{
+		margin-bottom: 1.5rem;
+		.navigation 
+		{
+			border-top: none;
+			.nav-tabs
+			{
+				margin: 0;
+			}
+		}
+	}
+	
+
+}
+
+.gestioncoursebtn .gcbtnitem 
+{
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+	padding: 1%;
+	&:hover
+	{
+		background: $primaryWhite02;
+	}
+	.icon
+	{
+		width: 40px;
+		height: 40px;
+		margin: 10px;
+		display: block;
+		fill: $bleuCL;
+	}
+}
+
+
+
+
+@media (max-width: 800px)
+{
+    
+		
+	#page.drawers
+	{
+		#teacherdashslider, #studentdashslider, #gestioncoursezone
+		{
+			.dashcol 
+			{
+				flex: 2 100%;
+			}
+		}
+		
+	}
+		
+		
+
+	
+}
+
+
+
+
+@media (max-width: 767.98px)
+{
+	.breadcrumb:not(:empty) {
+		flex-wrap: wrap;
+		.breadcrumb-item
+		{
+			padding: 0;
+			flex-grow: 0;
+		}
+	}
+	
+	.gestioncoursebtn .gcbtnitem 
+	{
+		flex-direction: row;
+	}
+}
+
+
+@media (max-width: 500px)
+{
+	.secondary-navigation
+	{
+		.moremenu 
+		{
+			height: 62px;
+			.more-nav
+			{
+				//flex-wrap: nowrap;
+				width: 98%;
+				.nav-link
+				{
+					font-size: 16px;
+					line-height: 18px;
+					width: min-content;
+				}
+			}
+		}
+	}
+}
+
+
+@media screen and (max-width: 400px) 
+{
+	body
+	{
+		#page.drawers
+		{
+			
+			
+			#page-header
+			{
+				//background: $bleuCL;
+			}
+			
+			#coursdashbtn
+			{
+				#tdbtn_left, #tdbtn_right
+				{
+					display: none;
+				}
+				#coursecontrols
+				{
+					//width: 100%;
+				}
+			}
+			
+			
+		}
+	}
+}

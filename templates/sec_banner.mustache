@@ -1,0 +1,73 @@
+<div  style="display: none;"><h1>Argillearn</h1><h2>Le centre e-learning de la X, il a été créé en 2004. Il propose aux professeur-e-s de la X un soutien actif pour les aider à enrichir leurs cours présentiels avec des solutions technologiques favorisant l'apprentissage.</h2></div>
+<nav class="navbar fixed-top navbar-expand flex-column " aria-label="{{#str}}sitemenubar, admin{{/str}}">
+
+    <div id="navFirstRow" class="ban-menu-item d-flex">
+		
+
+		<a href="{{{ config.wwwroot }}}/?redirect=0" class="navbar-brand d-flex align-items-center m-0 mr-1 p-0 aabtn">
+			<button class="navbar-toggler aabtn d-block d-md-none px-1 my-1 border-0" data-toggler="drawers" data-action="toggle" data-target="theme_argil-drawers-primary">
+				<i class="fa-solid fa-bars fa-fw"></i>
+				<span class="sr-only">{{#str}}sidepanel, core{{/str}}</span>
+			</button>
+		
+
+			{{# output.should_display_navbar_logo }}
+				<img src="{{output.get_logo_url}}" class="logo mr-1" alt="{{sitename}}">
+				<img src="{{output.get_compact_logo_url}}" class="logo compact" alt="{{sitename}}">
+			{{/ output.should_display_navbar_logo }}
+			{{^ output.should_display_navbar_logo }}
+				<img src="{{output.get_logo_url_theme}}" class="logo mr-1" alt="{{sitename}}">
+				<img src="{{output.get_compact_logo_url_theme}}" class="logo compact" alt="{{sitename}}">
+			{{/ output.should_display_navbar_logo }}
+		</a>
+	
+		{{# output.should_display_ai_logo }}
+				<a href="https://numerique.hes-so.ch/course/view.php?id=254" class="navbar-brand d-flex align-items-center m-0 mr-1 p-0 aabtn logoaibtn fontoswald" target="_blank" title="{{#str}}aifullname, theme_argil{{/str}}">
+					{{#pix}}'logoai', 'theme_argil'{{/pix}}
+					{{#str}}ai, theme_argil{{/str}}
+				</a>
+		{{/ output.should_display_ai_logo }}
+		
+		
+		<ul class="navbar-nav  d-none ml-auto">
+			{{{ output.page_heading_menu }}}
+		</ul>
+
+		<div id="usernavigation" class="navbar-nav">
+			
+			{{#langmenu}}
+				<div class="langmenu">
+					{{{ output.custom_menu_language }}}
+				</div>
+			{{/langmenu}}
+			{{{ output.navbar_plugin_output }}}
+			<div class="d-flex align-items-stretch usermenu-container" data-region="usermenu">
+				{{#usermenu}}
+					{{> core/user_menu }}
+				{{/usermenu}}
+			</div>
+			<div id="switchzone" class="d-flex">
+			{{{ output.show_switch_darkmode }}}
+			{{{ output.edit_switch }}}
+			</div>
+			
+		</div>
+		
+		
+		
+		
+	</div> 
+	
+	<div id="navLastRow" class="ban-menu-item d-flex">
+		{{# output.search_box_top }}
+			{{{ output.search_box_top }}}
+		{{/output.search_box_top}}
+		{{#primarymoremenu}}
+		<div class="primary-navigation">
+			{{> core/moremenu}}
+		</div>
+		{{/primarymoremenu}}
+	</div> 	
+</nav>
+
+{{> theme_argil/obj_primary-drawer-mobile }}

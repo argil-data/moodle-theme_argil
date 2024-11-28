@@ -1,0 +1,511 @@
+body
+{
+	&.pagelayout-login
+	{
+		
+		#page
+		{
+			padding: 0px;
+			margin: 50px 5%;
+			width: 90%;
+			border-radius: 5px;
+			
+			background: $grisLCL02;
+			background-image: -webkit-linear-gradient(to right,$grisLCL02 0%,$grisLCL03 100%);
+			background-image: -o-linear-gradient(to right,$grisLCL02 0%,$grisLCL03 100%);
+			background-image: linear-gradient(to right,$grisLCL02 0%,$grisLCL03 100%);
+			border: 1px solid $grisLCL;
+			-webkit-box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 20%);
+			box-shadow: 0 0.5rem 1rem rgb(0 0 0 / 20%);
+			#page-content
+			{
+				margin: 0;
+				
+				#region-main-box
+				{
+					padding: 0;
+				}
+			}
+			.login-container {
+				width: 100% !important;
+			}
+		}
+		
+		header #loginbox
+		{
+			display: none;
+		}
+		
+		.sectionlogin 
+		{
+			margin: 0px auto;
+			padding: 10px 1% 1% 1%;
+			width: 100%;
+			background-color: rgba(220, 220, 220, 0.7);
+			border: 1px solid $primaryWhite;
+			border: none;
+			background: transparent;
+			padding: 0;
+			margin: 0;
+			
+			#logo
+			{
+
+				display: block;
+				width:280px;
+				min-height: 60px;
+				margin: 0 auto 40px;
+				img
+				{
+					width: 100%;
+				}
+			}
+			h1
+			{
+				margin-top: 15px;
+				margin-bottom: 0;
+				font-size: 26px;
+				line-height: 50px;
+				text-align: center;
+			}
+			#menu-lang
+			{
+				text-align: center;
+				color: $bleuCL;
+				justify-content: center;
+				.langmenu-item
+				{
+					margin: 0 5px;
+				}
+				a
+				{
+					color: $bleuLCL;
+				}
+			}
+			.login-container
+			{
+				max-width: unset;
+				background: transparent;
+				box-shadow: none;
+				border-radius: 0;
+				margin-bottom: 0;
+				padding: 30px;
+				width: 100%;
+			}
+			
+			.blocLogin
+			{
+
+				//background-color: $colorLign1;
+				//padding: 2%;
+			
+				.loginerrors
+				{
+					margin-bottom: 10px;
+					
+					.alert
+					{
+						
+						padding: 8px;
+						background-color: rgba(255, 0, 0, 0.7);
+						color: $primaryWhite;
+						text-align: center;
+					}
+				}
+				
+				.loginpanel
+				{
+
+					.accountbloc
+					{
+						display: flex;
+						justify-content: space-between;
+						
+						.colbloc						
+						{
+							flex: 1;
+							margin: 15px;
+							
+							//padding: 1.5%;
+							.rowbloc
+							{
+								padding: 3%;
+								border-radius: 5px;
+							}
+							
+							h3
+							{
+								text-align: center;
+								border: 0;
+								margin-bottom: 20px;
+								color: $primaryWhite;
+							}
+							
+							form
+							{
+								
+								
+								#loginsubmitbtn, #wayf_submit_button, #guestsubmitbtn
+								{
+									margin: 20px auto 5px   !important;
+									padding: 8px;
+									font-size: 14px;
+									width: 50%;
+									border-radius: 4px;
+									cursor: pointer;
+								}
+							}
+							
+							.bloc_titre
+							{
+								font-size: 16px;
+								line-height: 20px;
+							}
+							
+							.blocinfo
+							{
+								font-family: "oswald","Helveticanow","Helvetica Neue",Arial,sans-serif;
+								letter-spacing: 1px;
+								font-weight: 100;
+								font-size:12px;
+								color: #999999;
+								text-align: center;
+								
+								#infoaaiTitle
+								{
+									font-weight: 100;
+									color: $primaryWhite;
+									text-transform: uppercase;
+									font-size: 11px;
+								}
+								
+								a
+								{
+									text-decoration: underline;
+								}
+							}
+							
+						}
+						
+						    
+						.account_AAI 
+						{
+							background-color: $bleuCL;
+							color: $primaryWhite;
+							
+							
+							#wayf_div
+							{
+								border: 0 !important;
+								padding: 0 !important;
+								background-color: transparent !important;
+								font-family: "oswald","Helveticanow","Helvetica Neue",Arial,sans-serif;
+								letter-spacing: 1px;
+								font-weight: 100;
+								color: $primaryWhite;
+								
+								#wayf_intro_label
+								{
+									text-transform: uppercase;
+									color: $primaryWhite !important;
+								}
+								
+								#wayf_remember_checkbox_label
+								{
+									color: $primaryWhite !important;
+									float: unset;
+								}
+								
+								select
+								{
+									font-family: "Helvetica Neue",Arial,sans-serif;
+									border: 1px solid $bleuCL;
+									color: $bleuDCL;
+									height: 36px;
+									margin: 0   !important;
+									border-radius: 4px;
+								}
+								
+								#wayf_remember_checkbox_div
+								{
+									float: unset  !important;
+								}
+								
+								#wayf_submit_button
+								{
+									float: unset  !important;
+									display: block;
+									color: $bleuCL;
+									background: $secondWhite;
+								}
+								
+								#wayf_intro_div
+								{
+									float: unset  !important;
+									color: $primaryWhite08 !important;
+									text-align: center;
+								}
+								
+								
+							}
+							
+							a
+							{
+								color: $secondWhite;
+							}
+							.blocinfo
+							{
+								color: $secondWhite;
+							}
+							
+							.create-acount-eduid
+							{
+								border-top: 5px solid rgb(235 233 232);
+								text-align: center;
+								padding: 10px;
+							}
+							
+						}
+						
+						.account_local
+						{
+							background-color: $primaryWhite;
+							border-radius: 5px;
+							h3
+							{
+								color: $bleuCL;
+							}
+							
+							.rowbloc
+							{
+								
+								
+								&.guest
+								{
+									margin-top: 20px;
+								}
+								
+								.blocinfo
+								{
+									color: #333333;
+								}
+							}
+							
+							.input-group
+							{
+								background-color: #e0e0e0;
+								padding: 1px;
+								
+								&.first
+								{
+									border-radius: 4px 4px 0 0;
+									overflow: hidden;
+								}
+								
+								&.last
+								{
+									padding-top: 0px ;
+									border-radius: 0 0 4px 4px ;
+									overflow: hidden;
+								}
+								
+								
+								.input-group-addon
+								{
+									width: 34px;
+									height: 34px;
+									padding: 7px;
+									margin: 0 1px 0 0;
+									font-size: 20px;
+									line-height: 20px;
+									color: #55595c;
+									text-align: center;
+									border: none;
+									background-color: rgba(255, 255, 255, 0.5);
+									
+									i:before
+									{
+										padding: 0;
+										font-size: 20px;
+										color: #ccc;
+									}
+								}
+								
+								input
+								{
+									height: 34px;
+									border: 0;
+								}
+							}
+							.rememberpass
+							{
+								margin-top: 8px;
+								color: $bleuCL;
+								text-transform: initial;
+								font-size: 12px;
+							}
+							
+							#loginsubmitbtn, #guestsubmitbtn
+							{
+								background-color: $bleuCL;
+								color: $primaryWhite;
+								&:hover
+								{
+									background-color: $bleuDCL;
+								}
+							}
+							
+							.noteLogin, .forgetpass
+							{
+								color: #333;
+								text-align: center;
+								font-family: "oswald","Helvetica Neue",Arial,sans-serif;
+								letter-spacing: 1px;
+								font-weight: 100;
+								font-size: 12px;
+	
+								a
+								{
+									color: #111;
+									text-decoration: underline;
+								}
+							}
+						}
+						
+						.sep
+						{
+							flex: 1 1px;
+							display: flex;
+							justify-content: center;
+							align-items: center;
+							margin: 0 1%;
+							
+							.septxt
+							{
+								width: 30px;
+								height: 30px;
+							}
+							
+						}
+
+					}
+				}
+			
+			}
+			
+		}
+		
+	}
+	
+	&.pagelayout-frontpage
+	{
+		.drawer.drawer-right #loginblock
+		{
+			.block.block_auth_aai,  
+			.block.aai 
+			{
+				p#wayf_intro_div a:before
+				{
+					font-weight: 600;
+				}
+			}
+		}
+	}
+}
+
+#wayf_logo_div
+{
+     display: none;
+}
+#wayf_div #IdPList
+{
+	display: flex;
+	flex-direction: column;
+	#user_idp_iddwrap
+	{
+		float: unset !important;
+	}
+
+	#user_idp_iddtext
+	{
+		width: 100%  !important;
+		padding-right: 34px !important;
+		box-shadow: unset;
+	}
+
+	#user_idp_iddicon
+	{
+	   content: url('data:image/svg+xml;utf8,<svg height="34px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 24 24" ><path d="M21.7,7.6l-1.3-1.3c-0.2-0.2-0.5-0.2-0.7,0l-7.5,7.5c-0.1,0.1-0.3,0.1-0.3,0L4.4,6.4c-0.2-0.2-0.5-0.2-0.7,0L2.4,7.6 c-0.2,0.2-0.2,0.5,0,0.7l7.8,7.8l1.4,1.4c0.2,0.2,0.5,0.2,0.7,0l1.4-1.4l7.8-7.8C21.9,8.2,21.9,7.8,21.7,7.6z"/></svg>');
+		margin-left: -34px !important;
+		padding: 9px;
+		border: none;
+	}
+
+	#user_idp_iddlist
+	{
+		color: $primaryBlack;
+	}
+}
+
+.drawer-right
+{
+	#wayf_div #IdPList
+	{
+		#user_idp_iddtext
+		{
+			padding-right: 24px !important;
+		}
+
+		#user_idp_iddicon
+		{
+			margin-left: -24px !important;
+			padding: 6px;
+		}
+	}
+}
+
+@media (max-width: 800px)
+{
+	body
+	{
+		&.pagelayout-login
+		{
+			.sectionlogin .blocLogin .loginpanel 
+			{
+				.accountbloc
+				{
+					flex-direction: column;
+					
+					.colbloc
+					{
+						margin: 10px 15px;
+					}
+					
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 400px)
+{
+	body.pagelayout-login
+	{
+		.sectionlogin 
+		{
+			.login-container
+			{
+				padding: 10px;
+				#logo
+				{
+					width: 100%;
+				}
+				
+				.blocLogin .loginpanel accountbloc .colbloc
+				{
+					margin: 10px 0px;
+				}
+			}
+		}
+	}
+}

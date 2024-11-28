@@ -44,7 +44,7 @@ if (defined('BEHAT_SITE_RUNNING') && get_user_preferences('behat_keep_drawer_clo
 }
 
 $extraclasses = ['uses-drawers'];
-$extraclasses[] = ' '.$OUTPUT->getdarkmode().'mode ';
+// $extraclasses[] = ' '.$OUTPUT->getdarkmode().'mode ';
 if ($courseindexopen) {
     $extraclasses[] = 'drawer-open-index';
 }
@@ -123,6 +123,6 @@ $templatecontext = [
 ];
 
 
-$PAGE->requires->js_call_amd('theme_argil/main', 'init');
+// $PAGE->requires->js_call_amd('theme_argil/main', 'init');
 
 echo $OUTPUT->render_from_template('theme_argil/drawers', $templatecontext);

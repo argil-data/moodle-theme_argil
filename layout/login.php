@@ -10,13 +10,6 @@
  
 defined('MOODLE_INTERNAL') || die();
 
-/**
- * A login page layout for the boost theme.
- *
- * @package   theme_argil
- * @copyright 20236 cyberlearn
- * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- */
 $extraclasses = [];
 $bodyattributes = $OUTPUT->body_attributes($extraclasses);
 

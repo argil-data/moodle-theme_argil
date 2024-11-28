@@ -1,0 +1,21 @@
+{
+    "name": "argil-data/moodle-theme_argil",
+    "type": "moodle-theme",
+    "authors": [
+        {
+            "name": "Vincent Delaleu"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "composer/installers": "^2.0@dev"
+    },
+    "extra": {
+        "installer-name": "argil"
+    },
+    "config": {
+        "allow-plugins": {
+            "composer/installers": true
+        }
+    }
+}

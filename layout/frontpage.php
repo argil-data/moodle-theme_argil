@@ -56,13 +56,13 @@ if (isset($_GET['op']))
 			$optionpage = 'support';
 		}
 	}
-	else if($_GET['op'] == 'cyberlearn')
+	else if($_GET['op'] == 'argillearn')
 	{
 		if($PAGE->theme->settings->show_menu_prestations)
 		{
 			$showPrestation = true;
-			$extraclasses[] .= 'pagelayout-frontpage-cyberlearn';
-			$optionpage = 'cyberlearn';
+			$extraclasses[] .= 'pagelayout-frontpage-argillearn';
+			$optionpage = 'argillearn';
 		}
 	}
 	
@@ -129,7 +129,7 @@ $PAGE->requires->js_call_amd('theme_argil/main', 'init');
 
 if($showPrestation)
 {
-	$templatecontext['cyberlearnpage'] = true;
+	$templatecontext['argillearnpage'] = true;
 	
 	$htmlPrestationIntro = $PAGE->theme->settings->prestations_intro;
 	$templatecontext['intro'] = $htmlPrestationIntro;
@@ -168,7 +168,7 @@ if($showPrestation)
 else if($showSupport)
 {
 	$PAGE->set_url('/?', array('redirect'=>'0','op' => 'support'));
-	$PAGE->set_title(get_string('support', 'theme_argil').' - Cyberlearn');
+	$PAGE->set_title(get_string('support', 'theme_argil').' - Argillearn');
 	
 	$templatecontext['supportpage'] = true;
 	//print_r('<br><br><br><br>----------------------------<br>');

@@ -1,0 +1,41 @@
+<div class="supportZone">{{{intro}}}</div>
+<div id="teamsZone" class="supportZone">
+	{{#teamHeader}}
+		<h4>{{{teamHeader}}}</h4>
+	{{/teamHeader}}
+	<div id="clteamlist">
+	{{#teams}}
+		<div class="team" style=" order:{{{order}}};  {{#photo}}background-image: url('{{{photo}}}');{{/photo}}">
+			<div class="txt">
+				<span class="desc">
+					<span class="poste d-flex">
+					{{#poste}}
+						<div>{{{.}}}</div>
+					{{/poste}}
+					</span> 
+					<span class="tel"> 
+					{{#tel}}
+						<i class="fa fa-phone" aria-hidden="true"></i>
+						{{{tel}}}
+					{{/tel}}
+					</span>
+				</span> 
+				<h5><a href="mailto:{{{email}}}">{{{name}}} <i class="fa fa-envelope-o" aria-hidden="true"></i> </a></h5>
+						
+				
+				
+			</div>
+		</div>
+	{{/teams}}
+	<div class="team empty"></div>
+	<div class="team empty"></div>
+	<div class="team empty"></div>
+	<div class="team empty"></div>
+	<div class="team empty"></div>
+	</div>	
+</div>	
+
+
+<div id="page-contentwarp">
+{{{ output.main_content }}}
+</div>

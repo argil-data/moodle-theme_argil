@@ -1,0 +1,246 @@
+{{#showincourseonly}}
+
+
+    
+	<div id="coursdashbtn">
+    {{#hasteacherdash}} 
+		<a id="coursecontrols" class="teacherdashbutton fontOswald collapsed" role="button" data-toggle="collapse" href="#teacherdashslider" aria-expanded="false" aria-controls="teacherdashslider"><i></i>{{{togglebutton}}}</a>
+    {{/hasteacherdash}}
+
+    {{#hasstudentdash}}
+		<a id="coursecontrols" class="thiscoursebutton fontOswald collapsed" role="button" data-toggle="collapse" href="#studentdashslider" aria-expanded="false" aria-controls="studentdashslider">{{{togglebutton}}}</a>
+	
+	{{/hasstudentdash}}
+	</div>
+
+
+{{#hasteacherdash}}
+{{#teacherdash}}
+<div class="collapse" id="teacherdashslider">
+<div class="teacherdashboard">
+
+    <div class="container-fluid">
+    <div class="coursemanagementmessage">{{{coursemanagementmessage}}}</div>
+    <div class="row">
+
+        <div class="dashcol questionlinks">
+        {{#hasquestionpermission}}
+        <div class="dashtitle">
+            <h3><i class="fa fa-question-circle dashicon"></i>{{{qbanktitle}}}</h3>
+            <p>{{{qbankdesc}}}</p>
+        </div>
+        <div class="list-group">
+            {{#dashlinks}}
+            {{#hasqbanklinks}}
+                <a href="{{{url}}}" class="list-group-item">{{{title}}}</a>
+            {{/hasqbanklinks}}
+            {{/dashlinks}}
+        </div>
+        {{/hasquestionpermission}}
+        {{#hasbadgepermission}}
+        <div class="dashtitle">
+            <h3><i class="fa fa-trophy dashicon"></i>{{{badgestitle}}}</h3>
+            <p>{{{badgesdesc}}}</p>
+        </div>
+        <div class="list-group">
+            {{#dashlinks}}
+            {{#hasbadgelinks}}
+                <a href="{{{url}}}" class="list-group-item">{{{title}}}</a>
+            {{/hasbadgelinks}}
+            {{/dashlinks}}
+        </div>
+        {{/hasbadgepermission}}
+        </div>
+
+        {{#hascoursepermission}}
+        <div class="dashcol coursemanagelinks">
+        <div class="dashtitle">
+            <h3><i class="fa fa-cogs dashicon"></i>{{{coursemanagetitle}}}</h3>
+            <p>{{{coursemanagedesc}}}</p>
+        </div>
+        <div class="list-group">
+            {{#dashlinks}}
+            {{#hascoursemanagelinks}}
+                <a href="{{{url}}}" class="list-group-item">{{{title}}}</a>
+            {{/hascoursemanagelinks}}
+            {{/dashlinks}}
+        </div>
+        </div>
+        {{/hascoursepermission}}
+
+        {{#hasuserpermission}}
+        <div class="dashcol userlinks">
+			<div class="dashtitle">
+				<h3><i class="fa fa-users dashicon"></i>{{{userlinkstitle}}}</h3>
+				<p>{{{userlinksdesc}}}</p>
+			</div>
+			<div class="list-group">
+
+				{{#haspermission}}
+				{{#dashlinks}}
+				{{#haseasyenrollment}}
+					<a href="{{{url}}}" class="list-group-item">{{{title}}}</a>
+				{{/haseasyenrollment}}
+				{{/dashlinks}}
+				{{/haspermission}}
+				{{#dashlinks}}
+				{{#hasuserlinks}}
+					<a href="{{{url}}}" class="list-group-item">{{{title}}}</a>
+				{{/hasuserlinks}}
+				{{/dashlinks}}
+			</div>
+			
+			
+			{{#dashlinks}}
+				{{#hascoursemanagemorelinks}}
+					<a href="{{{url}}}" class=" btn-link list-group-item more-item fontOswald"><i></i>{{{title}}}</a>
+				{{/hascoursemanagemorelinks}}
+			{{/dashlinks}}
+			
+			
+        </div>
+        {{/hasuserpermission}}
+
+    </div>
+    </div>
+
+</div>
+</div>
+{{/teacherdash}}
+{{/hasteacherdash}}
+
+
+{{#hasstudentdash}}
+<div class="collapse" id="studentdashslider">
+<div class="studentdashboard">
+<div class="container-fluid">
+
+    
+
+    <div class="row">
+
+        <div class="col-md-4 coursesummary">
+        {{#hascourseinfogroup}}
+            <div class="dashtitle">
+                <h3><i class="fa fa-{{{icon}}}">&nbsp</i>{{{title}}}</h3>
+            </div>
+			<div class="list-group">
+			<div class="list-group-item">
+                <div class="card-block">
+                    {{#courseinfo}}
+                        {{{content}}}
+                    {{/courseinfo}}
+                </div>
+				</div>
+			</div>
+        {{/hascourseinfogroup}}
+        </div>
+
+        <div class="col-md-4 coursestafflisting">
+        {{#hascoursestaffgroup}}
+            <div class="dashtitle">
+                <h3><i class="fa fa-{{{icon}}}">&nbsp</i>{{{title}}}</h3>
+            </div>
+                <div class="list-group">
+                    {{#courseteachers}}
+                    <div class="list-group-item">
+                        <div class="staffmember">
+                           	<div class="staffItem img">{{{picture}}}</div>
+							<div class="staffItem name">{{{name}}}</div>
+							<div class="staffItem action"><a href="mailto:{{{email}}}" title="{{#str}}email, moodle{{/str}}"><i class="fa fa-envelope-o">&nbsp</i></a>
+							{{#hasmessaging}}
+								<a href="{{{messaging}}}" target="_blank" title="{{#str}}sendmessage, message{{/str}}"><i class="fa fa-comment">&nbsp</i></a>
+							{{/hasmessaging}}</div>
+
+                        </div>
+                    </div>
+                    {{/courseteachers}}
+                </div>
+                <div class="list-group">
+                {{#courseother}}
+                <div class="list-group-item">
+                <div class="staffmember">
+					<div class="staffItem img">{{{picture}}}</div>
+					<div class="staffItem name">{{{name}}}</div>
+					<div class="staffItem action"><a href="mailto:{{{email}}}" title="{{#str}}email, moodle{{/str}}"><i class="fa fa-envelope-o">&nbsp</i></a>
+					{{#hasmessaging}}
+						<a href="{{{messaging}}}" title="{{#str}}sendmessage, message{{/str}}"><i class="fa fa-comment">&nbsp</i></a>
+					{{/hasmessaging}}</div>
+                </div>
+                </div>
+            {{/courseother}}
+            </div>
+        {{/hascoursestaffgroup}}
+        </div>
+
+        <div class="col-md-4 activitylinks">
+            <div class="dashtitle">
+                <h3><i class="fa fa-check-square-o dashicon"></i>{{{activitylinkstitle}}}</h3>     
+            </div>
+            <div class="list-group">
+                {{{thiscourse}}}
+            </div>
+			
+			
+			{{#hasgradebookshow}}
+				<div class="list-group">
+					<div class="list-group-item">
+						<a href="{{{gradeslink}}}" alt="{{{mygradestext}}}" class="actionL1 fontOswald">
+							<i class="fa fa-grades dashicon"></i>
+							{{{mygradestext}}}
+						</a>
+					</div>
+				</div>
+			{{/hasgradebookshow}}
+			
+			
+			
+			{{#studentcourseadminlink}}
+				 <div class="list-group">
+					 <div class="list-group-item">
+					   <a href="{{{studentcourseadminlink}}}" alt="{{{studentcoursemanage}}}" class="actionL1 fontOswald"><i class="fa fa-cog dashicon"></i>{{{studentcoursemanage}}}</a>
+					</div>
+				</div>
+			{{/studentcourseadminlink}}
+			
+			{{#btnunenrol}}
+				{{#btnunenrollink}}
+					<a href="{{{btnunenrollink}}}" class=" btn-link list-group-item unenrol fontOswald">{{{btnunenrolicon}}}{{{btnunenroltitle}}}</a>
+				{{/btnunenrollink}}
+			{{/btnunenrol}}
+			
+
+        </div>
+
+    </div>
+	
+	<div class="row">
+
+        {{#hascompletionshow}}
+			{{#progresschart}}
+				<div class="progresschartWrap">
+					<h4 class="fontOswald">{{{myprogresstext}}}</h4>
+					{{{progresschart}}}
+				</div>
+			{{/progresschart}}
+        {{/hascompletionshow}}
+
+        
+
+        
+        
+
+    </div>
+
+</div>
+</div>
+</div>
+{{/hasstudentdash}}
+
+{{/showincourseonly}}
+{{^showincourseonly}}
+	<div id="coursdashbtn" style="height: 1px;">
+		<div id="tdbtn_left"></div>
+		<div id="tdbtn_right"></div>
+	</div>
+{{/showincourseonly}}

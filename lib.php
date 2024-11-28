@@ -25,8 +25,8 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-// require('lib/argil_lib.php');
-// require('lib/filesettings_lib.php');
+require('lib/argil_lib.php');
+require('lib/filesettings_lib.php');
 
 
 function theme_argil_get_main_scss_content($theme) {

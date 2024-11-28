@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 15.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="16px"
+	 height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
+<g id="Calque_1">
+	<circle fill="none" stroke="#9D9D9C" stroke-width="3" stroke-miterlimit="10" cx="8" cy="8" r="4.552"/>
+</g>
+<g id="Calque_2" display="none">
+	<line display="inline" fill="none" stroke="#9D9D9C" stroke-width="1.4" stroke-miterlimit="10" x1="2" y1="8" x2="14" y2="8"/>
+</g>
+<g id="Calque_2_-_copie" display="none">
+	<line display="inline" fill="none" stroke="#9D9D9C" stroke-width="1.4" stroke-miterlimit="10" x1="8" y1="14" x2="8" y2="2"/>
+</g>
+<g id="Calque_4">
+	<rect x="0.313" y="7.103" fill="#9D9D9C" width="4.063" height="1.794"/>
+	<rect x="11.521" y="7.103" fill="#9D9D9C" width="4.167" height="1.794"/>
+	
+		<rect x="1.952" y="3.145" transform="matrix(0.7071 0.7071 -0.7071 0.7071 4.0425 -1.6744)" fill="#9D9D9C" width="4.182" height="1.794"/>
+	
+		<rect x="9.792" y="11.03" transform="matrix(0.707 0.7072 -0.7072 0.707 11.9289 -4.9397)" fill="#9D9D9C" width="4.268" height="1.793"/>
+	
+		<rect x="1.956" y="11.07" transform="matrix(0.7071 -0.7071 0.7071 0.7071 -7.2813 6.356)" fill="#9D9D9C" width="4.151" height="1.794"/>
+	
+		<rect x="9.866" y="3.145" transform="matrix(0.7072 -0.707 0.707 0.7072 0.6432 9.6376)" fill="#9D9D9C" width="4.182" height="1.794"/>
+	<rect x="7.103" y="11.328" fill="#9D9D9C" width="1.794" height="4.359"/>
+	<rect x="7.103" y="0.313" fill="#9D9D9C" width="1.794" height="4.125"/>
+</g>
+</svg>

@@ -1,0 +1,1126 @@
+body
+{
+	&.darkmode 
+	{
+		.navbar.fixed-top
+		{
+			border-bottom-color: $primaryBlack;
+			#navFirstRow {
+				.langmenu .dropdown 
+				{
+					.dropdown-menu
+					{
+						background-color: $bgDarkColorL;
+					}
+				}
+			}
+			
+			
+			#navLastRow
+			{
+				.simplesearchform
+				{
+					input.form-control,
+					button.search-icon
+					{
+						background-color: $bleuDCL;
+					}
+					i:before
+					{
+						color: $grisLCL;
+						opacity: 0.5;
+					}
+				}
+				.moremenuaa .nav-link
+				{
+					&.active {
+						border-bottom-color: $bgDarkColor;
+					}
+					&:hover,
+					&:focus
+					{
+						background-color: $bleuDCL;
+						color: $secondWhite;
+					}
+				}
+				
+				.moremenu
+				{ 
+					.nav-item
+					{
+						.nav-link.active
+						{
+							border-bottom-color: $bgDarkColor;
+						}
+
+						&[data-key=mycourses],
+						&[data-key=courses],
+						&[data-key=siteadminnode],
+						&[data-key=home],
+						&[data-key=myhome],
+						&[data-key=linksp],
+						&[data-key=linkcl],
+						&[data-key=linkcontact],
+						&[data-key=linknumerique]
+						{
+							.nav-link
+							{
+
+								&:before
+								{
+									color: $primaryWhite;
+								}
+
+								&:hover,
+								&:focus
+								{
+									color: $primaryWhite;
+									background-color: $bleuDCL;
+									&:before
+									{
+										color: $primaryWhite;
+									}
+									
+									.icon path
+									{
+										fill: $primaryWhite;
+									}
+								}
+								
+							}
+						}
+					}
+
+				}
+			}
+		}
+		
+		.popover-region-container
+		{
+			background-color: #333;
+		}
+	}
+	
+	.navbar.fixed-top
+	{
+		background-color: $bleuCL;
+		//border-bottom: $bleuDCL 1px solid;
+		height: $headerH;
+		transition: height 0.3s ease;
+		padding: 0px 10px;
+		
+		.btn
+		{
+			color: $secondWhite;
+		}
+		i::before
+		{
+			color: $secondWhite;
+		}
+		
+		#navFirstRow
+		{
+			min-height: 50px;
+			justify-content: space-between;
+			
+			.navbar-toggler
+			{
+				.fa-fw
+				{
+					width: 1em;
+				}
+			}
+			.logo
+			{
+				max-height: calc(50px - ( 0.4rem * 2 ));
+				&.compact
+				{
+					display: none;
+					max-height: calc(50px - ( 0.8rem * 2 ));
+				}
+			}
+			
+			.logoaibtn {
+				color: $primaryWhite;
+				font-size: 26px;
+				line-height: 50px;
+				letter-spacing: 5px;
+				.icon{
+					max-width: 34px;
+					max-height: 34px;
+					width: 34px;
+				}
+			}
+			
+			#menu-lang
+			{
+				font-size: 13px;
+				line-height: 50px;
+				color: $primaryWhite;
+				margin-right: 15px;
+				
+				a.langmenu-item
+				{
+					color: $primaryBlack08;
+					&:hover
+					{
+						color: $primaryWhite05;
+					}
+				}
+				.langmenu-item
+				{
+					padding: 0px 2px; 
+					&.current
+					{
+						color: $primaryWhite;
+					}
+				}
+			}
+			
+			.langmenu .dropdown 
+			{
+				flex: 1 60px;
+				height: 50px;
+				max-width: 40px;
+				
+				.nav-item .nav-link
+				{
+					margin-right: 0px;
+					padding-right: 0px;
+				}
+				
+				.dropdown-toggle{
+					font-size: 13px;
+					line-height: 50px;
+					color: $primaryWhite;
+					margin-right: 10px;
+					height: 50px;
+					padding: 0;
+					
+					&::after
+					{
+						color: $primaryWhite05;
+						//margin: 0;
+					}
+				}
+				
+				.dropdown-menu
+				{
+					padding: 0; 
+					background-color: $primaryWhite;
+					top: 35px;
+					.dropdown-item
+					{
+						padding: 3px 10px;
+						cursor: pointer;
+						
+					}
+				}
+			}
+			
+			.popover-region
+			{
+				width: 40px;
+			}
+			.popover-region-toggle
+			{
+				background-color: $primaryBlack02;
+				border-radius: 50%;
+				width: 30px;
+				height: 30px;
+				padding: 6px;
+				margin: 10px 2px;
+				text-align: center;
+				&:before
+				{
+					border-left: 10px solid transparent;
+					border-right: 10px solid transparent;
+					border-bottom: 10px solid $bleuDCL;
+					right: 15px;
+				}
+				&:after
+				{
+					border-left: 9px solid transparent;
+					border-right: 9px solid transparent;
+					border-bottom: 9px solid $grisLCL;
+					right: 16px;
+				}
+				
+				i
+				{
+					width: 18px;
+					height: 18px;
+					display: block;
+					&:before
+					{
+						color: $primaryWhite;
+						line-height: 20px;
+						padding: 0;
+					}
+				}
+				&:hover
+				{
+					background-color: $primaryWhite02; 
+				}
+			}
+			.popover-region-container
+			{
+				border: 1px solid $bleuDCL;
+				top: 46px;
+				.popover-region-header-container
+				{
+					background-color: $grisLCL;
+					border-bottom: 1px solid $bleuDCL;
+					color: $bleuCL;
+					h3
+					{
+						color: $bleuCL;
+					}
+					i::before
+					{
+						color: $bleuCL;
+					}
+				}
+				.popover-region-footer-container
+				{
+					background-color: $bleuCL;
+					border-top: 1px solid $grisCL;
+					color: $primaryWhite;
+				}
+			}
+			
+			.count-container
+			{
+				top: 10px;
+				right: 5px;
+			}
+			
+			.usermenu 
+			{
+				margin-right: 5px;
+				.dropdown-toggle
+				{
+					padding: 0;
+					margin: 0 2px;
+					.userinitials
+					{
+						font-size: 0.8rem;
+						background-color: $primaryBlack02;
+						color: $primaryWhite;
+						margin-right: 0.15rem;
+						&.size-35 {
+						width: 30px;
+						height: 30px;
+					}
+					}
+					&::after
+					{
+						color: $primaryWhite05;
+						margin: 0;
+					}
+					&:hover 
+					{
+						.userinitials
+						{
+							background-color: $primaryWhite02;
+						}
+					}
+				}
+				.userbutton 
+				{
+					.usertext 
+					{
+						&.mr-3
+						{
+							margin-right: 0.5rem!important;
+						}
+						.meta
+						{
+							font-size: 10.5px;
+							line-height: 1rem;
+							color: $primaryWhite08;
+							max-width: 130px;
+							text-wrap: wrap;
+							font-family: "helveticanow","Helvetica Neue",Arial,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+							text-transform: none;
+						}
+					}
+					.avatars 
+					{
+						 .avatar.current
+						 {
+							font-size: 0.8rem;
+							
+						 }
+						 .avatar.realuser
+						 {
+							//width: 30px;
+							height: 30px;
+							.userinitials.size-35
+							{
+				
+							}
+						 }
+					}
+				}
+				.login
+				{
+					a
+					{
+						color: $primaryWhite;
+					}
+				}
+			}
+
+			
+
+		}
+		#navLastRow
+		{
+			.simplesearchform
+			{
+				flex: 1;
+				.input-group input.form-control 
+				{
+					height: 20px;
+					margin: 4px 5px;
+					border: none;
+					margin-left: -5px;
+					&:placeholder { 
+					  color: $grisLCL;
+					  opacity: 0.5; /* Firefox */
+					}
+				}
+				button.search-icon
+				{
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					height: 20px;
+					margin: 4px 0;
+					padding: 0px;
+					background: $primaryWhite;
+					.icon {
+						margin: 0;
+						line-height: 16px;
+						font-size: 12px;
+					}
+				}
+			}
+			
+			.primary-navigation 
+			{
+				flex: 2;
+				.navigation 
+				{
+					height: 30px;
+					
+					.nav-link
+					{
+						height: 30px;
+						color: $primaryWhite;
+						border-bottom-width: 4px;
+						.icon
+						{
+							display: none;
+						}
+						&:hover,
+						&:focus
+						{
+							color: $bleuCL;
+							.icon path
+							{
+								fill: $bleuCL;
+							}
+						}
+					}
+					.navbar-nav 
+					{
+						justify-content: flex-end;
+					}
+				}
+				
+			}
+			
+			.moremenu
+			{ 
+				.nav-link.active
+				{
+					border-bottom-color: $primaryWhite;
+				}
+				
+				.nav-item
+				{
+					.nav-link:before
+					{
+						content: "";
+						@extend .fav-icon-style;
+						display: none;
+					}
+					&[data-key=mycourses],
+					&[data-key=siteadminnode],
+					&[data-key=home],
+					&[data-key=myhome],
+					&[data-key=linksp],
+					&[data-key=linkcontact]
+					{
+						
+						.nav-link
+						{
+
+							&:before
+							{
+								color: $primaryWhite;
+								font-size: 16px;
+								font-weight: 600;
+								line-height: 32px;
+								width: 30px;
+								min-width: 30px;
+								height: 30px;
+								margin: 0 5px;
+								padding: 0;
+								text-align: center;
+								
+							}
+
+							&:hover,
+							&:focus
+							{
+								color: $bleuCL;
+								&:before
+								{
+									color: $bleuCL;
+								}
+							}
+						}
+					}
+				}
+				.nav-item[data-key=siteadminnode]
+				{
+					.nav-link
+					{
+						width: 40px;
+						padding: 0;
+						overflow: hidden;
+						
+						&:before
+						{
+							content: $administration;
+							display: block;
+						}
+						
+					}
+				}
+			}
+		
+		}
+		
+		
+		#usernavigation
+		{
+		
+		}
+		
+		.switchmode
+		{
+			width: 50px;
+			align-items: center !important;
+			flex-direction: column;
+			justify-content: center;
+			margin: 0 2px;
+			cursor: pointer;
+			&.editmode-switch-form
+			{
+				position: relative;
+				
+				.custom-control-input
+				{
+					width: 100%;
+					height: 50px;
+					cursor: pointer;
+				}
+
+			}
+			
+			
+			.switchmodeicon,
+			.switcheditionicon
+			{
+				display: flex;
+				flex-direction: row;
+				height: 18px;
+				width: 40px;
+				line-height: 16px;
+				margin: 0;
+				padding: 0;
+				background: $primaryWhite02;
+				border-radius: 9px;
+				overflow: hidden;
+				
+				.smon, .smoff
+				{
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					font-size: 7px;
+					padding-top: 1.5px;
+					transition: all .3s;
+				}
+				.smon
+				{
+					display: none;
+					width: 0;
+					color: $primaryWhite; 
+				}
+				.smoff
+				{
+					display: flex;
+					width: 24px;
+					color: $bleuDCL; 
+				}
+				.smicon
+				{
+					
+					width: 14px;
+					max-width: 14px;
+					height: 14px;
+					margin: 2px;
+					border-radius: 50%;
+					background: $bleuDCL;
+					overflow: hidden;
+					transition: all 0.5s;
+					svg
+					{
+						width: 14px;
+						height: 14px;
+					}
+					
+					.icon-moon 
+					{
+						display: block;
+						.moonfond
+						{
+							fill: $secondWhite;
+							transition: all 1s;
+						}
+						path
+						{
+							fill: #004668;
+							transition: all 1s;
+						}
+					}
+					
+					.icon-pan
+					{
+						width: 10px;
+						height: 9px;
+						display: block;
+						margin: 2px;
+						path
+						{
+							fill: $primaryWhite08;
+							transition: all .3s;
+						}
+					}
+				}
+
+			}
+			.switchmodetxt, label
+			{
+				color: $primaryWhite08 !important;
+			}
+			.switchmodetxt
+			{
+				font-size: 7px;
+				line-height: 9px;
+				color: $bleuDCL;
+				padding-top: 3px;
+				width: 100%;
+				max-width: 50px;
+				text-align: center;
+			}
+			&:hover
+			{
+				.switchmodeicon,
+				.switcheditionicon, 
+				.switchmodeicon.checked, 
+				.custom-control-input:checked~.switcheditionicon
+				{
+					background: $primaryWhite05;
+					.icon-moon 
+					{
+						path
+						{
+							fill: #333;
+							
+						}
+					}
+				}
+				.switchmodeicon.checked, 
+				.custom-control-input:checked~.switcheditionicon
+				{
+					background: $primaryWhite02;
+					
+					.smicon 
+					{
+						background: $primaryWhite;
+						.icon-moon path 
+						{
+							fill: $primaryWhite;
+						}
+					}
+					
+				}
+			}
+			.switchmodeicon.checked, 
+			.custom-control-input:checked~.switcheditionicon
+			{
+				background: $bleuDCL;
+				border: $primaryBlack02;
+				.smon
+				{
+					display: flex ;
+					width: 24px;
+					
+				}
+				.smoff
+				{
+					display: none;
+					width: 0px;
+				}
+				
+				.smicon
+				{
+					//margin-left: 24px;
+					background: $grisLCL;
+					
+					.icon-moon 
+					{
+						.moonfond
+						{
+							fill: $bleuDCL;
+							transition: all .3s;
+						}
+						path
+						{
+							fill: $grisLCL;
+							transition: all .3s;
+						}
+					}
+					.icon-pan path 
+					{
+						fill: $bleuDCL;
+						transition: all .3s;
+					}
+				}
+			}
+			.custom-switch 
+			{
+				.custom-control-label
+				{
+					&::before 
+					{
+						background: $primaryWhite02;
+						border: 1px solid $primaryWhite02;
+					}
+					&::after 
+					{
+					}
+				}
+				.custom-control-input:checked ~ .custom-control-label
+				{
+					&::before
+					{
+						border-color: $bleuCL;
+						background-color: $bleuDCL;
+					}
+					&::after
+					{
+
+					}
+				}
+				
+				.custom-control-input:hover ~ .custom-control-label
+				{
+					&::before
+					{
+						background: $primaryWhite02;
+					}
+				}
+			}
+		}	
+		
+	
+		
+	}
+	
+	&.userloggedinas .navbar.fixed-top #navFirstRow .usermenu .userbutton .avatars .avatar.current 
+	{
+		bottom: -3px;
+		right: 3px;
+		.userinitials.size-35
+		{
+			width: 20px;
+			height: 20px;
+			margin: 0;
+			font-size: 9px;
+			line-height: 0.6rem;
+			background-color: $secondWhite;
+			border: 1px solid $bleuDCL;
+			color: $bleuCL;
+		}
+	}
+
+}
+.drawercontent .list-group-item.nav-svg .icon
+{
+	display: none;
+}
+
+
+@media (max-width: 1440px)
+{
+	body .navbar.fixed-top 
+	{
+		#navLastRow .primary-navigation .navigation .nav-item
+		{
+			.nav-svg-1440
+			{
+				&:before
+				{
+					display: none; 
+				}
+				
+				svg
+				{
+					display: block !important;
+					margin: 0 auto;
+					path
+					{
+						fill: $primaryWhite;
+					}
+					path.stG
+					{
+						fill: $grisLCL;
+					}
+					
+				}
+				.menutxt
+				{
+					display: none;
+				}
+			}
+			
+			.nav-svg.nav-hesso-digital
+			{
+				width: 60px;
+				svg
+				{
+					width: 40px;
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1024px)
+{
+	body .navbar.fixed-top 
+	{
+		#navLastRow 
+		{
+			.primary-navigation 
+			{
+				.navigation 
+				{
+					.nav-item
+					{
+						.nav-svg
+						{
+							&:before
+							{
+								display: none;
+							}
+							
+							svg
+							{
+								display: block !important;
+								margin: 0 auto;
+								path
+								{
+									fill: $primaryWhite;
+								}
+								path.stG
+								{
+									fill: $grisLCL;
+								}
+								
+							}
+							.menutxt
+							{
+								display: none;
+							}
+							&.nav-cl
+							{
+								svg
+								{
+									width: 20px;
+								}
+							}
+
+						}
+						
+						&:hover .nav-svg svg path
+						{
+							fill: $bleuCL;
+						}
+						
+
+						&[data-key=linksp],
+						&[data-key=linkcontact]
+						{
+							.nav-link
+							{
+								width: 40px;
+								padding: 0;
+								overflow: hidden;
+								&:before
+								{
+									display: block;
+								}
+							}
+						}
+
+						&[data-key=linksp]
+						{
+							.nav-link:before
+							{
+									content: $iconMenuSupport;
+							}
+						}
+
+						&[data-key=linkcontact]
+						{
+							.nav-link:before
+							{
+									content: $iconMenuContact;
+							}
+						}
+						
+						
+						
+					}
+					
+						
+				}
+			}
+		}
+	}
+}
+		
+@media (max-width: 800px)
+{
+	body .navbar.fixed-top 
+	{
+		#switchzone{
+			flex-direction: column;
+			width: 40px;
+			justify-content: space-around;
+			margin-top: 5px;
+		}
+		.switchmode{
+			width: 40px;
+
+			.switchmodeicon.checked .smon,  .custom-control-input:checked~.switcheditionicon .smon
+			{
+				width: 20px;
+				font-size: 6.5px;
+			}
+			.switchmodeicon, 
+			.switcheditionicon
+			{
+				width: 36px;
+				.smoff{
+					width: 20px;
+					font-size: 6.5px;
+				}
+			}
+			.switchmodetxt{
+				font-size: 6.5px;
+				display: none;
+			}
+		}
+		
+		
+		
+		#navFirstRow{
+			margin: 0 -4px;
+			.langmenu .dropdown {
+				max-width: 34px;
+				.dropdown-toggle {
+					margin-right: 4px;
+					
+					&::after {
+						margin: 0px;
+						font-size: 7px;
+					}
+				}
+			}
+			.count-container{
+				right: 3px;
+			}
+			.popover-region{
+				width: 29px;
+			}
+			.popover-region-toggle{
+				width: 26px;
+				height: 26px;
+				padding: 4px;
+				margin: 12px 0px;
+			}
+			
+			.usermenu {
+				margin-right: 1px;
+				.dropdown-toggle{ 
+					margin: 0px;
+					.userinitials.size-35
+					{
+						width: 26px;
+						height: 26px;
+						margin: 10px 0px;
+					}
+					&::after {
+						margin: 0px;
+						font-size: 7px;
+					}
+				}
+			}
+			
+			
+		} 
+		
+		#navLastRow 
+		{
+			.primary-navigation 
+			{
+				.navigation 
+				{
+					
+					.nav-item
+					{
+						&[data-key=mycourses],
+						&[data-key=siteadminnode],
+						&[data-key=home],
+						&[data-key=myhome]
+						{
+							.nav-link
+							{
+								width: 40px;
+								padding: 0;
+								overflow: hidden;
+								&:before
+								{
+									/*
+									@extend .fav-icon-style;
+									color: $primaryWhite;
+									font-size: 16px;
+									line-height: 32px;
+									width: 30px;
+									min-width: 30px;
+									height: 30px;
+									margin: 0 5px;
+									padding: 0;
+									text-align: center;
+									*/
+									display: block;
+								}
+							}
+						}
+						
+						
+						&[data-key=mycourses]
+						{
+							.nav-link
+							{
+								&:before
+								{
+									content: $course;
+								}
+							}
+						}
+						
+						
+						&[data-key=siteadminnode]
+						{
+							.nav-link
+							{
+								&:before
+								{
+									content: $administration;
+								}
+							}
+						}
+						&[data-key=home]
+						{
+							.nav-link
+							{
+								&:before
+								{
+									content: $home;
+								}
+							}
+						}
+						
+						&[data-key=myhome]
+						{
+							.nav-link
+							{
+								&:before
+								{
+									content: $dashboard;
+								}
+							}
+						
+						}
+
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (max-width: 767.98px)
+{
+	body .navbar.fixed-top 
+	{
+	
+		#navFirstRow
+		{
+
+			.logo
+			{
+				display: none;
+				&.compact
+				{
+					display: block;
+				}
+			}
+			.logoaibtn{
+				font-size: 20px;
+				letter-spacing: 2px;
+				.icon {
+				    width: 26px;
+					height: 26px;
+					margin-right: 0.2rem;
+				}
+			}
+			
+		}
+		#navLastRow .simplesearchform 
+		{
+			padding: 0;
+		} 
+	
+	}
+}

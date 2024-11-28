@@ -1,0 +1,25 @@
+{{#total}}
+	<div class="hesnews news_row_{{{total}}}">
+		{{#news}}
+			{{#display}}
+			<div class="mb-1 hesnewsitem">
+
+					<h5 id="instance-1-header" class="card-title ">
+						<svg aria-hidden="true" data-prefix="fal" data-icon="newspaper" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" class="icon">
+							<path fill="#ffffff" d="M552,64H88c-13.2,0-24,10.8-24,24v8H24c-13.3,0-24,10.7-24,24v280c0,26.5,21.5,48,48,48h504 c13.2,0,24-10.8,24-24V88C576, 74.8,565.2,64,552,64z M32, 400V128h32v272c0, 8.8-7.2, 16-16,16S32, 408.8,32, 400z M544, 416H93.3	c1.8-5.1, 2.7-10.5, 2.7-16V96h448V416z M352, 376v-8c0-6.6, 5.4-12, 12-12h136c6.6, 0,12,5.4,12,12v8c0,6.6-5.4,12-12,12H364	C357.4, 388, 352, 382.6, 352, 376z M352, 299v-8c0-6.6, 5.4-12,12-12h136c6.6, 0,12,5.4,12, 12v8c0, 6.6-5.4,12-12,12H364 C357.4,311,352, 305.6,352,299z M352, 222v-8c0-6.6, 5.4-12, 12-12h136c6.6,0,12,5.4,12,12v8c0,6.6-5.4,12-12,12H364	C357.4, 234,352,228.6, 352,222z M352, 148v-8c0-6.6, 5.4-12,12-12h136c6.6, 0, 12, 5.4,12, 12v8c0, 6.6-5.4, 12-12,12H364	C357.4, 160, 352, 154.6, 352, 148z"></path>
+							<path fill="#ffffff" d="M131.9,128h53.5l70.4,124.8V128h62.8v259.1h-51.3l-70.4-134.4v134.4h-64.9V128z"></path>
+						</svg>
+						{{{name}}}
+					</h5>
+					<div class="card-text content">
+						<div class="no-overflow">
+							{{{content}}}
+						</div>
+					</div>
+
+			</div>
+			{{/display}}
+		{{/news}}
+		<div class="hesnewsitemempty mb-1 "></div>
+	</div>
+{{/total}}
