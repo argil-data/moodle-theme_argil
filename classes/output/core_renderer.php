@@ -265,350 +265,344 @@ class core_renderer extends \theme_boost\output\core_renderer {
 	
 	}
 
-	// public function custom_menu_language()
-	// {
-	// 	global $CFG;
-	// 	$langmenu = new custom_menu();
+	public function custom_menu_language()
+	{
+		global $CFG;
+		$langmenu = new custom_menu();
 		
-	// 	$langs = get_string_manager()->get_list_of_translations();
-    //     $haslangmenu = $this->lang_menu() != '';
+		$langs = get_string_manager()->get_list_of_translations();
+        $haslangmenu = $this->lang_menu() != '';
 
-    //     if (!$haslangmenu) {
-    //         return '';
-    //     }
-	// 	else{
-    //         $strlang = get_string('language');
-    //         $currentlang = current_language();
-    //         if (isset($langs[$currentlang])) {
-    //             $currentlang = $langs[$currentlang];
-    //         } else {
-    //             $currentlang = $strlang;
-    //         }
+        if (!$haslangmenu) {
+            return '';
+        }
+		else{
+            $strlang = get_string('language');
+            $currentlang = current_language();
+            if (isset($langs[$currentlang])) {
+                $currentlang = $langs[$currentlang];
+            } else {
+                $currentlang = $strlang;
+            }
             
-    //         $start  = strpos($currentlang,"(" );
-    //         $end = strpos($currentlang,")");
-    //         $langcode = substr($currentlang, $start+1, $end-$start-1);
+            $start  = strpos($currentlang,"(" );
+            $end = strpos($currentlang,")");
+            $langcode = substr($currentlang, $start+1, $end-$start-1);
 
-    //         $this->language = $langmenu->add($langcode, new moodle_url('#'), $strlang, 10000);
-    //         foreach ($langs as $langtype => $langname) {
-	// 			if($langtype != $langcode){
-	// 				$this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
-	// 			}
+            $this->language = $langmenu->add($langcode, new moodle_url('#'), $strlang, 10000);
+            foreach ($langs as $langtype => $langname) {
+				if($langtype != $langcode){
+					$this->language->add($langname, new moodle_url($this->page->url, array('lang' => $langtype)), $langname);
+				}
                 
-    //         }
-	// 	}
-	// 	$content = '';
-    //     foreach ($langmenu->get_children() as $item) {
-    //         $context = $item->export_for_template($this);
-    //         $content .= $this->render_from_template('theme_argil/custom_langmenu_item', $context);
-    //     }
+            }
+		}
+		$content = '';
+        foreach ($langmenu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('theme_argil/custom_langmenu_item', $context);
+        }
 
-    //     return $content;
-	// }
+        return $content;
+	}
 	
 	
-	// public function custom_menu_account()
-	// {
-	// 	$cMenuHeader='';
-	// 	if(isloggedin() && !isguestuser())
-	// 	{
-	// 		$cMenuHeader .= '<div id="usermenu-warp">';
-	// 		if (isguestuser()) 
-	// 		{
-	// 			$cMenuHeader .= '<div class="usermenu"><span class="login">';
-	// 			$cMenuHeader .= get_string('guestUser');
-	// 			$cMenuHeader .= html_writer::link(new moodle_url('/login/index.php'), get_string('login'));
-	// 			$cMenuHeader .= '</span></div>';
+	public function custom_menu_account()
+	{
+		$cMenuHeader='';
+		if(isloggedin() && !isguestuser())
+		{
+			$cMenuHeader .= '<div id="usermenu-warp">';
+			if (isguestuser()) 
+			{
+				$cMenuHeader .= '<div class="usermenu"><span class="login">';
+				$cMenuHeader .= get_string('guestUser');
+				$cMenuHeader .= html_writer::link(new moodle_url('/login/index.php'), get_string('login'));
+				$cMenuHeader .= '</span></div>';
 				
-	// 		}
-	// 		else
-	// 		{
-	// 			$cMenuHeader .=  $this->navbar_plugin_output();
-	// 			$cMenuHeader .= \core_renderer::user_menu();
+			}
+			else
+			{
+				$cMenuHeader .=  $this->navbar_plugin_output();
+				$cMenuHeader .= \core_renderer::user_menu();
 				
-	// 		}
-	// 		$cMenuHeader .= '</div>';
-	// 		//$cMenuHeader .= '<div id="loginblock">aaa</div>';
-	// 	}
+			}
+			$cMenuHeader .= '</div>';
+			//$cMenuHeader .= '<div id="loginblock">aaa</div>';
+		}
 
-		
-	// 	return $cMenuHeader;
-	// }
+		return $cMenuHeader;
+	}
 
-	// public function costom_loginBox() {
+	public function costom_loginBox() {
 		
-	// 	$loginurl = get_login_url();
+		$loginurl = get_login_url();
 		
-	// 	$returnstr = "";
-	// 	$usermenulist = "";
-	// 	$usertxtlogin = '<span class="usertext">';
-	// 	$userpiclogin = '';
-	// 	$usertxtlogintmp = '';
+		$returnstr = "";
+		$usermenulist = "";
+		$usertxtlogin = '<span class="usertext">';
+		$userpiclogin = '';
+		$usertxtlogintmp = '';
 		
-	// 	if (during_initial_install()) {return $returnstr;}
+		if (during_initial_install()) {return $returnstr;}
 		
 		
 	
-	// 	$usertxtlogintmp = get_string('loggedinnot');
-	// 	if (isguestuser()) 
-	// 	{
-	// 		$usertxtlogintmp = get_string('loggedinasguest');
-	// 	}
-	// 	$userpiclogin = html_writer::tag('img', '',
-	// 		array(
-	// 			'src'=>$this->image_url('i/user'),
-	// 			'class'=>'userpicture',
-	// 			'alt'=>get_string('login'),
-	// 			'title'=>$usertxtlogintmp
-	// 		)
-	// 	);
-	// 	$returnstr = '';
+		$usertxtlogintmp = get_string('loggedinnot');
+		if (isguestuser()) 
+		{
+			$usertxtlogintmp = get_string('loggedinasguest');
+		}
+		$userpiclogin = html_writer::tag('img', '',
+			array(
+				'src'=>$this->image_url('i/user'),
+				'class'=>'userpicture',
+				'alt'=>get_string('login'),
+				'title'=>$usertxtlogintmp
+			)
+		);
+		$returnstr = '';
 
 
-	// 	if (strpos($_SERVER['REQUEST_URI'], "login") == false && !isloggedin())
-	// 	{
-	// 		$logintoken = \core\session\manager::get_login_token();
-	// 		$returnstr .= '<div class="rowbloc moodle">
-	// 						<div class="boxheader fontoswald">compte externe</div>';
+		if (strpos($_SERVER['REQUEST_URI'], "login") == false && !isloggedin())
+		{
+			$logintoken = \core\session\manager::get_login_token();
+			$returnstr .= '<div class="rowbloc moodle">
+							<div class="boxheader fontoswald">compte externe</div>';
 
-	// 		$returnstr .= '<div class="loginpanel">';
+			$returnstr .= '<div class="loginpanel">';
 			
-	// 		$returnstr .= '<form action="'.new moodle_url('/login/index.php').'" method="post" id="login">';
-	// 		$returnstr .= '<input type="hidden" name="logintoken" value="'.				$logintoken.'">';
+			$returnstr .= '<form action="'.new moodle_url('/login/index.php').'" method="post" id="login">';
+			$returnstr .= '<input type="hidden" name="logintoken" value="'.				$logintoken.'">';
 									
-	// 		$returnstr .= '<div class="loginform">
-	// 						<div class="input-group input-group-username">
-	// 							<span class="input-group-addon">
-	// 								<i class="fa fa-user-circle"></i>
-	// 							</span>
-	// 							<input type="text" placeholder="'.get_string('username').'" name="username" id="username" class="form-control" size="15" value="">
-	// 						</div>
-	// 						<div class="input-group input-group-password">
-	// 							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-	// 							<input type="password" placeholder="'.get_string('password').'" name="password" id="password" class="form-control" size="15" value="">
-	// 						</div>
-	// 						<button type="submit" id="loginsubmitbtn" class="btn btn-primary btn-block" form="login" value="'.get_string('login').'">'.get_string('login').'</button>
-	// 						</div>
+			$returnstr .= '<div class="loginform">
+							<div class="input-group input-group-username">
+								<span class="input-group-addon">
+									<i class="fa fa-user-circle"></i>
+								</span>
+								<input type="text" placeholder="'.get_string('username').'" name="username" id="username" class="form-control" size="15" value="">
+							</div>
+							<div class="input-group input-group-password">
+								<span class="input-group-addon"><i class="fa fa-lock"></i></span>
+								<input type="password" placeholder="'.get_string('password').'" name="password" id="password" class="form-control" size="15" value="">
+							</div>
+							<button type="submit" id="loginsubmitbtn" class="btn btn-primary btn-block" form="login" value="'.get_string('login').'">'.get_string('login').'</button>
+							</div>
 							
-	// 						<div class="clearer"><!-- --></div>';
-	// 		$returnstr .= '</form>';
+							<div class="clearer"><!-- --></div>';
+			$returnstr .= '</form>';
 			
 
-	// 		$returnstr .= '<div class="signup">
-	// 							<div class="forgetpass">
-	// 								<a href="'.new moodle_url('/login/forgot_password.php').'" class="linkLostPass">'.get_string('forgotaccount').'</a>
-	// 								<a href="'.new moodle_url('/login/signup.php').'" class="linkInscription">'.get_string('startsignup').'</a>
-	// 							</div>
-	// 						</div>';
-	// 		$returnstr .= '</div>';
+			$returnstr .= '<div class="signup">
+								<div class="forgetpass">
+									<a href="'.new moodle_url('/login/forgot_password.php').'" class="linkLostPass">'.get_string('forgotaccount').'</a>
+									<a href="'.new moodle_url('/login/signup.php').'" class="linkInscription">'.get_string('startsignup').'</a>
+								</div>
+							</div>';
+			$returnstr .= '</div>';
 			
-	// 		$returnstr .= '</div>';
-	// 	}
+			$returnstr .= '</div>';
+		}
 		
-	// 	return $returnstr;
-	// }
+		return $returnstr;
+	}
 	
 	
-	// public function getdarkmode() 
-	// {
-	// 	global $DB, $USER;
+	public function getdarkmode() 
+	{
+		global $DB, $USER;
 
-	// 	if($dm_field = $DB->get_field('theme_argil_darkmode', 'darkmode', array('userid' => $USER->id)))
-	// 	{
-	// 		if($dm_field == 'y')
-	// 		{
-	// 			return 'dark';
-	// 		}
-	// 		else
-	// 		{
-	// 			return 'light';
-	// 		}
-	// 	}
-	// 	return 'light';
+		if($dm_field = $DB->get_field('theme_clhes_darkmode', 'darkmode', array('userid' => $USER->id)))
+		{
+			if($dm_field == 'y')
+			{
+				return 'dark';
+			}
+			else
+			{
+				return 'light';
+			}
+		}
+		return 'light';
 		
-	// }
+	}
 	
-	// public function show_switch_darkmode()
-	// {
-	// 	$btnmode = '';
-	// 	if(isloggedin() && !isguestuser())
-	// 	{
-	// 		//$btnmode .=  '<div class="divider border-left h-75 align-self-center ml-1 mr-1"></div>';
+	public function show_switch_darkmode()
+	{
+		$btnmode = '';
+		if(isloggedin() && !isguestuser())
+		{
+			//$btnmode .=  '<div class="divider border-left h-75 align-self-center ml-1 mr-1"></div>';
 			
-	// 		$btnmode .=  '<div id="switchdarkmode" class="d-flex switchmode">';
-	// 		$btnmode .=  '<div class="switchmodeicon';
-	// 		if($this->getdarkmode() == 'dark')
-	// 		{
-	// 			$btnmode .=  ' checked ';
-	// 		}
-	// 		$btnmode .=  '" title="'.get_string('darkmodeswitch', 'theme_argil').'" data-darkmode="'.$this->getdarkmode().'">';
-	// 		$btnmode .=  '<div class="smon fontoswald">on</div>';
-	// 		$btnmode .=  '<div class="smicon">';
-	// 		$btnmode .=  '<svg aria-hidden="true" focusable="false"  role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="16" class="icon-moon"><circle class="moonfond" cx="50" cy="50" r="44"/><path d="M50,1C22.9,1,1,22.9,1,50s21.9,49,49,49s49-21.9,49-49S77.1,1,50,1z M70.7,45.5c0,0-1-0.9-1.1-1c-0.2,0-1.4,0.3-1.4,0.3 s0.9-0.9,1-1.1c0-0.2-0.3-1.4-0.3-1.4s0.9,0.9,1.1,1c0.2,0.1,1.4-0.3,1.4-0.3s-1,0.9-1,1.1S70.7,45.5,70.7,45.5z M63,26.5 c0.5-0.6,1.5-4.5,1.5-4.5s1.1,4,1.5,4.5c0.4,0.5,4.5,1.5,4.5,1.5s-4.1,1-4.5,1.5C65.7,30,64.5,34,64.5,34s-1.1-4.1-1.5-4.5 c-0.4-0.3-4.5-1.5-4.5-1.5S62.5,27.1,63,26.5z M50.6,35.3c0.3-0.1,1.8-1.3,1.8-1.3s-0.6,1.8-0.6,2.1c0,0.3,1.3,1.8,1.3,1.8s-1.9-0.7-2.1-0.6s-1.8,1.3-1.8,1.3s0.7-1.9,0.6-2.1s-1.3-1.8-1.3-1.8S50.3,35.4,50.6,35.3z M50,88c-21,0-38-17-38-38 c0-17.2,11.5-31.7,27.1-36.4c-6.1,6.7-9.8,15.6-9.8,25.4c0,21,17,38,38,38c3.8,0,7.4-0.6,10.9-1.6C71.3,83.1,61.2,88,50,88z"/></svg>';
-	// 		$btnmode .=  '</div>';
-	// 		$btnmode .=  '<div class="smoff fontoswald">off</div>';
-	// 		$btnmode .=  '</div>';
-	// 		$btnmode .=  '<div class="switchmodetxt fontoswald">'.get_string('darkmodel1', 'theme_argil').'<br>'.get_string('darkmodel2', 'theme_argil').'</div>';
-	// 		$btnmode .=  '</div>';
+			$btnmode .=  '<div id="switchdarkmode" class="d-flex switchmode">';
+			$btnmode .=  '<div class="switchmodeicon';
+			if($this->getdarkmode() == 'dark')
+			{
+				$btnmode .=  ' checked ';
+			}
+			$btnmode .=  '" title="'.get_string('darkmodeswitch', 'theme_clhes').'" data-darkmode="'.$this->getdarkmode().'">';
+			$btnmode .=  '<div class="smon fontoswald">on</div>';
+			$btnmode .=  '<div class="smicon">';
+			$btnmode .=  '<svg aria-hidden="true" focusable="false"  role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="16" class="icon-moon"><circle class="moonfond" cx="50" cy="50" r="44"/><path d="M50,1C22.9,1,1,22.9,1,50s21.9,49,49,49s49-21.9,49-49S77.1,1,50,1z M70.7,45.5c0,0-1-0.9-1.1-1c-0.2,0-1.4,0.3-1.4,0.3 s0.9-0.9,1-1.1c0-0.2-0.3-1.4-0.3-1.4s0.9,0.9,1.1,1c0.2,0.1,1.4-0.3,1.4-0.3s-1,0.9-1,1.1S70.7,45.5,70.7,45.5z M63,26.5 c0.5-0.6,1.5-4.5,1.5-4.5s1.1,4,1.5,4.5c0.4,0.5,4.5,1.5,4.5,1.5s-4.1,1-4.5,1.5C65.7,30,64.5,34,64.5,34s-1.1-4.1-1.5-4.5 c-0.4-0.3-4.5-1.5-4.5-1.5S62.5,27.1,63,26.5z M50.6,35.3c0.3-0.1,1.8-1.3,1.8-1.3s-0.6,1.8-0.6,2.1c0,0.3,1.3,1.8,1.3,1.8s-1.9-0.7-2.1-0.6s-1.8,1.3-1.8,1.3s0.7-1.9,0.6-2.1s-1.3-1.8-1.3-1.8S50.3,35.4,50.6,35.3z M50,88c-21,0-38-17-38-38 c0-17.2,11.5-31.7,27.1-36.4c-6.1,6.7-9.8,15.6-9.8,25.4c0,21,17,38,38,38c3.8,0,7.4-0.6,10.9-1.6C71.3,83.1,61.2,88,50,88z"/></svg>';
+			$btnmode .=  '</div>';
+			$btnmode .=  '<div class="smoff fontoswald">off</div>';
+			$btnmode .=  '</div>';
+			$btnmode .=  '<div class="switchmodetxt fontoswald">'.get_string('darkmodel1', 'theme_clhes').'<br>'.get_string('darkmodel2', 'theme_clhes').'</div>';
+			$btnmode .=  '</div>';
 			
-	// 	}
-	// 	else
-	// 	{
-	// 		$btnmode = '';
-	// 	}
-	// 	return $btnmode;
-	// }
+		}
+		else
+		{
+			$btnmode = '';
+		}
+		return $btnmode;
+	}
 	
 	
-	// public function helpdeskFooter() 
-	// {
-	// 	$bhdtel = $this->page->theme->settings->helpdesktel;
-	// 	$bhdhoraire = $this->page->theme->settings->helpdeskhoraire;
-	// 	$bhdemail = $this->page->theme->settings->helpdeskemail;
+	public function helpdeskFooter() 
+	{
+		$bhdtel = $this->page->theme->settings->helpdesktel;
+		$bhdhoraire = $this->page->theme->settings->helpdeskhoraire;
+		$bhdemail = $this->page->theme->settings->helpdeskemail;
 
-	// 	if($bhdtel != null && $bhdemail != null )
-	// 	{
+		if($bhdtel != null && $bhdemail != null )
+		{
 			
 			
-	// 		$htmlBHd = '<div id="helpdesk_footer">';
-	// 		$htmlBHd .= '<div class="contact">';
+			$htmlBHd = '<div id="helpdesk_footer">';
+			$htmlBHd .= '<div class="contact">';
 
-	// 			$htmlBHd .= '<i class="fa fa-phone" aria-hidden="true"></i>'.$bhdtel;
-	// 			if($bhdhoraire != null )
-	// 			{
-	// 				$htmlBHd .= '<span id="support_hours">'.$bhdhoraire.'</span>';
-	// 			}
+				$htmlBHd .= '<i class="fa fa-phone" aria-hidden="true"></i>'.$bhdtel;
+				if($bhdhoraire != null )
+				{
+					$htmlBHd .= '<span id="support_hours">'.$bhdhoraire.'</span>';
+				}
 										
-	// 			$htmlBHd .= '<div id="footer-email"><i class="fa fa-envelope-o" aria-hidden="true"></i>
-	// 							<a class="" href="mailto:'.$bhdemail.'">'.$bhdemail.'</a>';
-	// 			$htmlBHd .= '</div>';
+				$htmlBHd .= '<div id="footer-email"><i class="fa fa-envelope-o" aria-hidden="true"></i>
+								<a class="" href="mailto:'.$bhdemail.'">'.$bhdemail.'</a>';
+				$htmlBHd .= '</div>';
 
-	// 		$htmlBHd .= '</div>';
-	// 		$htmlBHd .= '</div>';
+			$htmlBHd .= '</div>';
+			$htmlBHd .= '</div>';
 			
 			
-	// 		$htmlBHd = '<div class="footer_mail">';
-	// 			$htmlBHd .= '<a class="" href="mailto:'.$bhdemail.'">'.$bhdemail.'</a>';
-	// 		$htmlBHd .= '</div>';
+			$htmlBHd = '<div class="footer_mail">';
+				$htmlBHd .= '<a class="" href="mailto:'.$bhdemail.'">'.$bhdemail.'</a>';
+			$htmlBHd .= '</div>';
 			
-	// 		$htmlBHd .= '<div class="footer_phone">';
-	// 			$htmlBHd .= $bhdtel;
-	// 			if($bhdhoraire != null )
-	// 			{
-	// 				$htmlBHd .= '<span class="support_hours">'.$bhdhoraire.'</span>';
-	// 			}
-	// 		$htmlBHd .= '</div>';
+			$htmlBHd .= '<div class="footer_phone">';
+				$htmlBHd .= $bhdtel;
+				if($bhdhoraire != null )
+				{
+					$htmlBHd .= '<span class="support_hours">'.$bhdhoraire.'</span>';
+				}
+			$htmlBHd .= '</div>';	
 			
-			
-			
-	// 		return $htmlBHd;
+			return $htmlBHd;
 	
-	// 	}
-	// 	else
-	// 	{
-	// 		return null;
-	// 	}
-
-	
-		
-	// }
+		}
+		else
+		{
+			return null;
+		}	
+	}
 	
 	
-	// public function get_frontpage_slider() 
-	// {
-	// 	$noslides = $this->page->theme->settings->slidercount;
-	// 	$retval = '';
+	public function get_frontpage_slider() 
+	{
+		$noslides = $this->page->theme->settings->slidercount;
+		$retval = '';
 		
-	// 	// Will we have any slides?
-    //     $haveslides = false;
-	// 	$slidesContent = '';
-	// 	$slidelist = [];
+		// Will we have any slides?
+        $haveslides = false;
+		$slidesContent = '';
+		$slidelist = [];
 
-	// 	for ($i = 1; $i <= $noslides; $i++) {
-    //         $sliderimage = 'sld' . $i;
-    //         $sliderorder = 'order' . $i;
-    //         $sliderorder = $this->page->theme->settings->$sliderorder-1;
-    //         if ($sliderorder > 0 && !empty($this->page->theme->settings->$sliderimage)) {
-    //             $haveslides = true;
-	// 			$hascap = false;
-	// 			$sliderimagedark = 'sld' . $i . 'dark';
-	// 			$sliderurl = 'sld' . $i . 'url';
-	// 			$slidertitle = 'sld' . $i .'title';
-	// 			$slidercaption = 'sld' . $i .'cap';
-	// 			$slidercaptionmob = 'sld' . $i .'capmob';
-	// 			$closelink = '';
-	// 			$sldtitle = '';
-	// 			$sldcap = '';
-	// 			$sldcapmob = '';
+		for ($i = 1; $i <= $noslides; $i++) {
+            $sliderimage = 'sld' . $i;
+            $sliderorder = 'order' . $i;
+            $sliderorder = $this->page->theme->settings->$sliderorder-1;
+            if ($sliderorder > 0 && !empty($this->page->theme->settings->$sliderimage)) {
+                $haveslides = true;
+				$hascap = false;
+				$sliderimagedark = 'sld' . $i . 'dark';
+				$sliderurl = 'sld' . $i . 'url';
+				$slidertitle = 'sld' . $i .'title';
+				$slidercaption = 'sld' . $i .'cap';
+				$slidercaptionmob = 'sld' . $i .'capmob';
+				$closelink = '';
+				$sldtitle = '';
+				$sldcap = '';
+				$sldcapmob = '';
 				
-	// 			$sldc = '<li>';
+				$sldc = '<li>';
 				
-	// 			if (!empty($this->page->theme->settings->$sliderurl)) {
-    //                 $sldc .= '<a href="' . $this->page->theme->settings->$sliderurl . '">';
-    //                 $closelink = '</a>';
-    //             }
+				if (!empty($this->page->theme->settings->$sliderurl)) {
+                    $sldc .= '<a href="' . $this->page->theme->settings->$sliderurl . '">';
+                    $closelink = '</a>';
+                }
 				
-	// 			$sldimg = $this->page->theme->setting_file_url($sliderimage, $sliderimage);
-	// 			$sldc .= '<img class="slideimg " src="' . $sldimg . '" alt="' . $sliderimage . '"/>';
+				$sldimg = $this->page->theme->setting_file_url($sliderimage, $sliderimage);
+				$sldc .= '<img class="slideimg " src="' . $sldimg . '" alt="' . $sliderimage . '"/>';
 				
-	// 			//darkmode image
-	// 			if(!empty($this->page->theme->settings->$sliderimagedark))
-	// 			{
-	// 				$sldimg = $this->page->theme->setting_file_url($sliderimagedark, $sliderimagedark);
-	// 			}
-	// 			$sldc .= '<img class="slideimg dark" src="' . $sldimg . '" alt="' . $sliderimage . '"/>';
+				//darkmode image
+				if(!empty($this->page->theme->settings->$sliderimagedark))
+				{
+					$sldimg = $this->page->theme->setting_file_url($sliderimagedark, $sliderimagedark);
+				}
+				$sldc .= '<img class="slideimg dark" src="' . $sldimg . '" alt="' . $sliderimage . '"/>';
 				
 				
-	// 			if (!empty($this->page->theme->settings->$slidertitle)) {
-	// 				$sldtitle = '<h3 class="caption-title">' . $this->get_setting($slidertitle, 'FORMAT_PLAIN') . '</h3>';
-	// 				$hascap = true;
-	// 			}
-	// 			if (!empty($this->page->theme->settings->$slidercaption)) {
-    //                 $sldcap = '<div class="caption-content">' . $this->get_setting($slidercaption, 'format_html') . '</div>';
-	// 				$hascap = true;
-	// 			}
-	// 			if (!empty($this->page->theme->settings->$slidercaptionmob)) {
-    //                 $sldcapmob = '<div class="caption-content-mob">' . $this->get_setting($slidercaptionmob, 'format_html') . '</div>';
-	// 				$hascap = true;
-	// 			}
+				if (!empty($this->page->theme->settings->$slidertitle)) {
+					$sldtitle = '<h3 class="caption-title">' . $this->get_setting($slidertitle, 'FORMAT_PLAIN') . '</h3>';
+					$hascap = true;
+				}
+				if (!empty($this->page->theme->settings->$slidercaption)) {
+                    $sldcap = '<div class="caption-content">' . $this->get_setting($slidercaption, 'format_html') . '</div>';
+					$hascap = true;
+				}
+				if (!empty($this->page->theme->settings->$slidercaptionmob)) {
+                    $sldcapmob = '<div class="caption-content-mob">' . $this->get_setting($slidercaptionmob, 'format_html') . '</div>';
+					$hascap = true;
+				}
 				
-	// 			if($hascap)
-	// 			{
-	// 				$sldc .= '<div class="flex-caption">';
-	// 				$sldc .= $sldtitle;
-	// 				$sldc .= $sldcap;
-	// 				$sldc .= $sldcapmob;
-	// 				$sldc .= '</div>';
-	// 			}
+				if($hascap)
+				{
+					$sldc .= '<div class="flex-caption">';
+					$sldc .= $sldtitle;
+					$sldc .= $sldcap;
+					$sldc .= $sldcapmob;
+					$sldc .= '</div>';
+				}
 
-    //             $sldc .= $closelink . '</li>';
-	// 			$sld = [];
-	// 			$sld['order'] = $sliderorder;
-	// 			$sld['content'] = $sldc;
-	// 			$slidelist[] = $sld;
-    //         }
-    //     }
-	// 	asort($slidelist);
+                $sldc .= $closelink . '</li>';
+				$sld = [];
+				$sld['order'] = $sliderorder;
+				$sld['content'] = $sldc;
+				$slidelist[] = $sld;
+            }
+        }
+		asort($slidelist);
 		
-	// 	foreach($slidelist as $slideobj)
-	// 	{
+		foreach($slidelist as $slideobj)
+		{
 			
-	// 		$slidesContent .= $slideobj['content'];
-	// 	}
+			$slidesContent .= $slideobj['content'];
+		}
 		
-	// 	if (!$haveslides) {
-    //         return '';
-    //     }
+		if (!$haveslides) {
+            return '';
+        }
 		
-	// 	$retval .= '
-	// 	<div class="container slidewrap d-lg-block">
-    //         <div id="main-slider" class="flexslider">
-	// 			<ul class="slides">';
-	// 	$retval .= $slidesContent;
-	// 	$retval .= '</ul></div></div>';
+		$retval .= '
+		<div class="container slidewrap d-lg-block">
+            <div id="main-slider" class="flexslider">
+				<ul class="slides">';
+		$retval .= $slidesContent;
+		$retval .= '</ul></div></div>';
 		
-	// 	return $retval;
-	// }
+		return $retval;
+	}
 	
 	/**
      * Returns settings as formatted text
@@ -643,1031 +637,1035 @@ class core_renderer extends \theme_boost\output\core_renderer {
     }
 	
 
-	// public function get_faq_cat($cid = 0,$tid = 0) 
-	// {
-	// 	global $DB, $PAGE;
-	// 	$faq = [];
-	// 	$list = [];
-	// 	$nbfcatshow = 0;
-	// 	$tmplate = 'obj_faqlist';
-	// 	$faq['faq_name'] = 'faq_c';
-	// 	$faq['faq_type'] = 'c';
-	// 	$faq['faq_url'] = new moodle_url('?redirect=0&amp;op=support');
+	public function get_faq_cat($cid = 0,$tid = 0) 
+	{
+		global $DB, $PAGE;
+		$faq = [];
+		$list = [];
+		$nbfcatshow = 0;
+		$tmplate = 'obj_faqlist';
+		$faq['faq_name'] = 'faq_c';
+		$faq['faq_type'] = 'c';
+		$faq['faq_url'] = new moodle_url('?redirect=0&amp;op=support');
 		
-	// 	$c_lang = current_language();
+		$c_lang = current_language();
 
-	// 	$editingmode= false;
-	// 	if(is_siteadmin() && $PAGE->user_is_editing())
-	// 	{
-	// 		$editingmode= true;
-	// 		$tmplate = 'obj_faqlist_edit';
-	// 	}
+		$editingmode= false;
+		if(is_siteadmin() && $PAGE->user_is_editing())
+		{
+			$editingmode= true;
+			$tmplate = 'obj_faqlist_edit';
+		}
 
-	// 	$content = '';
+		$content = '';
 
-	// 	if($faqcat = $DB->get_records('theme_argil_faq_cat', [], 'position') )
-	// 	{
-	// 		$nbfcat = count($faqcat);
-	// 		$nbfcatshow = 0;
-	// 		$index = 1;
-	// 		$currantvisible = 0;
+		if($faqcat = $DB->get_records('theme_argil_faq_cat', [], 'position') )
+		{
+			$nbfcat = count($faqcat);
+			$nbfcatshow = 0;
+			$index = 1;
+			$currantvisible = 0;
 			
-	// 		foreach($faqcat as $item)
-	// 		{
-	// 			$tmp = [];
-	// 			$itemname = $item->name_fr;
-	// 			switch ($c_lang)
-	// 			{
-	// 				case 'en':
-	// 					$itemname = $item->name_en;
-	// 					break;
-	// 				case 'de':
-	// 					$itemname = $item->name_de;
-	// 					break;
-	// 			}
+			foreach($faqcat as $item)
+			{
+				$tmp = [];
+				$itemname = $item->name_fr;
+				switch ($c_lang)
+				{
+					case 'en':
+						$itemname = $item->name_en;
+						break;
+					case 'de':
+						$itemname = $item->name_de;
+						break;
+				}
 				
-	// 			if($cid == $item->id)
-	// 			{
-	// 				$tmp['select'] = true;
-	// 				$currantvisible = $item->visible;
-	// 			}
+				if($cid == $item->id)
+				{
+					$tmp['select'] = true;
+					$currantvisible = $item->visible;
+				}
 				
-	// 			$tmp['data'] = ' data-faq_c="'.$item->id.'" ';
-	// 			$tmp['id'] = $item->id;
-	// 			if($item->icon !== null && $item->icon != '')
-	// 			{
-	// 				//print_r('<br>icon not null<br>');
-	// 				$tmp['icon'] = $item->icon;
-	// 			}
-	// 			else
-	// 			{
-	// 				$tmp['icon'] = '<svg class="fc_icon_question" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="30"><path class="color" d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg>';
-	// 			}
+				$tmp['data'] = ' data-faq_c="'.$item->id.'" ';
+				$tmp['id'] = $item->id;
+				if($item->icon !== null && $item->icon != '')
+				{
+					//print_r('<br>icon not null<br>');
+					$tmp['icon'] = $item->icon;
+				}
+				else
+				{
+					$tmp['icon'] = '<svg class="fc_icon_question" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="30"><path class="color" d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg>';
+				}
 
 				
-	// 			$tmp['txt'] = format_text($itemname, FORMAT_PLAIN);
-	// 			$tmp['order'] = $item->position;
-	// 			$tmp['question'] = '';
-	// 			$tmp['answer'] = '';
+				$tmp['txt'] = format_text($itemname, FORMAT_PLAIN);
+				$tmp['order'] = $item->position;
+				$tmp['question'] = '';
+				$tmp['answer'] = '';
 					
-	// 			if($editingmode)
-	// 			{
-	// 				$tmp['url'] = new moodle_url('?redirect=0&amp;op=support&amp;cat='.$item->id.'');
-	// 				if($item->visible == 1)
-	// 				{
-	// 					$tmp['visible'] = 'show';
-	// 				}
-	// 				else
-	// 				{
-	// 					$tmp['visible'] = '';
-	// 				}
+				if($editingmode)
+				{
+					$tmp['url'] = new moodle_url('?redirect=0&amp;op=support&amp;cat='.$item->id.'');
+					if($item->visible == 1)
+					{
+						$tmp['visible'] = 'show';
+					}
+					else
+					{
+						$tmp['visible'] = '';
+					}
 					
 					
-	// 				if($index == 1)
-	// 				{
-	// 					$tmp['up'] = '';
-	// 				}
-	// 				else if($index > 1)
-	// 				{
-	// 					$tmp['up'] = 'up';
-	// 				}
-	// 				if($index < $nbfcat)
-	// 				{
-	// 					$tmp['down'] = 'down';
-	// 				}
-	// 				else if($index == $nbfcat)
-	// 				{
-	// 					$tmp['down'] = '';
-	// 				}
+					if($index == 1)
+					{
+						$tmp['up'] = '';
+					}
+					else if($index > 1)
+					{
+						$tmp['up'] = 'up';
+					}
+					if($index < $nbfcat)
+					{
+						$tmp['down'] = 'down';
+					}
+					else if($index == $nbfcat)
+					{
+						$tmp['down'] = '';
+					}
 
 					
 					
-	// 				$faq['list'][] = $tmp;
-	// 				$index++;
-	// 				$nbfcatshow++;
-	// 			}
-	// 			else if($item->visible)
-	// 			{
-	// 				$faq['list'][] = $tmp;
-	// 				$nbfcatshow++;
-	// 			}
+					$faq['list'][] = $tmp;
+					$index++;
+					$nbfcatshow++;
+				}
+				else if($item->visible)
+				{
+					$faq['list'][] = $tmp;
+					$nbfcatshow++;
+				}
 				
-	// 		}
-	// 		$faq['nbr'] = $nbfcatshow;
+			}
+			$faq['nbr'] = $nbfcatshow;
 			
 
-	// 		$subject = '';
-	// 		if($cid > 0)
-	// 		{
-	// 			if($editingmode || $currantvisible)
-	// 			{
-	// 				$subject .= $this->get_faq_questions_ajax($cid, $tid) ;
-	// 			}		
-	// 		}
+			$subject = '';
+			if($cid > 0)
+			{
+				if($editingmode || $currantvisible)
+				{
+					$subject .= $this->get_faq_questions_ajax($cid, $tid) ;
+				}		
+			}
 
 			
-	// 		$faq['subject'] = $subject;
-	// 	}
-	// 	else
-	// 	{
-	// 		$faq['emptymsg'] = get_string('nofaq', 'theme_argil');
-	// 	}
+			$faq['subject'] = $subject;
+		}
+		else
+		{
+			$faq['emptymsg'] = get_string('nofaq', 'theme_argil');
+		}
 		
-	// 	if(!$editingmode && $nbfcatshow ==0)
-	// 	{
-	// 		return '';
-	// 	}
+		if(!$editingmode && $nbfcatshow ==0)
+		{
+			return '';
+		}
 		
-	// 	$content = $this->render_from_template('theme_argil/'.$tmplate, $faq);
-	// 	return $content;
-	// }
+		$content = $this->render_from_template('theme_argil/'.$tmplate, $faq);
+		return $content;
+	}
 	
-	// public function get_faq_questions_ajax($cid, $tid=0) 
-	// {
-	// 	global $DB, $CFG, $PAGE;
-	// 	$faq = [];
-	// 	$list = [];
-	// 	$tmplate = 'obj_faqlist';
-	// 	$c_lang = current_language();
+	public function get_faq_questions_ajax($cid, $tid=0) 
+	{
+		global $DB, $CFG, $PAGE;
+		$faq = [];
+		$list = [];
+		$tmplate = 'obj_faqlist';
+		$c_lang = current_language();
 		
-	// 	$editingmode= false;
-	// 	if(is_siteadmin() && $PAGE->user_is_editing())
-	// 	{
-	// 		$editingmode= true;
-	// 		$tmplate = 'obj_faqlist_edit';
-	// 	}
+		$editingmode= false;
+		if(is_siteadmin() && $PAGE->user_is_editing())
+		{
+			$editingmode= true;
+			$tmplate = 'obj_faqlist_edit';
+		}
 
 		
-	// 	$p_icon = $DB->get_field('theme_argil_faq_cat', 'icon', array('id' => $cid));
+		$p_icon = $DB->get_field('theme_argil_faq_cat', 'icon', array('id' => $cid));
 
-	// 	if($p_icon == null || $p_icon == '')
-	// 	{
-	// 		$p_icon = '<svg class="fc_icon_question" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="30"><path class="color" d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg>';
-	// 	}
+		if($p_icon == null || $p_icon == '')
+		{
+			$p_icon = '<svg class="fc_icon_question" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512" width="30"><path class="color" d="M80 160c0-35.3 28.7-64 64-64h32c35.3 0 64 28.7 64 64v3.6c0 21.8-11.1 42.1-29.4 53.8l-42.2 27.1c-25.2 16.2-40.4 44.1-40.4 74V320c0 17.7 14.3 32 32 32s32-14.3 32-32v-1.4c0-8.2 4.2-15.8 11-20.2l42.2-27.1c36.6-23.6 58.8-64.1 58.8-107.7V160c0-70.7-57.3-128-128-128H144C73.3 32 16 89.3 16 160c0 17.7 14.3 32 32 32s32-14.3 32-32zm80 320a40 40 0 1 0 0-80 40 40 0 1 0 0 80z"/></svg>';
+		}
 
 		
-	// 	$content = '';
-	// 	$nbrquestionshow = 0;
-	// 	$faq['faq_name'] = 'faq_q';
-	// 	$faq['faq_type'] = 'q';
-	// 	$faq['faq_cid'] = $cid;
-	// 	$faq['faq_url'] = new moodle_url('?redirect=0&amp;op=support&amp;cat='.$cid);
+		$content = '';
+		$nbrquestionshow = 0;
+		$faq['faq_name'] = 'faq_q';
+		$faq['faq_type'] = 'q';
+		$faq['faq_cid'] = $cid;
+		$faq['faq_url'] = new moodle_url('?redirect=0&amp;op=support&amp;cat='.$cid);
 		
 		
-	// 	if($faqs = $DB->get_records('theme_argil_faq', array('catid'=>$cid), 'position') )
-	// 	{
-	// 		$nbfaq = count($faqs);
-	// 		$index = 1;
+		if($faqs = $DB->get_records('theme_argil_faq', array('catid'=>$cid), 'position') )
+		{
+			$nbfaq = count($faqs);
+			$index = 1;
 
 				
-	// 		foreach($faqs as $item)
-	// 		{
-	// 			$tmp = [];
-	// 			$itemname = $item->name_fr;
-	// 			$itemquestion = $item->question_fr;
-	// 			$itemanswer = $item->answer_fr;
-	// 			switch ($c_lang)
-	// 			{
-	// 				case 'en':
-	// 					$itemname = $item->name_en;
-	// 					$itemquestion = $item->question_en;
-	// 					$itemanswer = $item->answer_en;
-	// 					break;
-	// 				case 'de':
-	// 					$itemname = $item->name_de;
-	// 					$itemquestion = $item->question_de;
-	// 					$itemanswer = $item->answer_de;
-	// 					break;
-	// 			}
+			foreach($faqs as $item)
+			{
+				$tmp = [];
+				$itemname = $item->name_fr;
+				$itemquestion = $item->question_fr;
+				$itemanswer = $item->answer_fr;
+				switch ($c_lang)
+				{
+					case 'en':
+						$itemname = $item->name_en;
+						$itemquestion = $item->question_en;
+						$itemanswer = $item->answer_en;
+						break;
+					case 'de':
+						$itemname = $item->name_de;
+						$itemquestion = $item->question_de;
+						$itemanswer = $item->answer_de;
+						break;
+				}
 				
 				
-	// 			$tmp['data'] = 'data-faq_c="'.$cid.'" data-faq_q="'.$item->id.'"';
-	// 			$tmp['cat'] = $item->catid;
+				$tmp['data'] = 'data-faq_c="'.$cid.'" data-faq_q="'.$item->id.'"';
+				$tmp['cat'] = $item->catid;
 				
-	// 			if($tid == $item->id)
-	// 			{
-	// 				$tmp['select'] = true;
-	// 			}
+				if($tid == $item->id)
+				{
+					$tmp['select'] = true;
+				}
 				
-	// 			$tmp['id'] = $item->id;
-	// 			$tmp['txt'] = format_text($itemname, FORMAT_PLAIN);
-	// 			$tmp['question'] = format_text($itemquestion, FORMAT_PLAIN);
-	// 			$tmp['answer'] = $itemanswer;
-	// 			$tmp['order'] = $item->position;
+				$tmp['id'] = $item->id;
+				$tmp['txt'] = format_text($itemname, FORMAT_PLAIN);
+				$tmp['question'] = format_text($itemquestion, FORMAT_PLAIN);
+				$tmp['answer'] = $itemanswer;
+				$tmp['order'] = $item->position;
 				
-	// 			if($item->icon !== null && $item->icon != '')
-	// 			{
-	// 				$tmp['icon'] = $item->icon;
-	// 			}
-	// 			else
-	// 			{
-	// 				$tmp['icon'] = $p_icon;
-	// 			}
+				if($item->icon !== null && $item->icon != '')
+				{
+					$tmp['icon'] = $item->icon;
+				}
+				else
+				{
+					$tmp['icon'] = $p_icon;
+				}
 				
 				
-	// 			if($editingmode)
-	// 			{
+				if($editingmode)
+				{
 					
-	// 				$tmp['url'] = new moodle_url('?redirect=0&amp;op=support&amp;cat='.$item->catid.'&amp;topic='.$item->id.'');
+					$tmp['url'] = new moodle_url('?redirect=0&amp;op=support&amp;cat='.$item->catid.'&amp;topic='.$item->id.'');
 					
-	// 				if($item->visible == 1)
-	// 				{
-	// 					$tmp['visible'] = 'show';
-	// 				}
-	// 				else
-	// 				{
-	// 					$tmp['visible'] = '';
-	// 				}
+					if($item->visible == 1)
+					{
+						$tmp['visible'] = 'show';
+					}
+					else
+					{
+						$tmp['visible'] = '';
+					}
 
-	// 				if($index == 1)
-	// 				{
-	// 					$tmp['up'] = '';
-	// 				}
-	// 				else if($index > 1)
-	// 				{
-	// 					$tmp['up'] = 'up';
-	// 				}
-	// 				if($index < $nbfaq)
-	// 				{
-	// 					$tmp['down'] = 'down';
-	// 				}
-	// 				else if($index == $nbfaq)
-	// 				{
-	// 					$tmp['down'] = '';
-	// 				}
+					if($index == 1)
+					{
+						$tmp['up'] = '';
+					}
+					else if($index > 1)
+					{
+						$tmp['up'] = 'up';
+					}
+					if($index < $nbfaq)
+					{
+						$tmp['down'] = 'down';
+					}
+					else if($index == $nbfaq)
+					{
+						$tmp['down'] = '';
+					}
 
-	// 				$faq['list'][] = $tmp;
-	// 				$index++;
-	// 				$nbrquestionshow++;
-	// 			}
-	// 			else if($item->visible)
-	// 			{
+					$faq['list'][] = $tmp;
+					$index++;
+					$nbrquestionshow++;
+				}
+				else if($item->visible)
+				{
 
 					
-	// 				$faq['list'][] = $tmp;
-	// 				$nbrquestionshow++;
-	// 			}
-	// 		}
-	// 	}
+					$faq['list'][] = $tmp;
+					$nbrquestionshow++;
+				}
+			}
+		}
 
 		
-	// 	if($nbrquestionshow < 1)
-	// 	{
-	// 		$faq['emptymsg'] = get_string('nofaqtopic', 'theme_argil');
-	// 	}
-	// 	$faq['nbr'] = $nbrquestionshow;
-	// 	$faq['isquestion'] = 1;
+		if($nbrquestionshow < 1)
+		{
+			$faq['emptymsg'] = get_string('nofaqtopic', 'theme_argil');
+		}
+		$faq['nbr'] = $nbrquestionshow;
+		$faq['isquestion'] = 1;
 
-	// 	$content = $this->render_from_template('theme_argil/'.$tmplate, $faq);
-	// 	return $content;
-	// }
+		$content = $this->render_from_template('theme_argil/'.$tmplate, $faq);
+		return $content;
+	}
 	
 	
-	// public function set_faq_field($table, $id, $champ, $value) 
-	// {
-	// 	global $DB;
-	// 	$record = new stdClass();
-    //     $record->id = $id;
-    //     $record->$champ = $value;
+	public function set_faq_field($table, $id, $champ, $value) 
+	{
+		global $DB;
+		$record = new stdClass();
+        $record->id = $id;
+        $record->$champ = $value;
        
-    //     return $DB->update_record($table, $record);	
-	// }
+        return $DB->update_record($table, $record);	
+	}
 	
 	
-	// public function set_faq_position($type, $cid, $tid=0, $up=0) 
-	// {
-	// 	global $DB;
+	public function set_faq_position($type, $cid, $tid=0, $up=0) 
+	{
+		global $DB;
 		
 		
-	// 	$table = 'theme_argil_faq_cat';
-	// 	$cond = [];
-	// 	$currantid = $cid; 
-	// 	if($cid <= 0)
-	// 	{
-	// 		return 'Parameter error! ';
-	// 	}
+		$table = 'theme_argil_faq_cat';
+		$cond = [];
+		$currantid = $cid; 
+		if($cid <= 0)
+		{
+			return 'Parameter error! ';
+		}
 		
-	// 	if($type == 'topic')
-	// 	{
-	// 		if($cid > 0 && $tid > 0)
-	// 		{
-	// 			$table = 'theme_argil_faq';
-	// 			$cond = array('catid'=>$cid);
-	// 			$currantid = $tid; 
-	// 		}
-	// 		else
-	// 		{
-	// 			return 'Parameter error! ';
-	// 		}
-	// 	}
-	// 	/*
-	// 	print_r('$type: '.$type.'<br>');
-	// 	print_r('$table: '.$table.'<br>');
-	// 	print_r('$cid: '.$cid.'<br>');
-	// 	print_r('$tid: '.$tid.'<br>');
-	// 	*/
-	// 	$this->init_faq_position($table, $cond);
-		
-		
+		if($type == 'topic')
+		{
+			if($cid > 0 && $tid > 0)
+			{
+				$table = 'theme_argil_faq';
+				$cond = array('catid'=>$cid);
+				$currantid = $tid; 
+			}
+			else
+			{
+				return 'Parameter error! ';
+			}
+		}
+		/*
+		print_r('$type: '.$type.'<br>');
+		print_r('$table: '.$table.'<br>');
+		print_r('$cid: '.$cid.'<br>');
+		print_r('$tid: '.$tid.'<br>');
+		*/
+		$this->init_faq_position($table, $cond);
 		
 		
 		
-	// 	if($faqs = $DB->get_records($table, $cond, 'position') )
-	// 	{
-	// 		$nbr = count($faqs);
-	// 		if (!array_key_exists($currantid, $faqs) || $nbr < 2) 
-	// 		{
-	// 			return '';
-	// 		}
-	// 		$position = $faqs[$currantid]->position; 
+		
+		
+		if($faqs = $DB->get_records($table, $cond, 'position') )
+		{
+			$nbr = count($faqs);
+			if (!array_key_exists($currantid, $faqs) || $nbr < 2) 
+			{
+				return '';
+			}
+			$position = $faqs[$currantid]->position; 
 			
-	// 		if($up)
-	// 		{
-	// 			$newposition = $position-1;
-	// 		}
-	// 		else
-	// 		{
-	// 			$newposition = $position+1;
-	// 		}
+			if($up)
+			{
+				$newposition = $position-1;
+			}
+			else
+			{
+				$newposition = $position+1;
+			}
 			
-	// 		if ($newposition < 0 || $newposition >= $nbr) 
-	// 		{
-	// 			return '';
-	// 		}
+			if ($newposition < 0 || $newposition >= $nbr) 
+			{
+				return '';
+			}
 
 				
 			
 			
-	// 		foreach($faqs as $item)
-	// 		{
-	// 			//print_object($item);
-	// 			if($item->position == $newposition)
-	// 			{
-	// 				$this->set_faq_field($table, $item->id, 'position', $position);
-	// 			}
-	// 		}
-	// 		$this->set_faq_field($table, $currantid, 'position', $newposition);
-	// 	}
+			foreach($faqs as $item)
+			{
+				//print_object($item);
+				if($item->position == $newposition)
+				{
+					$this->set_faq_field($table, $item->id, 'position', $position);
+				}
+			}
+			$this->set_faq_field($table, $currantid, 'position', $newposition);
+		}
 		
 		
-	// }
+	}
 	
-	// public function init_faq_position($table, $cond=[]) 
-	// {
-	// 	global $DB;
+	public function init_faq_position($table, $cond=[]) 
+	{
+		global $DB;
 		
-	// 	$index = 0;
+		$index = 0;
 
-	// 	if($faqs = $DB->get_records($table, $cond, 'position') )
-	// 	{
-	// 		foreach($faqs as $item)
-	// 		{
-	// 			$this->set_faq_field($table, $item->id, 'position', $index++);
-	// 		}
-	// 	}
-	// }
-	// public function get_faq_last_position($table, $idc = 0) 
-	// {
-	// 	global $DB;
+		if($faqs = $DB->get_records($table, $cond, 'position') )
+		{
+			foreach($faqs as $item)
+			{
+				$this->set_faq_field($table, $item->id, 'position', $index++);
+			}
+		}
+	}
+	public function get_faq_last_position($table, $idc = 0) 
+	{
+		global $DB;
 		
-	// 	$rowSQL = '';
-	// 	//$pos = 0;
-	// 	if($idc == 0)
-	// 	{
-	// 		$rowSQL = 'SELECT MAX( position ) as max ' .
-    //             'FROM {'.$table.'} ';
-	// 		$params = [];
-	// 	}
-	// 	else
-	// 	{
-	// 		$rowSQL = 'SELECT MAX( position ) as max ' .
-    //             'FROM {'.$table.'} ';
-	// 		$params['catid'] = $idc;	
-	// 	}
-	// 	/*
-	// 	print_r($rowSQL);
-	// 	print_object($params);
-	// 	$aaa = $DB->get_record_sql($rowSQL, $params);
-	// 	print_object($aaa);
-	// 	*/
-	// 	if($pos = $DB->get_record_sql($rowSQL, $params))
-	// 	{
-	// 		if($pos->max > 0)
-	// 		{
-	// 			return $pos->max;
-	// 		}	
+		$rowSQL = '';
+		//$pos = 0;
+		if($idc == 0)
+		{
+			$rowSQL = 'SELECT MAX( position ) as max ' .
+                'FROM {'.$table.'} ';
+			$params = [];
+		}
+		else
+		{
+			$rowSQL = 'SELECT MAX( position ) as max ' .
+                'FROM {'.$table.'} ';
+			$params['catid'] = $idc;	
+		}
+		/*
+		print_r($rowSQL);
+		print_object($params);
+		$aaa = $DB->get_record_sql($rowSQL, $params);
+		print_object($aaa);
+		*/
+		if($pos = $DB->get_record_sql($rowSQL, $params))
+		{
+			if($pos->max > 0)
+			{
+				return $pos->max;
+			}	
 			
-	// 	}
+		}
 
-	// 	return 0;
-	// }
+		return 0;
+	}
 	
-	// public function get_faq($type, $id) 
-	// {
-	// 	global $DB;
-	// 	$table = 'theme_argil_faq_cat';
-	// 	$cond = array('id'=>$id);
-	// 	$resultat = [];
+	public function get_faq($type, $id) 
+	{
+		global $DB;
+		$table = 'theme_argil_faq_cat';
+		$cond = array('id'=>$id);
+		$resultat = [];
 		
-	// 	if($type == 'topic')
-	// 	{
-	// 		$table = 'theme_argil_faq';	
-	// 	}
+		if($type == 'topic')
+		{
+			$table = 'theme_argil_faq';	
+		}
 		
-	// 	if($faq = $DB->get_record($table, $cond) )
-	// 	{
-	// 		//print_object($faq);
-	// 		return (array)$faq;
-	// 	}
+		if($faq = $DB->get_record($table, $cond) )
+		{
+			//print_object($faq);
+			return (array)$faq;
+		}
 		
-	// }
+	}
 	
-	// public function set_faq($type, $faqdata) 
-	// {
-	// 	global $DB;
+	
+	public function set_faq($type, $faqdata) 
+	{
+		global $DB;
 
-	// 	$table = 'theme_argil_faq_cat';
-	// 	$faq_idc = $faqdata->catid;
-	// 	if($type == 'topic')
-	// 	{
-	// 		$table = 'theme_argil_faq';
-	// 		$faqdata->answer_fr = $faqdata->answer_fr['text'];
-	// 		$faqdata->answer_en = $faqdata->answer_en['text'];
-	// 		$faqdata->answer_de = $faqdata->answer_de['text'];
-	// 	}
+		$table = 'theme_clhes_faq_cat';
+		$faq_idc = $faqdata->catid;
+		if($type == 'topic')
+		{
+			$table = 'theme_clhes_faq';
+			$faqdata->answer_fr = $faqdata->answer_fr['text'];
+			$faqdata->answer_en = $faqdata->answer_en['text'];
+			$faqdata->answer_de = $faqdata->answer_de['text'];
+		}
 		
-	// 	$faqdata->name_fr = format_text($faqdata->name_fr, FORMAT_PLAIN);
-	// 	$faqdata->name_de = format_text($faqdata->name_de, FORMAT_PLAIN);
-	// 	$faqdata->name_en = format_text($faqdata->name_en, FORMAT_PLAIN);
+		$faqdata->name_fr = format_text($faqdata->name_fr, FORMAT_PLAIN);
+		$faqdata->name_de = format_text($faqdata->name_de, FORMAT_PLAIN);
+		$faqdata->name_en = format_text($faqdata->name_en, FORMAT_PLAIN);
 
 		
-	// 	if(!isset($faqdata->visible))
-	// 	{
-	// 		$faqdata->visible = 0;
-	// 	}
+		if(!isset($faqdata->visible))
+		{
+			$faqdata->visible = 0;
+		}
 		
-	// 	if(isset($faqdata->id))
-	// 	{
-	// 		$DB->update_record($table, $faqdata);
-	// 		return $faqdata->id;
-	// 	}
-	// 	else
-	// 	{
-	// 		$newpos = $this->get_faq_last_position($table, $faq_idc)+1;
-	// 		$faqdata->position = $newpos;
-	// 		return $DB->insert_record($table, $faqdata);
-	// 	}	
+		if(isset($faqdata->id))
+		{
+			$DB->update_record($table, $faqdata);
+			return $faqdata->id;
+		}
+		else
+		{
+			$newpos = $this->get_faq_last_position($table, $faq_idc)+1;
+			$faqdata->position = $newpos;
+			return $DB->insert_record($table, $faqdata);
+		}	
 		
-	// 	return '';
-	// }
+		return '';
+	}
 	
-	// public function del_faq($type, $cid, $tid=0 ) 
-	// {
-	// 	global $DB;
-		
-	// 	$del = false;
-	// 	$delchild = false;
-		
-	// 	$table = 'theme_argil_faq_cat';
-	// 	$cond = array('id'=>$cid);
-	// 	$condChild = array('catid'=>$cid);
-	// 	if($type == 'topic')
-	// 	{
-	// 		$table = 'theme_argil_faq';
-	// 		$cond = array('id'=>$tid);
-	// 	}
-	// 	else
-	// 	{
-	// 		$delchild = $DB->delete_records('theme_argil_faq', $condChild);
-	// 		if(!$delchild )
-	// 		{
-	// 			return 'cant delete child';
-	// 		}
-	// 	}
-		
-	// 	$del = $DB->delete_records($table, $cond);
-	// 	if(!$delchild )
-	// 	{
-	// 		return 'cant delete rubric';
-	// 	}
-	// }
-	
-	
-	
-	// protected function render_thiscourse_menu(custom_menu $menu) {
-    //     global $CFG;
 
-    //     $content = '';
-    //     foreach ($menu->get_children() as $item) {
-    //         $context = $item->export_for_template($this);
-    //         $content .= $this->render_from_template('theme_argil/activitygroups', $context);
-    //     }
+	public function del_faq($type, $cid, $tid=0 ) 
+	{
+		global $DB;
+		
+		$del = false;
+		$delchild = false;
+		
+		$table = 'theme_argil_faq_cat';
+		$cond = array('id'=>$cid);
+		$condChild = array('catid'=>$cid);
+		if($type == 'topic')
+		{
+			$table = 'theme_argil_faq';
+			$cond = array('id'=>$tid);
+		}
+		else
+		{
+			$delchild = $DB->delete_records('theme_argil_faq', $condChild);
+			if(!$delchild )
+			{
+				return 'cant delete child';
+			}
+		}
+		
+		$del = $DB->delete_records($table, $cond);
+		if(!$delchild )
+		{
+			return 'cant delete rubric';
+		}
+	}
+	
+	
+	
+	protected function render_thiscourse_menu(custom_menu $menu) {
+        global $CFG;
 
-    //     return $content;
-    // }
-	// public function thiscourse_menu() {
-    //     global $PAGE, $COURSE, $OUTPUT, $CFG;
-    //     $menu = new custom_menu();
-    //     $context = $this->page->context;
+        $content = '';
+        foreach ($menu->get_children() as $item) {
+            $context = $item->export_for_template($this);
+            $content .= $this->render_from_template('theme_argil/activitygroups', $context);
+        }
+
+        return $content;
+    }
+
+	public function thiscourse_menu() {
+        global $PAGE, $COURSE, $OUTPUT, $CFG;
+        $menu = new custom_menu();
+        $context = $this->page->context;
         
-	// 	if (isset($COURSE->id) && $COURSE->id > 1) {
-	// 		$branchtitle = get_string('thiscourse', 'theme_argil');
-	// 		$branchlabel = $branchtitle;
-	// 		$branchurl = new moodle_url('#');
-	// 		$branch = $menu->add($branchlabel, $branchurl, $branchtitle, 10002);
+		if (isset($COURSE->id) && $COURSE->id > 1) {
+			$branchtitle = get_string('thiscourse', 'theme_argil');
+			$branchlabel = $branchtitle;
+			$branchurl = new moodle_url('#');
+			$branch = $menu->add($branchlabel, $branchurl, $branchtitle, 10002);
 
-	// 		$data = theme_argil_get_course_activities();
+			$data = theme_argil_get_course_activities();
 
-	// 		foreach ($data as $modname => $modfullname) {
-	// 			if ($modname === 'resources') {
+			foreach ($data as $modname => $modfullname) {
+				if ($modname === 'resources') {
 					
-	// 				$branch->add($modfullname, new moodle_url('/course/resources.php', array('id' => $PAGE->course->id)));
-	// 			} else {
+					$branch->add($modfullname, new moodle_url('/course/resources.php', array('id' => $PAGE->course->id)));
+				} else {
 
-	// 				$branch->add($modfullname, new moodle_url('/mod/'.$modname.'/index.php',
-	// 						array('id' => $PAGE->course->id)));
-	// 			}
-	// 		}
+					$branch->add($modfullname, new moodle_url('/mod/'.$modname.'/index.php',
+							array('id' => $PAGE->course->id)));
+				}
+			}
                 
-    //     }
+        }
 
-    //     return $this->render_thiscourse_menu($menu);
-    // }
+        return $this->render_thiscourse_menu($menu);
+    }
 	
-	// public function teacherdash() {
-    //     global $PAGE, $COURSE, $USER, $CFG, $DB, $OUTPUT;
+	public function teacherdash() {
+        global $PAGE, $COURSE, $USER, $CFG, $DB, $OUTPUT;
 
 
-    //     require_once($CFG->dirroot.'/completion/classes/progress.php');
-    //     $togglebutton = '';
-    //     $hasteacherdash = '';
-    //     $hasstudentdash = '';
+        require_once($CFG->dirroot.'/completion/classes/progress.php');
+        $togglebutton = '';
+        $hasteacherdash = '';
+        $hasstudentdash = '';
 		
-	// 	$showincourseonly = isset($COURSE->id) && ($PAGE->pagelayout == 'course' || $PAGE->pagelayout == 'incourse') && isloggedin() && !isguestuser(); 
-	// 	$dashlinks = ['showincourseonly' =>$showincourseonly];
-	// 	$course = $this->page->course;
-    //     $context = context_course::instance($course->id);
+		$showincourseonly = isset($COURSE->id) && ($PAGE->pagelayout == 'course' || $PAGE->pagelayout == 'incourse') && isloggedin() && !isguestuser(); 
+		$dashlinks = ['showincourseonly' =>$showincourseonly];
+		$course = $this->page->course;
+        $context = context_course::instance($course->id);
 		
-	// 	if ($showincourseonly) 
-	// 	{
-	// 		if (has_capability('moodle/course:viewhiddenactivities', $context)) 
-	// 		{
-	// 			$hasteacherdash = true;
-	// 			$hasstudentdash = false;
-	// 			$togglebutton = get_string('coursemanagementbutton', 'theme_argil');
-	// 		}
-	// 		else
-	// 		{
-	// 			$hasteacherdash = false;
-	// 			$hasstudentdash = true;
-	// 			$togglebutton = get_string('studentdashbutton', 'theme_argil');
-	// 			if(!is_enrolled($context))
-	// 			{
-	// 				$hasstudentdash = false;
-	// 				return $this->render_from_template('theme_argil/teacherdash', $dashlinks );
-	// 			}
-	// 		}
-    //     }
-	// 	else
-	// 	{
-	// 		return $this->render_from_template('theme_argil/teacherdash', $dashlinks );
-	// 	}
+		if ($showincourseonly) 
+		{
+			if (has_capability('moodle/course:viewhiddenactivities', $context)) 
+			{
+				$hasteacherdash = true;
+				$hasstudentdash = false;
+				$togglebutton = get_string('coursemanagementbutton', 'theme_argil');
+			}
+			else
+			{
+				$hasteacherdash = false;
+				$hasstudentdash = true;
+				$togglebutton = get_string('studentdashbutton', 'theme_argil');
+				if(!is_enrolled($context))
+				{
+					$hasstudentdash = false;
+					return $this->render_from_template('theme_argil/teacherdash', $dashlinks );
+				}
+			}
+        }
+		else
+		{
+			return $this->render_from_template('theme_argil/teacherdash', $dashlinks );
+		}
 
 
         
         
-    //     $thiscourse = $this->thiscourse_menu();
+        $thiscourse = $this->thiscourse_menu();
        
 
         
-    //     //link catagories
-    //     $haspermission = has_capability('enrol/category:config', $context) && isset($COURSE->id) && $COURSE->id > 1;
-    //     $userlinks = get_string('userlinks', 'theme_argil');
-    //     $userlinksdesc = get_string('userlinks_desc', 'theme_argil');
-    //     $qbank = get_string('qbank', 'theme_argil');
-    //     $qbankdesc = get_string('qbank_desc', 'theme_argil');
-    //     $badges = get_string('badges', 'theme_argil');
-    //     $badgesdesc = get_string('badges_desc', 'theme_argil');
-    //     $coursemanage = get_string('coursemanage', 'theme_argil');
-    //     $coursemanagedesc = get_string('coursemanage_desc', 'theme_argil');
+        //link catagories
+        $haspermission = has_capability('enrol/category:config', $context) && isset($COURSE->id) && $COURSE->id > 1;
+        $userlinks = get_string('userlinks', 'theme_argil');
+        $userlinksdesc = get_string('userlinks_desc', 'theme_argil');
+        $qbank = get_string('qbank', 'theme_argil');
+        $qbankdesc = get_string('qbank_desc', 'theme_argil');
+        $badges = get_string('badges', 'theme_argil');
+        $badgesdesc = get_string('badges_desc', 'theme_argil');
+        $coursemanage = get_string('coursemanage', 'theme_argil');
+        $coursemanagedesc = get_string('coursemanage_desc', 'theme_argil');
 
-    //     //user links
+        //user links
         
-    //     $gradestitle = get_string('gradesoverview', 'gradereport_overview');
-    //     $gradeslink = new moodle_url('/grade/report/grader/index.php', array('id' => $PAGE->course->id));
-    //     $enroltitle = get_string('enrolledusers', 'enrol');
-    //     $enrollink = new moodle_url('/user/index.php', array('id' => $PAGE->course->id));
-    //     $grouptitle = get_string('groups', 'group');
-    //     $grouplink = new moodle_url('/group/index.php', array('id' => $PAGE->course->id));
-    //     $enrolmethodtitle = get_string('enrolmentinstances', 'enrol');
-    //     $enrolmethodlink = new moodle_url('/enrol/instances.php', array('id' => $PAGE->course->id));
+        $gradestitle = get_string('gradesoverview', 'gradereport_overview');
+        $gradeslink = new moodle_url('/grade/report/grader/index.php', array('id' => $PAGE->course->id));
+        $enroltitle = get_string('enrolledusers', 'enrol');
+        $enrollink = new moodle_url('/user/index.php', array('id' => $PAGE->course->id));
+        $grouptitle = get_string('groups', 'group');
+        $grouplink = new moodle_url('/group/index.php', array('id' => $PAGE->course->id));
+        $enrolmethodtitle = get_string('enrolmentinstances', 'enrol');
+        $enrolmethodlink = new moodle_url('/enrol/instances.php', array('id' => $PAGE->course->id));
         
-    //     //user reports
-    //     $logstitle = get_string('logs', 'moodle');
-    //     $logslink = new moodle_url('/report/log/index.php', array('id' => $PAGE->course->id));
-    //     $livelogstitle = get_string('loglive:view', 'report_loglive');
-    //     $livelogslink = new moodle_url('/report/loglive/index.php', array('id' => $PAGE->course->id));
-    //     $participationtitle = get_string('participation:view', 'report_participation');
-    //     $participationlink = new moodle_url('/report/participation/index.php', array('id' => $PAGE->course->id));
+        //user reports
+        $logstitle = get_string('logs', 'moodle');
+        $logslink = new moodle_url('/report/log/index.php', array('id' => $PAGE->course->id));
+        $livelogstitle = get_string('loglive:view', 'report_loglive');
+        $livelogslink = new moodle_url('/report/loglive/index.php', array('id' => $PAGE->course->id));
+        $participationtitle = get_string('participation:view', 'report_participation');
+        $participationlink = new moodle_url('/report/participation/index.php', array('id' => $PAGE->course->id));
 
-    //     //questionbank
-    //     $qbanktitle = get_string('questionbank', 'question');
-    //     $qbanklink = new moodle_url('/question/edit.php', array('courseid' => $PAGE->course->id));
-    //     $qcattitle = get_string('questioncategory', 'question');
-    //     $qcatlink = new moodle_url('/question/bank/managecategories/category.php', array('courseid' => $PAGE->course->id));
-	// 	$qimporttitle = get_string('import', 'question');
-    //     $qimportlink = new moodle_url('/question/bank/importquestions/import.php', array('courseid' => $PAGE->course->id));
-	// 	$qexporttitle = get_string('export', 'question');
-	// 	$qexportlink = new moodle_url('/question/bank/exportquestions/export.php', array('courseid' => $PAGE->course->id));
+        //questionbank
+        $qbanktitle = get_string('questionbank', 'question');
+        $qbanklink = new moodle_url('/question/edit.php', array('courseid' => $PAGE->course->id));
+        $qcattitle = get_string('questioncategory', 'question');
+        $qcatlink = new moodle_url('/question/bank/managecategories/category.php', array('courseid' => $PAGE->course->id));
+		$qimporttitle = get_string('import', 'question');
+        $qimportlink = new moodle_url('/question/bank/importquestions/import.php', array('courseid' => $PAGE->course->id));
+		$qexporttitle = get_string('export', 'question');
+		$qexportlink = new moodle_url('/question/bank/exportquestions/export.php', array('courseid' => $PAGE->course->id));
         
-    //     //manage course
-    //     $courseadmintitle = get_string('courseadministration', 'moodle');
-    //     $courseadminlink = new moodle_url('/course/admin.php', array('courseid' => $PAGE->course->id));
-    //     $coursecompletiontitle = get_string('coursecompletion', 'moodle');
-    //     $coursecompletionlink = new moodle_url('/course/completion.php', array('id' => $PAGE->course->id));
-    //     $courseresettitle = get_string('reset', 'moodle');
-    //     $courseresetlink = new moodle_url('/course/reset.php', array('id' => $PAGE->course->id));
-    //     $coursebackuptitle = get_string('backup', 'moodle');
-    //     $coursebackuplink = new moodle_url('/backup/backup.php', array('id' => $PAGE->course->id));
-    //     $courserestorelink = new moodle_url('/backup/restorefile.php', array('contextid' => $PAGE->context->id));
-    //     $courseimporttitle = get_string('import', 'moodle');
-    //     $courseimportlink = new moodle_url('/backup/import.php', array('id' => $PAGE->course->id));
-    //     $courseedittitle = get_string('editcoursesettings', 'moodle');
-    //     $courseeditlink = new moodle_url('/course/edit.php', array('id' => $PAGE->course->id));
+        //manage course
+        $courseadmintitle = get_string('courseadministration', 'moodle');
+        $courseadminlink = new moodle_url('/course/admin.php', array('courseid' => $PAGE->course->id));
+        $coursecompletiontitle = get_string('coursecompletion', 'moodle');
+        $coursecompletionlink = new moodle_url('/course/completion.php', array('id' => $PAGE->course->id));
+        $courseresettitle = get_string('reset', 'moodle');
+        $courseresetlink = new moodle_url('/course/reset.php', array('id' => $PAGE->course->id));
+        $coursebackuptitle = get_string('backup', 'moodle');
+        $coursebackuplink = new moodle_url('/backup/backup.php', array('id' => $PAGE->course->id));
+        $courserestorelink = new moodle_url('/backup/restorefile.php', array('contextid' => $PAGE->context->id));
+        $courseimporttitle = get_string('import', 'moodle');
+        $courseimportlink = new moodle_url('/backup/import.php', array('id' => $PAGE->course->id));
+        $courseedittitle = get_string('editcoursesettings', 'moodle');
+        $courseeditlink = new moodle_url('/course/edit.php', array('id' => $PAGE->course->id));
         
-    //     //badges
-    //     $badgemanagetitle = get_string('managebadges', 'badges');
-    //     $badgemanagelink = new moodle_url('/badges/index.php?type=2', array('id' => $PAGE->course->id));
-    //     $badgeaddtitle = get_string('newbadge', 'badges');
-    //     $badgeaddlink = new moodle_url('/badges/newbadge.php?type=2', array('id' => $PAGE->course->id));
+        //badges
+        $badgemanagetitle = get_string('managebadges', 'badges');
+        $badgemanagelink = new moodle_url('/badges/index.php?type=2', array('id' => $PAGE->course->id));
+        $badgeaddtitle = get_string('newbadge', 'badges');
+        $badgeaddlink = new moodle_url('/badges/newbadge.php?type=2', array('id' => $PAGE->course->id));
         
-    //     //misc
-    //     $recyclebintitle = get_string('pluginname', 'tool_recyclebin');
-    //     $recyclebinlink = new moodle_url('/admin/tool/recyclebin/index.php', array('contextid' => $PAGE->context->id));
+        //misc
+        $recyclebintitle = get_string('pluginname', 'tool_recyclebin');
+        $recyclebinlink = new moodle_url('/admin/tool/recyclebin/index.php', array('contextid' => $PAGE->context->id));
 
 
-    //     //Student Dash
-    //         if (\core_completion\progress::get_course_progress_percentage($PAGE->course)) {
-    //             $comppc = \core_completion\progress::get_course_progress_percentage($PAGE->course);
-    //             $comppercent = number_format($comppc, 0);
-    //             $hasprogress = true;
-    //         } else {
-    //             $comppercent = 0;
-    //             $hasprogress = false;
-    //         }
+        //Student Dash
+            if (\core_completion\progress::get_course_progress_percentage($PAGE->course)) {
+                $comppc = \core_completion\progress::get_course_progress_percentage($PAGE->course);
+                $comppercent = number_format($comppc, 0);
+                $hasprogress = true;
+            } else {
+                $comppercent = 0;
+                $hasprogress = false;
+            }
 			
-	// 		$coursecontext = context_course::instance($COURSE->id);
-	// 		$instances = enrol_get_instances($course->id, true);
-	// 		$plugins   = enrol_get_plugins(true);
-	// 		$btnunenroltitle = '';
-	// 		$btnunenrollink = '';
-	// 		$btnunenrolicon = '';
+			$coursecontext = context_course::instance($COURSE->id);
+			$instances = enrol_get_instances($course->id, true);
+			$plugins   = enrol_get_plugins(true);
+			$btnunenroltitle = '';
+			$btnunenrollink = '';
+			$btnunenrolicon = '';
 
-	// 		foreach ($instances as $instance) 
-	// 		{
-	// 			if (!isset($plugins[$instance->enrol])) {
-	// 				continue;
-	// 			}
-	// 			$plugin = $plugins[$instance->enrol];
-	// 			if ($unenrollink = $plugin->get_unenrolself_link($instance)) 
-	// 			{
-	// 				$btnunenroltitle = get_string('unenrolme', 'core_enrol', get_string('studentdashbutton', 'theme_argil'));
-	// 				$btnunenrollink = $unenrollink;
-	// 				$btnunenrolicon = '<i class="fas fa-user"></i>';
-	// 			}
-	// 		}					
-	// 		//}
+			foreach ($instances as $instance) 
+			{
+				if (!isset($plugins[$instance->enrol])) {
+					continue;
+				}
+				$plugin = $plugins[$instance->enrol];
+				if ($unenrollink = $plugin->get_unenrolself_link($instance)) 
+				{
+					$btnunenroltitle = get_string('unenrolme', 'core_enrol', get_string('studentdashbutton', 'theme_argil'));
+					$btnunenrollink = $unenrollink;
+					$btnunenrolicon = '<i class="fas fa-user"></i>';
+				}
+			}					
+			//}
 			
-	// 		$progresschartcontext = ['progress' => $comppercent];
-	// 		$progresschart = $this->render_from_template('theme_argil/progress-bar', $progresschartcontext);
+			$progresschartcontext = ['progress' => $comppercent];
+			$progresschart = $this->render_from_template('theme_argil/progress-bar', $progresschartcontext);
 			
 			
 			
-    //         $gradeslink = new moodle_url('/grade/report/user/index.php', array('id' => $PAGE->course->id));
+            $gradeslink = new moodle_url('/grade/report/user/index.php', array('id' => $PAGE->course->id));
             
 
-    //         $hascourseinfogroup = array (
-    //             'title' => get_string('courseinfo', 'theme_argil'),
-    //             'icon' => 'map'
-    //         );
-    //         $summary = theme_argil_strip_html_tags($COURSE->summary);
-    //         $summarytrim = theme_argil_course_trim_char($summary, 300);
-    //         $courseinfo = array (
-    //             array(
-    //                 'content' => format_text($summarytrim),
-    //             )
-    //         );
-    //         $hascoursestaff = array (
-    //             'title' => get_string('coursestaff', 'theme_argil'),
-    //             'icon' => 'users'
-    //         );
+            $hascourseinfogroup = array (
+                'title' => get_string('courseinfo', 'theme_argil'),
+                'icon' => 'map'
+            );
+            $summary = theme_argil_strip_html_tags($COURSE->summary);
+            $summarytrim = theme_argil_course_trim_char($summary, 300);
+            $courseinfo = array (
+                array(
+                    'content' => format_text($summarytrim),
+                )
+            );
+            $hascoursestaff = array (
+                'title' => get_string('coursestaff', 'theme_argil'),
+                'icon' => 'users'
+            );
 			
-	// 		$courseteachers = array();
-	// 		$user_capability = 'moodle/course:viewhiddenactivities';
-	// 		$context = context_course::instance($PAGE->course->id);
-	// 		$teachers = get_users_by_capability($context, 'moodle/course:viewhiddenactivities', 
-	// 			'u.id, u.firstname, u.middlename, u.lastname, u.alternatename,
-    //             u.firstnamephonetic, u.lastnamephonetic, u.email, u.picture,
-    //             u.imagealt, u.deleted, u.suspended');
+			$courseteachers = array();
+			$user_capability = 'moodle/course:viewhiddenactivities';
+			$context = context_course::instance($PAGE->course->id);
+			$teachers = get_users_by_capability($context, 'moodle/course:viewhiddenactivities', 
+				'u.id, u.firstname, u.middlename, u.lastname, u.alternatename,
+                u.firstnamephonetic, u.lastnamephonetic, u.email, u.picture,
+                u.imagealt, u.deleted, u.suspended');
 			
-	// 		foreach ($teachers as $staff) {
-	// 			if(!$staff->deleted && !$staff->suspended)
-	// 			{
-	// 				$picture = $OUTPUT->user_picture($staff, array('size' => 40));
-	// 				$messaging = new moodle_url('/message/index.php', array('id' => $staff->id));
-	// 				$hasmessaging = $CFG->messaging==1;
-	// 				$courseteachers[] = array (
-	// 					'name' => $staff->firstname . ' ' . $staff->lastname . ' ' . $staff->alternatename,
-	// 					'email' => $staff->email,
-	// 					'picture' => $picture,
-	// 					'messaging' => $messaging,
-	// 					'hasmessaging' => $hasmessaging
-	// 				);
-	// 			}
-    //         }			
+			foreach ($teachers as $staff) {
+				if(!$staff->deleted && !$staff->suspended)
+				{
+					$picture = $OUTPUT->user_picture($staff, array('size' => 40));
+					$messaging = new moodle_url('/message/index.php', array('id' => $staff->id));
+					$hasmessaging = $CFG->messaging==1;
+					$courseteachers[] = array (
+						'name' => $staff->firstname . ' ' . $staff->lastname . ' ' . $staff->alternatename,
+						'email' => $staff->email,
+						'picture' => $picture,
+						'messaging' => $messaging,
+						'hasmessaging' => $hasmessaging
+					);
+				}
+            }			
 
 
-    //         $activitylinkstitle = get_string('activitylinkstitle', 'theme_argil');
+            $activitylinkstitle = get_string('activitylinkstitle', 'theme_argil');
 
-    //         $mygradestext = get_string('mygradestext', 'theme_argil');
-    //         $myprogresstext = get_string('myprogresstext', 'theme_argil');
-    //         $studentcoursemanage = get_string('courseadministration', 'moodle');
+            $mygradestext = get_string('mygradestext', 'theme_argil');
+            $myprogresstext = get_string('myprogresstext', 'theme_argil');
+            $studentcoursemanage = get_string('courseadministration', 'moodle');
 
-    //         //permissionchecks for teacher access
-    //         $hasquestionpermission = has_capability('moodle/question:add', $context);
-    //         $hasbadgepermission = has_capability('moodle/badges:awardbadge', $context);
-    //         $hascoursepermission = has_capability('moodle/backup:backupcourse', $context);
-    //         $hasuserpermission = has_capability('moodle/course:viewhiddenactivities', $context);
-    //         $hasgradebookshow = $PAGE->course->showgrades == 1;
-    //         $hascompletionshow = $PAGE->course->enablecompletion == 1;
+            //permissionchecks for teacher access
+            $hasquestionpermission = has_capability('moodle/question:add', $context);
+            $hasbadgepermission = has_capability('moodle/badges:awardbadge', $context);
+            $hascoursepermission = has_capability('moodle/backup:backupcourse', $context);
+            $hasuserpermission = has_capability('moodle/course:viewhiddenactivities', $context);
+            $hasgradebookshow = $PAGE->course->showgrades == 1;
+            $hascompletionshow = $PAGE->course->enablecompletion == 1;
         
-	// 	$btnMoretitle = get_string('morenavigationlinks');
-	// 	$btnMorelink = new moodle_url('/course/admin.php', array('courseid' => $PAGE->course->id));    
+		$btnMoretitle = get_string('morenavigationlinks');
+		$btnMorelink = new moodle_url('/course/admin.php', array('courseid' => $PAGE->course->id));    
 
 
-    //     //send to template
-    //     $dashlinks = [
-    //     'showincourseonly' =>$showincourseonly,
-    //     'thiscourse' => $thiscourse,
-    //     'togglebutton' => $togglebutton,
-    //     'userlinkstitle' => $userlinks,
-    //     'userlinksdesc' => $userlinksdesc,
-    //     'qbanktitle' => $qbank,
-    //     'activitylinkstitle' => $activitylinkstitle,
-    //     'qbankdesc' => $qbankdesc,
-    //     'badgestitle' => $badges,
-    //     'badgesdesc' => $badgesdesc,
-    //     'coursemanagetitle' => $coursemanage,
-    //     'coursemanagedesc' => $coursemanagedesc,
-    //     'progresschart' => $progresschart,
-    //     'gradeslink' => $gradeslink,
-    //     'hascourseinfogroup' => $hascourseinfogroup,
-    //     'courseinfo' => $courseinfo,
-    //     'hascoursestaffgroup' => $hascoursestaff,
-    //     'courseteachers' => $courseteachers,
-    //     'myprogresstext' => $myprogresstext,
-    //     'mygradestext' => $mygradestext,
-    //     'hasteacherdash' => $hasteacherdash,
-    //     'teacherdash' =>array('hasquestionpermission' => $hasquestionpermission, 'hasbadgepermission' => $hasbadgepermission, 'hascoursepermission' => $hascoursepermission, 'hasuserpermission' => $hasuserpermission),
-    //     'hasstudentdash' => $hasstudentdash,
-    //     'hasgradebookshow' => $hasgradebookshow,
-    //     'hascompletionshow' => $hascompletionshow,
-	// 	'btnunenrol' => array(
-	// 				'btnunenroltitle' => $btnunenroltitle,		
-	// 				'btnunenrollink' => $btnunenrollink,		
-	// 				'btnunenrolicon' => $btnunenrolicon,		
+        //send to template
+        $dashlinks = [
+        'showincourseonly' =>$showincourseonly,
+        'thiscourse' => $thiscourse,
+        'togglebutton' => $togglebutton,
+        'userlinkstitle' => $userlinks,
+        'userlinksdesc' => $userlinksdesc,
+        'qbanktitle' => $qbank,
+        'activitylinkstitle' => $activitylinkstitle,
+        'qbankdesc' => $qbankdesc,
+        'badgestitle' => $badges,
+        'badgesdesc' => $badgesdesc,
+        'coursemanagetitle' => $coursemanage,
+        'coursemanagedesc' => $coursemanagedesc,
+        'progresschart' => $progresschart,
+        'gradeslink' => $gradeslink,
+        'hascourseinfogroup' => $hascourseinfogroup,
+        'courseinfo' => $courseinfo,
+        'hascoursestaffgroup' => $hascoursestaff,
+        'courseteachers' => $courseteachers,
+        'myprogresstext' => $myprogresstext,
+        'mygradestext' => $mygradestext,
+        'hasteacherdash' => $hasteacherdash,
+        'teacherdash' =>array('hasquestionpermission' => $hasquestionpermission, 'hasbadgepermission' => $hasbadgepermission, 'hascoursepermission' => $hascoursepermission, 'hasuserpermission' => $hasuserpermission),
+        'hasstudentdash' => $hasstudentdash,
+        'hasgradebookshow' => $hasgradebookshow,
+        'hascompletionshow' => $hascompletionshow,
+		'btnunenrol' => array(
+					'btnunenroltitle' => $btnunenroltitle,		
+					'btnunenrollink' => $btnunenrollink,		
+					'btnunenrolicon' => $btnunenrolicon,		
 		
-	// 	),				
+		),				
 
-    //     'dashlinks' => array(
-    //             array('hasuserlinks' => $gradestitle, 'title' => $gradestitle, 'url' => $gradeslink),
-    //             array('hasuserlinks' => $enroltitle, 'title' => $enroltitle, 'url' => $enrollink),
-    //             array('hasuserlinks' => $grouptitle, 'title' => $grouptitle, 'url' => $grouplink),
-    //             array('hasuserlinks' => $enrolmethodtitle, 'title' => $enrolmethodtitle, 'url' => $enrolmethodlink),
-    //             array('hasuserlinks' => $logstitle, 'title' => $logstitle, 'url' => $logslink),
-    //             array('hasuserlinks' => $livelogstitle, 'title' => $livelogstitle, 'url' => $livelogslink),
-    //             array('hasuserlinks' => $participationtitle, 'title' => $participationtitle, 'url' => $participationlink),
-    //             array('hasqbanklinks' => $qbanktitle, 'title' => $qbanktitle, 'url' => $qbanklink),
-    //             array('hasqbanklinks' => $qcattitle, 'title' => $qcattitle, 'url' => $qcatlink),
-    //             array('hasqbanklinks' => $qimporttitle, 'title' => $qimporttitle, 'url' => $qimportlink),
-    //             array('hasqbanklinks' => $qexporttitle, 'title' => $qexporttitle, 'url' => $qexportlink),
-    //             array('hascoursemanagelinks' => $courseedittitle, 'title' => $courseedittitle, 'url' => $courseeditlink),
-    //             array('hascoursemanagelinks' => $coursecompletiontitle, 'title' => $coursecompletiontitle, 'url' => $coursecompletionlink),
-    //             array('hascoursemanagelinks' => $courseadmintitle, 'title' => $courseadmintitle, 'url' => $courseadminlink),
-    //             array('hascoursemanagelinks' => $courseresettitle, 'title' => $courseresettitle, 'url' => $courseresetlink),
-    //             array('hascoursemanagelinks' => $coursebackuptitle, 'title' => $coursebackuptitle, 'url' => $coursebackuplink),
-    //             array('hascoursemanagelinks' => $courseimporttitle, 'title' => $courseimporttitle, 'url' => $courseimportlink),
-    //             array('hascoursemanagelinks' => $recyclebintitle, 'title' => $recyclebintitle, 'url' => $recyclebinlink),
-    //             array('hasbadgelinks' => $badgemanagetitle, 'title' => $badgemanagetitle, 'url' => $badgemanagelink),
-    //             array('hasbadgelinks' => $badgeaddtitle, 'title' => $badgeaddtitle, 'url' => $badgeaddlink),
-	// 			array('hascoursemanagemorelinks' => $btnMoretitle, 'title' => $btnMoretitle, 'url' => $btnMorelink),
-    //         ),
-    //     ];
+        'dashlinks' => array(
+                array('hasuserlinks' => $gradestitle, 'title' => $gradestitle, 'url' => $gradeslink),
+                array('hasuserlinks' => $enroltitle, 'title' => $enroltitle, 'url' => $enrollink),
+                array('hasuserlinks' => $grouptitle, 'title' => $grouptitle, 'url' => $grouplink),
+                array('hasuserlinks' => $enrolmethodtitle, 'title' => $enrolmethodtitle, 'url' => $enrolmethodlink),
+                array('hasuserlinks' => $logstitle, 'title' => $logstitle, 'url' => $logslink),
+                array('hasuserlinks' => $livelogstitle, 'title' => $livelogstitle, 'url' => $livelogslink),
+                array('hasuserlinks' => $participationtitle, 'title' => $participationtitle, 'url' => $participationlink),
+                array('hasqbanklinks' => $qbanktitle, 'title' => $qbanktitle, 'url' => $qbanklink),
+                array('hasqbanklinks' => $qcattitle, 'title' => $qcattitle, 'url' => $qcatlink),
+                array('hasqbanklinks' => $qimporttitle, 'title' => $qimporttitle, 'url' => $qimportlink),
+                array('hasqbanklinks' => $qexporttitle, 'title' => $qexporttitle, 'url' => $qexportlink),
+                array('hascoursemanagelinks' => $courseedittitle, 'title' => $courseedittitle, 'url' => $courseeditlink),
+                array('hascoursemanagelinks' => $coursecompletiontitle, 'title' => $coursecompletiontitle, 'url' => $coursecompletionlink),
+                array('hascoursemanagelinks' => $courseadmintitle, 'title' => $courseadmintitle, 'url' => $courseadminlink),
+                array('hascoursemanagelinks' => $courseresettitle, 'title' => $courseresettitle, 'url' => $courseresetlink),
+                array('hascoursemanagelinks' => $coursebackuptitle, 'title' => $coursebackuptitle, 'url' => $coursebackuplink),
+                array('hascoursemanagelinks' => $courseimporttitle, 'title' => $courseimporttitle, 'url' => $courseimportlink),
+                array('hascoursemanagelinks' => $recyclebintitle, 'title' => $recyclebintitle, 'url' => $recyclebinlink),
+                array('hasbadgelinks' => $badgemanagetitle, 'title' => $badgemanagetitle, 'url' => $badgemanagelink),
+                array('hasbadgelinks' => $badgeaddtitle, 'title' => $badgeaddtitle, 'url' => $badgeaddlink),
+				array('hascoursemanagemorelinks' => $btnMoretitle, 'title' => $btnMoretitle, 'url' => $btnMorelink),
+            ),
+        ];
 
 
-    //     return $this->render_from_template('theme_argil/teacherdash', $dashlinks );
+        return $this->render_from_template('theme_argil/teacherdash', $dashlinks );
         
-    // }
+    }
 	
 	
-	// public function gestion_course() 
-	// {
-    //     global $PAGE;
+	public function gestion_course() 
+	{
+        global $PAGE;
 		
-	// 	$showgeationcoursebtn = false;
+		$showgeationcoursebtn = false;
 
-	// 	$createurl = ''.$PAGE->theme->settings->createcourseurl;
-	// 	$restoreurl = ''.$PAGE->theme->settings->restorecourseurl;
+		$createurl = ''.$PAGE->theme->settings->createcourseurl;
+		$restoreurl = ''.$PAGE->theme->settings->restorecourseurl;
 		
-	// 	if(strlen($createurl) > 4 || strlen($restoreurl) > 4 )
-	// 	{
-	// 		$showgeationcoursebtn = true;
-	// 	}
+		if(strlen($createurl) > 4 || strlen($restoreurl) > 4 )
+		{
+			$showgeationcoursebtn = true;
+		}
 			
-	// 	$gclinks = [
-    //     'showgeationcoursebtn' =>$showgeationcoursebtn,
-    //     'createurl' => $createurl,
-    //     'restoreurl' => $restoreurl,
-    //     'togglebutton' => get_string('coursegestion', 'theme_argil')
-	// 	];
-	// 	return $this->render_from_template('theme_argil/obj_gestion_course', $gclinks );
-	// }
+		$gclinks = [
+        'showgeationcoursebtn' =>$showgeationcoursebtn,
+        'createurl' => $createurl,
+        'restoreurl' => $restoreurl,
+        'togglebutton' => get_string('coursegestion', 'theme_argil')
+		];
+		return $this->render_from_template('theme_argil/obj_gestion_course', $gclinks );
+	}
 	
-	// public function search_box_top() {
-	// 	global $PAGE, $CFG;
+	public function search_box_top() {
+		global $PAGE, $CFG;
 
-	// 	if($PAGE->pagetype == 'mod-moodecgrpmanagement-mod')
-	// 	{
-	// 		return '';
-	// 	}
-	// 	$action = new moodle_url('/course/search.php');
+		if($PAGE->pagetype == 'mod-moodecgrpmanagement-mod')
+		{
+			return '';
+		}
+		$action = new moodle_url('/course/search.php');
 
-	// 	$data = [
-	// 	'action' => $action,
-	// 	'hiddenfields' => '',
-	// 	'inputname' => 'q',
-	// 	'searchstring' => get_string('searchcourse','theme_argil'),
-	// 	];
-	// 	return $this->render_from_template('core/search_input', $data);
+		$data = [
+		'action' => $action,
+		'hiddenfields' => '',
+		'inputname' => 'q',
+		'searchstring' => get_string('searchcourse','theme_argil'),
+		];
+		return $this->render_from_template('core/search_input', $data);
 
-	// }
+	}
 	
 	
-	// protected function checkStatut($isteacher) 
-	// {
-	// 	global $DB, $USER;
-	// 	$condition = '';
-	// 	$roleteacher="'manager', 'coursecreator', 'editingteacher', 'teacher'";
-	// 	$rolestudent="'student'";
+	protected function checkStatut($isteacher) 
+	{
+		global $DB, $USER;
+		$condition = '';
+		$roleteacher="'manager', 'coursecreator', 'editingteacher', 'teacher'";
+		$rolestudent="'student'";
 
 
-	// 	if($isteacher){
-	// 		$condition = '  archetype IN ('.$roleteacher.') ';
-	// 	}
-	// 	else{
-	// 		$condition = '  archetype = '.$rolestudent.' ';
-	// 	}
+		if($isteacher){
+			$condition = '  archetype IN ('.$roleteacher.') ';
+		}
+		else{
+			$condition = '  archetype = '.$rolestudent.' ';
+		}
 		
-	// 	$sql = 'SELECT count(raid) FROM 
-	// 		((select id as raid, roleid from `mdl_role_assignments` ra where userid = '.$USER->id.') ras LEFT JOIN `mdl_role` r ON r.id = ras.roleid)
-	// 		where '.$condition.' ';
-	// 	$result = $DB->count_records_sql($sql);
+		$sql = 'SELECT count(raid) FROM 
+			((select id as raid, roleid from `mdl_role_assignments` ra where userid = '.$USER->id.') ras LEFT JOIN `mdl_role` r ON r.id = ras.roleid)
+			where '.$condition.' ';
+		$result = $DB->count_records_sql($sql);
 
-	// 	//print_r($result);
-	// 	if($result > 0)
-	// 	{
-	// 		return true;
-	// 	}
-	// 	else
-	// 	{
-	// 		return false;
-	// 	}
-	// }
+		//print_r($result);
+		if($result > 0)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
-	// public function get_hesnews() {
-	// 	global $DB, $USER;
-	// 	$content = '';
-	// 	$isProf = false;
-	// 	$isStud = false;
+	public function get_hesnews() {
+		global $DB, $USER;
+		$content = '';
+		$isProf = false;
+		$isStud = false;
 		
-	// 	$isteacher = true;
-	// 	$isProf = $this->checkStatut($isteacher);
-	// 	$isStud = $this->checkStatut(!$isteacher);
+		$isteacher = true;
+		$isProf = $this->checkStatut($isteacher);
+		$isStud = $this->checkStatut(!$isteacher);
 
-	// 	$newsdata = [];
-	// 	$totaldisplay = 0;
-	// 	if($newstmp = $this->get_hesnews_data('all'))
-	// 	{
-	// 		$newsdata['news'][] = $newstmp;
-	// 		if($newstmp->display)
-	// 			$totaldisplay++;
-	// 	}
+		$newsdata = [];
+		$totaldisplay = 0;
+		if($newstmp = $this->get_hesnews_data('all'))
+		{
+			$newsdata['news'][] = $newstmp;
+			if($newstmp->display)
+				$totaldisplay++;
+		}
 
-	// 	if($isProf)
-	// 	{
-	// 		if($newstmp = $this->get_hesnews_data('teacher'))
-	// 		{
-	// 				$newsdata['news'][] = $newstmp;
-	// 				if($newstmp->display)
-	// 					$totaldisplay++;
-	// 		}
-	// 	}
-	// 	if($isStud)
-	// 	{
-	// 		if($newstmp = $this->get_hesnews_data('student'))
-	// 		{
-	// 				$newsdata['news'][] = $newstmp;
-	// 				if($newstmp->display)
-	// 					$totaldisplay++;
-	// 		}
-	// 	}
+		if($isProf)
+		{
+			if($newstmp = $this->get_hesnews_data('teacher'))
+			{
+					$newsdata['news'][] = $newstmp;
+					if($newstmp->display)
+						$totaldisplay++;
+			}
+		}
+		if($isStud)
+		{
+			if($newstmp = $this->get_hesnews_data('student'))
+			{
+					$newsdata['news'][] = $newstmp;
+					if($newstmp->display)
+						$totaldisplay++;
+			}
+		}
 		
 		
 
-	// 	$newsdata['total'] =  $totaldisplay;
+		$newsdata['total'] =  $totaldisplay;
 		
-	// 	//print_object($newsdata);
-	// 	return $this->render_from_template('theme_argil/obj_hesnews', $newsdata);
-	// }
+		//print_object($newsdata);
+		return $this->render_from_template('theme_argil/obj_hesnews', $newsdata);
+	}
 	
-	// public function get_hesnews_data($type) {
-	// 	global $DB;
+	public function get_hesnews_data($type) {
+		global $DB;
 		
-	// 	if($news = $DB->get_record('theme_argil_news', array('type' => $type)))
-	// 	{
-	// 		//!is_null  !== null
-	// 		if($news->name !== null && $news->content !== null )
-	// 		{
-	// 			if(strlen($news->name) > 5 && strlen($news->content) > 5 )
-	// 			{
-	// 				return $news;
-	// 			}
-	// 		}
+		if($news = $DB->get_record('theme_argil_news', array('type' => $type)))
+		{
+			//!is_null  !== null
+			if($news->name !== null && $news->content !== null )
+			{
+				if(strlen($news->name) > 5 && strlen($news->content) > 5 )
+				{
+					return $news;
+				}
+			}
 			
-	// 	}
-	// 	return '';
-	// }
+		}
+		return '';
+	}
 	
-	// public function set_hesnews($news) {
-	// 	global $DB;
-	// 	$table = "theme_argil_news";
-	// 	$newsrecord = new \stdClass();
+	public function set_hesnews($news) {
+		global $DB;
+		$table = "theme_argil_news";
+		$newsrecord = new \stdClass();
 		
-	// 	$news_all_name = $news->news_all_name;
-	// 	$news_all_content = $news->news_all_content['text'];
+		$news_all_name = $news->news_all_name;
+		$news_all_content = $news->news_all_content['text'];
 		
-	// 	$news_t_name = $news->news_teacher_name;
-	// 	$news_t_content = $news->news_teacher_content['text'];
+		$news_t_name = $news->news_teacher_name;
+		$news_t_content = $news->news_teacher_content['text'];
 		
-	// 	$news_s_name = $news->news_student_name;
-	// 	$news_s_content = $news->news_student_content['text'];
+		$news_s_name = $news->news_student_name;
+		$news_s_content = $news->news_student_content['text'];
 		
-	// 	$news_all_display = 0;
-	// 	$news_s_display = 0;
-	// 	$news_t_display = 0;
-	// 	if(isset($news->news_all_display))
-	// 		$news_all_display = 1;
-	// 	if(isset($news->news_teacher_display))
-	// 		$news_t_display = 1;		
-	// 	if(isset($news->news_student_display))
-	// 		$news_s_display = 1;
+		$news_all_display = 0;
+		$news_s_display = 0;
+		$news_t_display = 0;
+		if(isset($news->news_all_display))
+			$news_all_display = 1;
+		if(isset($news->news_teacher_display))
+			$news_t_display = 1;		
+		if(isset($news->news_student_display))
+			$news_s_display = 1;
 
 
-	// 	if(strlen($news_all_name) > 1 && strlen($news_all_content) > 1 )
-	// 	{
-	// 		if($newid1 = $DB->get_field('theme_argil_news', 'id', array('type' => 'all')))
-	// 		{
-	// 			$newsrecord->id = $newid1;
-	// 			$newsrecord->name = $news_all_name;
-	// 			$newsrecord->display = $news_all_display;
-	// 			$newsrecord->content = $news_all_content;
-	// 			$DB->update_record($table, $newsrecord);
-	// 		}
+		if(strlen($news_all_name) > 1 && strlen($news_all_content) > 1 )
+		{
+			if($newid1 = $DB->get_field('theme_argil_news', 'id', array('type' => 'all')))
+			{
+				$newsrecord->id = $newid1;
+				$newsrecord->name = $news_all_name;
+				$newsrecord->display = $news_all_display;
+				$newsrecord->content = $news_all_content;
+				$DB->update_record($table, $newsrecord);
+			}
 			
-	// 	}
+		}
 		
-	// 	if(strlen($news_t_name) > 1 && strlen($news_t_content) > 1 )
-	// 	{
-	// 		if($newid2 = $DB->get_field('theme_argil_news', 'id', array('type' => 'teacher')))
-	// 		{
-	// 			$newsrecord->id = $newid2;
-	// 			$newsrecord->name = $news_t_name;
-	// 			$newsrecord->display = $news_t_display;
-	// 			$newsrecord->content = $news_t_content;
-	// 			$DB->update_record($table, $newsrecord);
-	// 		}
-	// 	}
+		if(strlen($news_t_name) > 1 && strlen($news_t_content) > 1 )
+		{
+			if($newid2 = $DB->get_field('theme_argil_news', 'id', array('type' => 'teacher')))
+			{
+				$newsrecord->id = $newid2;
+				$newsrecord->name = $news_t_name;
+				$newsrecord->display = $news_t_display;
+				$newsrecord->content = $news_t_content;
+				$DB->update_record($table, $newsrecord);
+			}
+		}
 		
-	// 	if(strlen($news_s_name) > 1 && strlen($news_s_content) > 1 )
-	// 	{
-	// 		if($newid3 = $DB->get_field('theme_argil_news', 'id', array('type' => 'student')))
-	// 		{
-	// 			$newsrecord->id = $newid3;
-	// 			$newsrecord->name = $news_s_name;
-	// 			$newsrecord->display = $news_s_display;
-	// 			$newsrecord->content = $news_s_content;
-	// 			$DB->update_record($table, $newsrecord);
-	// 		}
-	// 	}
-	// }
+		if(strlen($news_s_name) > 1 && strlen($news_s_content) > 1 )
+		{
+			if($newid3 = $DB->get_field('theme_argil_news', 'id', array('type' => 'student')))
+			{
+				$newsrecord->id = $newid3;
+				$newsrecord->name = $news_s_name;
+				$newsrecord->display = $news_s_display;
+				$newsrecord->content = $news_s_content;
+				$DB->update_record($table, $newsrecord);
+			}
+		}
+	}
+
 }
